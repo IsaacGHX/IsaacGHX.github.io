@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haoxiang Zhang - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --sky-blue: #87CEEB;
+            --light-sky-blue: #B0E2FF;
+        }
+        
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .section-content.active {
+            max-height: 2000px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        .project-card {
+            transition: transform 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .publication-card {
+            border-left: 4px solid var(--sky-blue);
+        }
+
+        .custom-gradient {
+            background: linear-gradient(135deg, #87CEEB 0%, #B0E2FF 100%);
+        }
+    </style>
+</head>
+<body class="bg-blue-50">
+    <!-- Header Section -->
+    <header class="custom-gradient text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold mb-4">Haoxiang Zhang</h1>
+                <div class="flex justify-center space-x-4 mb-4">
+                    <a href="mailto:zhanghaoxiang_25f@163.com" class="hover:text-blue-100">
+                        <i class="fas fa-envelope"></i> zhanghaoxiang_25f@163.com
+                    </a>
+                    <span>|</span>
+                    <span><i class="fas fa-phone"></i> +86 18101675639</span>
+                </div>
+                <p class="text-lg">Data Science & Big Data Technology Student at Shanghai University</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Education Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-blue-600">
+                <i class="fas fa-graduation-cap mr-2"></i>Education
+            </h2>
+            <div class="grid gap-6">
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <h3 class="font-bold text-lg text-blue-500">Shanghai University</h3>
+                    <p class="text-gray-600">Bachelor of Engineering in Data Science & Big Data Technology</p>
+                    <p class="text-gray-600">09/2021 - 06/2025 (Expected) | GPA: 3.42/4.0</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <h3 class="font-bold text-lg text-blue-500">The Hong Kong University of Science and Technology</h3>
+                    <p class="text-gray-600">Summer Session - Data and Computer Science</p>
+                    <p class="text-gray-600">08/2024</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-blue-600">
+                <i class="fas fa-project-diagram mr-2"></i>Featured Projects
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="project-card bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="font-bold text-lg text-blue-500">Learning from Novel Knowledge</h3>
+                    <p class="text-gray-600 mb-4">First Author, Accepted by CIKM 2024</p>
+                    <p class="text-gray-700">Continual Few-shot Knowledge Graph Completion with innovative framework to combat catastrophic forgetting.</p>
+                </div>
+                <div class="project-card bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="font-bold text-lg text-blue-500">Prompt Out-of-Distribution</h3>
+                    <p class="text-gray-600 mb-4">Self-Supervised Graph Test-Time Adaptation</p>
+                    <p class="text-gray-700">Novel data-centric self-supervised framework for test-time adaptation using prompt-based approach.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-blue-600">
+                <i class="fas fa-book mr-2"></i>Publications
+            </h2>
+            <div class="space-y-4">
+                <div class="publication-card bg-white rounded-lg shadow-lg p-6 pl-8">
+                    <h3 class="font-bold text-lg text-blue-500">Mathematics, 2024</h3>
+                    <p class="text-gray-700">SGNet: Efficient Snow Removal Deep Network with a Global Windowing Transformer</p>
+                    <p class="text-gray-600 italic">Lie Shan, Haoxiang Zhang, Bodong Cheng</p>
+                </div>
+                <div class="publication-card bg-white rounded-lg shadow-lg p-6 pl-8">
+                    <h3 class="font-bold text-lg text-blue-500">CIKM '24</h3>
+                    <p class="text-gray-700">Learning from Novel Knowledge: Continual Few-shot Knowledge Graph Completion</p>
+                    <p class="text-gray-600 italic">Zhuofeng Li, Haoxiang Zhang, Qiannan Zhang, Ziyi Kou, Shichao Pei</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-blue-600">
+                <i class="fas fa-code mr-2"></i>Technical Skills
+            </h2>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <h3 class="font-bold mb-2 text-blue-500">Programming Languages & Tools</h3>
+                        <p class="text-gray-700">Python (Pandas, NumPy, Scikit-learn, TensorFlow, PyTorch), C/C++, SQL</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-2 text-blue-500">Frameworks & Technologies</h3>
+                        <p class="text-gray-700">Flask, Git, Spark, MATLAB, Keras, Latex</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="custom-gradient text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-2">© 2024 Haoxiang Zhang</p>
+            <p class="text-blue-100">Data Scientist | Researcher | Engineer</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(section => {
+                section.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
