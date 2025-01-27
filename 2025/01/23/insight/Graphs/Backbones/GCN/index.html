@@ -1,0 +1,346 @@
+<!DOCTYPE html><html lang="en" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GNN系列1-GCN(Graph Convolutional Networks) | Isaac</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('/img/building_night.png');
+ --light-background: url('/img/building_bright.png');
+ --theme-encrypt-confirm: '确认'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lio2QITWez44KoAo',
+ clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
+ repo: 'Comment4io',
+ owner: 'IsaacGHX',
+ admin: ['IsaacGHX'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);document.addEventListener('pjax:success', _ => bszCaller.fetch(
+ "//busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback", a => {
+  bszTag.texts(a),
+  bszTag.shows()
+}));reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lio2QITWez44KoAo',
+ clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
+ repo: 'Comment4io',
+ owner: 'IsaacGHX',
+ admin: ['IsaacGHX'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>GNN系列1-GCN(Graph Convolutional Networks)</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2025-01-23T14:02:24.000Z" id="date"> 2025-01-23</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2025-01-27T16:49:47.430Z" id="updated"> 2025-01-28</time></div></span><br><span>文章总字数: <div class="control">4.2k</div></span><br><span>预计阅读时间: <div class="control">16 分钟</div></span><br><span id="busuanzi_container_page_pv">页面浏览: <span class="control" id="busuanzi_value_page_pv">加载中...</span></span></div></div><hr><div id="post-content"><h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>作为博客开篇，Graph系列的第一章，一切都只是我浅薄的观察和对于阅读的部分论文得出的见解，不能说是insight，只能够尽可能从我自己的武断认为其可能存在的道理来进行剖析，以及，我特别喜欢的，从发展中向后推进、以预判其潜在的改进空间。</p>
+<p>由于是第一章节，所以会牵扯到很多最最基础的定义，烦请耐心阅读。</p>
+<p>另外，就我对于工业界的实习来看，至少在2025年，当下的图结构数据的开发依然存在极其大的空间。在实际应用中发挥图结构的优势，最最重要的是建模，因为图不再是简单的离散点阵，更有图的结构——这也牵扯到什么是同构什么是异构。即，并非再是像朴素数据挖掘那样探讨如何处理图结构的数据来适应一个自回归任务，而是在于应当如何去构建图结构的数据，去定义什么是边，什么是节点，甚至隐式地定义图。一个非常简单的例子，如何教会机器人通过有限旋转关节的机械臂，来叠衣服，如果说这个方法可以通过将空间和衣服本身建模用点来进行建模的话。也许很多人会有和我一样的疑惑：是否图结构的数据在很多的算法中其实都有所崭露，而只是被其他角度的解读所掩盖了。</p>
+<p>GNN作为一个受到MLP和CV中的卷积神经网络的启发，而从深度学习的角度来建模图结构数据的将其作为一个从图数据到目标域的映射，这般的类推是十分朴实的，但是不可避免的需要“具体问题具体分析”——不是一个通用的网络就能够在所有的图相关任务中都达到最好的效果，就像是大语言模型需要在目标域进行微调一样。</p>
+<p>好，那么下面开始。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>原文：(GCN-3 KipfNet)Semi-Supervised Classification with Graph Convolutional Networks ICLR2017 | <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1609.02907">Paper</a> | <a target="_blank" rel="noopener" href="https://scholar.google.com/scholar_lookup?arxiv_id=1609.02907">Cite</a><br>代码: <a target="_blank" rel="noopener" href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.models.GCN.html#torch-geometric-nn-models-gcn" title="Permalink to this heading">torch_geometric.nn.models.GCN</a></p>
+<h1 id="I-图结构数据定义"><a href="#I-图结构数据定义" class="headerlink" title="I. 图结构数据定义"></a>I. 图结构数据定义</h1><p><strong>常见的定义有二</strong></p>
+<hr>
+<h2 id="定义一：基于几何结构"><a href="#定义一：基于几何结构" class="headerlink" title="定义一：基于几何结构"></a>定义一：基于几何结构</h2><p>数学表示</p>
+<script type="math/tex; mode=display">
+\mathcal{G} = (\mathcal{V},\mathcal{E})</script><p>一个图 (<script type="math/tex">\mathcal{G}</script>) 由以下组成： </p>
+<ol>
+<li><strong>节点集合 (<script type="math/tex">\mathcal{V}</script>)</strong>: 表示图中的所有节点，通常用 (<script type="math/tex">|\mathcal{V}| = N</script>) 表示节点的数量。</li>
+<li><strong>边集合 (<script type="math/tex">\mathcal{E}</script>)</strong>: 表示节点之间的连接关系，每条边由一对节点 (<script type="math/tex">(u, v) \in \mathcal{V} \times \mathcal{V}</script>) 表示。 </li>
+<li><strong>节点特征矩阵 (<script type="math/tex">\mathrm{X}</script>)</strong>:<script type="math/tex">\mathrm{X} \in \mathbb{R}^{N \times F}</script>，其中<script type="math/tex">F</script>表示每个节点的特征维度。 </li>
+<li><strong>几何结构(可选)</strong>: 边的几何信息，如在二维或三维空间中的边的长度、方向等。</li>
+</ol>
+<p>形式化表示： </p>
+<script type="math/tex; mode=display">
+ \mathcal{G} = (\mathcal{V}, \mathcal{E}, \mathrm{X}, \text{几何信息})</script><p>示例： </p>
+<ul>
+<li><script type="math/tex">\mathcal{V} = \{v_1, v_2, v_3\}</script>；</li>
+<li><script type="math/tex">\mathcal{E} = \{(v_1, v_2), (v_2, v_3)\}</script>；</li>
+<li><script type="math/tex">\mathrm{X}</script>=<script type="math/tex">\begin{bmatrix} 1 & 0 \\ 0 & 1 \\ 1 & 1 \end{bmatrix}</script>；</li>
+<li>边的几何长度：<script type="math/tex">d_{12} = 1.5, d_{23} = 2.0</script>。</li>
+</ul>
+<hr>
+<h2 id="定义二：基于邻接矩阵"><a href="#定义二：基于邻接矩阵" class="headerlink" title="定义二：基于邻接矩阵"></a>定义二：基于邻接矩阵</h2><p>数学表示：</p>
+<script type="math/tex; mode=display">
+\mathcal{G} = (\mathrm{A}, \mathrm{X}, \mathrm{E})</script><p>一个图<script type="math/tex">\mathcal{G}</script>可以用以下方式定义：</p>
+<ol>
+<li><strong>邻接矩阵 <script type="math/tex">\mathrm{A}</script></strong>: 表示图的拓扑结构，是一个<script type="math/tex">\mathrm{A} \in \mathbb{R}^{N \times N}</script>的稀疏矩阵（一般来说），其中：<ul>
+<li><script type="math/tex">\mathrm{A}_{ij} = 1</script>表示节点<script type="math/tex">i</script>和<script type="math/tex">j</script>之间存在边；</li>
+<li><script type="math/tex">\mathrm{A}_{ij} = 0</script>表示节点<script type="math/tex">i</script>和<script type="math/tex">j</script>之间不存在边。</li>
+</ul>
+</li>
+<li><strong>节点特征矩阵 <script type="math/tex">\mathrm{X}</script></strong>: 表示每个节点的特征，是一个<script type="math/tex">\mathrm{X} \in \mathbb{R}^{N \times F}</script>，其中<script type="math/tex">F</script>表示每个节点的特征维度。</li>
+<li><strong>边特征矩阵 <script type="math/tex">\mathrm{E}</script>（可选）</strong>: 表示边的特征，是一个<script type="math/tex">\mathrm{E} \in \mathbb{R}^{|\mathcal{E}| \times F_e}</script>，其中<script type="math/tex">F_e</script>表示每条边的特征维度。</li>
+</ol>
+<p>形式化表示：</p>
+<script type="math/tex; mode=display">
+\mathcal{G} = (\mathrm{A}, \mathrm{X}, \mathrm{E})</script><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><ul>
+<li><p><script type="math/tex">\mathrm{A} = \begin{bmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{bmatrix}</script>；</p>
+</li>
+<li><p><script type="math/tex">\mathrm{X} = \begin{bmatrix} 1 & 2 \\ 0 & 3 \\ 1 & 0 \end{bmatrix}</script>；</p>
+</li>
+<li><p><script type="math/tex">\mathrm{E} = \begin{bmatrix} 0.5 \\ 0.8 \\ 1.2 \end{bmatrix}</script>（如边的权重或距离信息 ）。</p>
+</li>
+</ul>
+<hr>
+<p>定义一<em>关注几何结构</em>，常用于需要明确空间信息的问题，如三维物体重建、分子建模和机器人路径规划，解决几何形状分析、分子性能预测和空间导航等问题；定义二更加<em>关注节点信息和节点间的信息关系</em>，广泛应用于社交网络、推荐系统和知识图谱，主要解决关系建模、个性化推荐以及复杂网络中信息传播与预测的问题。</p>
+<p>当然了在现在的很多工业应用当中抛弃显式的图结构，用简单的神经网络和序列建模Transformer类似的交叉注意力结构也依然能够得到一个非常好的效果，因为大部分工业应用中更加重视速度——尽管这个速度可以是通过学术界新创新方法之后不断地优化得到的。</p>
+<h1 id="II-GCN原理"><a href="#II-GCN原理" class="headerlink" title="II. GCN原理"></a>II. GCN原理<span id="Eq-GCN"></span></h1><p>图卷积网络可以分解为层的堆叠，其思路非常简单可以概括为：</p>
+<script type="math/tex; mode=display">加权平均聚合 \rightarrow 维度变换 \rightarrow 非线性激活</script><p>数学形式如下：</p>
+<script type="math/tex; mode=display">
+\mathrm{H}^{(l+1)} = \sigma\left( \tilde{D}^{-\frac{1}{2}} \tilde{\mathrm{A}} \tilde{D}^{-\frac{1}{2}} \mathrm{H}^{(l)} W^{(l)} \right) \tag{2.1}</script><ul>
+<li><script type="math/tex">\tilde{\mathrm{A}} = \mathrm{A} + I</script>：带自环的邻接矩阵</li>
+<li><script type="math/tex">\tilde{D}</script>：<script type="math/tex">\tilde{A}</script>的度矩阵，<script type="math/tex">\tilde{D} ^{-\frac{1}{2}}</script>意味着对于其中所有的非零元素都取正平方根的倒数；<ul>
+<li><strong>入度矩阵</strong>（有向图，指向该节点的边）：<script type="math/tex">D^{\text{in}}_{ii} = \sum_j A_{ji}</script>，</li>
+<li><strong>出度矩阵</strong>（有向图，从该节点指出的边）：<script type="math/tex">D^{\text{out}}_{ii} = \sum_j A_{ij}</script>，</li>
+</ul>
+</li>
+<li><script type="math/tex">H^{(l)}</script>：第<script type="math/tex">l</script>层的节点特征， <script type="math/tex">H^{(0)} = \mathrm{X}</script>；</li>
+<li><script type="math/tex">W^{(l)}</script>：可训练权重矩阵；</li>
+<li><script type="math/tex">\sigma</script>：激活函数（如ReLU）。</li>
+</ul>
+<h1 id="III-不同角度的Rationale"><a href="#III-不同角度的Rationale" class="headerlink" title="III. 不同角度的Rationale"></a>III. 不同角度的Rationale</h1><p>可以说，这是通过推广卷积和其上的拉普拉斯算子到图上，来将其变换到频域来进行计算，【<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1r44y1E7tP?spm_id_from=333.788.recommend_more_video.-1&amp;vd_source=972cb12282503e35e1f329ccd218525e">Xavier Bresson教授图神经网络系列讲座_bilibili</a>，<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ur4y1S7e3/?spm_id_from=333.337.search-card.all.click&amp;vd_source=c72b96a1851490486f7069dc005eda2e">图神经网络理论基础-人大-魏哲巍_bilibili</a>】这是合理的。也可以从深度学习的角度出发（当然这也是深度卷积网络），所谓浅层表示local，深层表示global信息，即低频率特征值和高频特征值。</p>
+<hr>
+<p>关注II部分中的公式.(<a href="#Eq-GCN">2.1</a>)中的部分：</p>
+<script type="math/tex; mode=display">\tilde{D}^{-\frac{1}{2}} \tilde{A} \tilde{D}^{-\frac{1}{2}} H^{(l)}</script><p>本质上就是一个对于邻居节点和自身的加权平均，堆叠GNN的层可以看作是一个信息聚合的过程，如下图所示（有颜色的即为经过这次聚合后能够得到的信息）：</p>
+<p class='item-img' data-src='/img/GraphAggregation.png'><img src="/img/GraphAggregation.png" alt="/img/GraphAggregation.png"></p>
+<p>这样的邻居聚合后共享参数其实蕴含了三个假设，</p>
+<ul>
+<li>第一，邻居节点和该节点的分类结果是相关的，这一假设与<strong>马尔科夫性质</strong>（Markov Property）相关，即一个节点的状态只依赖于其邻居节点的状态，也就会引出一些有关于<strong>马尔科夫毯</strong>（Markov blanket）的讨论，同时也引导人们看向<strong>诱导子图</strong>（Induced Graph）。</li>
+<li>第二，如果构建的是一个深度GNN，节点间的最短距离和相关性呈反比，即图信号处理中的<strong>平滑性假设</strong>（Smoothness Assumption）：图信号在局部区域内变化较小，也就是假设图信号的主要信息集中在<em>低频</em>部分，即图信号在局部区域内变化较小；</li>
+<li>第三，假设节点的特征和边的权重是独立的，即边的权重只反映节点之间的连接强度，而不直接依赖于节点特征，这也是为什么GCN原文用的是在社交图上的半监督的节点分类问题。<br>可以说这三个假设是使得GCN这样的模式能够发挥作用的事后解释；也可以说是在发现其存在的问题之后的回顾，对于问题暂且先按下不表，先来看为什么他会有用，以及，是如何设计得更加符合神经网络工学的直觉的。</li>
+</ul>
+<p>这和图像卷积中的每次一个滑窗聚合其中的<script type="math/tex">k\times k</script>的窗口内的像素点；抑或是信号与系统中的空域信号作倒序卷积，都有异曲同工之妙。</p>
+<h2 id="重新定义图卷积（Graph-Convolution）"><a href="#重新定义图卷积（Graph-Convolution）" class="headerlink" title="重新定义图卷积（Graph Convolution）"></a>重新定义图卷积（Graph Convolution）</h2><p>回顾一下卷积定义，其中<script type="math/tex">t</script>是连续时域变量，<script type="math/tex">\tau</script>是窗口大小。</p>
+<script type="math/tex; mode=display">(f * g)(t):= \int_{\infty}f( \tau )g(t- \tau )d \tau</script><p>离散版本，<script type="math/tex">m</script> 是窗口大小，<script type="math/tex">n</script> 是点列变量（离散时间），<script type="math/tex">n\in \mathbb{Z}</script>：</p>
+<script type="math/tex; mode=display">(f*g)[n]=  \sum_{m=-\infty }^ {\infty}f[m]g[n-m]=  \sum _ {m=-\infty }^ {\infty }  f[n-m]g[m]</script><p>卷积只是一种频域的分析方法，用滤波器<script type="math/tex">g</script>来筛选原来信号函数<script type="math/tex">f</script>的性质，那么，如何定义Graph上的卷积呢，我们只关注其中的任意一点n，观察对于它卷积的时候发生了什么：<br>假设我们有以下输入信号 <script type="math/tex">f</script> 和卷积核 <script type="math/tex">g</script>：</p>
+<ul>
+<li>输入信号 <script type="math/tex">f_n=[1,2,3,4]</script>，索引范围为 <script type="math/tex">0≤m≤3</script>；</li>
+<li>卷积核 <script type="math/tex">g_n=[1,2,1]</script>，索引范围为 <script type="math/tex">0≤m≤2</script>。<br>首先，将卷积核 <script type="math/tex">g</script> 翻转：<script type="math/tex">g_{-m}=[1,2,1]</script>，我们取其中非零的点来计算：</li>
+<li><strong>当 <script type="math/tex">n=3</script></strong>：<ul>
+<li>卷积核覆盖的范围：<script type="math/tex">n−m=3⇒m=1,2,3</script>。</li>
+<li>有效范围：<script type="math/tex">m=1,2,3</script>。</li>
+<li>计算得到<script type="math/tex; mode=display">(f∗g)[3]=f[1]⋅g[2]+f[2]⋅g[1]+f[3]⋅g[0]=2⋅1+3⋅2+4⋅1=12</script>即<script type="math/tex">\sum^{3}_{m=0} f[m] \odot g_{-m}[m]</script>，其中<script type="math/tex">\odot</script>为哈德玛积，即逐个位置元素相乘。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>其上得到的是最后整个卷积后得到的函数的其中一个单位点，那么如果我们如果需要在图上定义什么是卷积，就需要定义什么是窗口？以及如何计算整个窗口内的各个元素的相加？</p>
+<p>对于单个节点，他的相邻的数据，显然，就是其相邻的节点，他们靠边来连接，因此很自然地，图卷积的定义就是</p>
+<script type="math/tex; mode=display">\tilde{A}\mathrm{X}</script><p>就这么简单。</p>
+<hr>
+<p><strong>举栗.e.g.</strong><br>将矩阵可视化就是（假设是一个无向的图）：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><script type="math/tex">\tilde{A}</script></th>
+<th style="text-align:center">节点1</th>
+<th style="text-align:center">节点2</th>
+<th style="text-align:center">节点3</th>
+<th style="text-align:center">节点4</th>
+<th>…</th>
+<th></th>
+<th><script type="math/tex">\mathrm{X}</script></th>
+<th>节点属性1</th>
+<th>属性2</th>
+<th>…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>节点1</td>
+<td style="text-align:center"><font color=red>1</font></td>
+<td style="text-align:center"><font color=red>0</font></td>
+<td style="text-align:center"><font color=red>1</font></td>
+<td style="text-align:center"><font color=red>0</font></td>
+<td></td>
+<td></td>
+<td>节点1</td>
+<td><font color=red>blabla</font></td>
+<td>lbaba</td>
+<td>labda</td>
+</tr>
+<tr>
+<td>节点2</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td></td>
+<td><script type="math/tex">\cdot</script></td>
+<td>节点2</td>
+<td><font color=red>blala</font></td>
+<td>lbaba</td>
+<td>…</td>
+</tr>
+<tr>
+<td>节点3</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td></td>
+<td></td>
+<td>节点3</td>
+<td><font color=red>blaa</font></td>
+<td>lba</td>
+<td></td>
+</tr>
+<tr>
+<td>节点4</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td></td>
+<td></td>
+<td>节点4</td>
+<td><font color=red>babla</font></td>
+<td>lbdab</td>
+<td></td>
+</tr>
+<tr>
+<td>…</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td>…</td>
+<td></td>
+<td>…</td>
+<td></td>
+<td></td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>将这个<script type="math/tex">\tilde{A} \in \mathbb{R}^{N \times N}</script>和<script type="math/tex">\mathrm{X} \in \mathbb{R}^{N \times F}</script>矩阵点积后可以得到更新后的<script type="math/tex">\mathrm{X}' \in \mathbb{R}^{N \times F}</script></p>
+<p>其中（比如第一个节点的更新后的第一个属性，关注<font font color=red>红色</font>的行和列哈德玛积后相加），</p>
+<script type="math/tex; mode=display">\forall x'_i \in \mathrm{X}', x_j \in N(j),</script><script type="math/tex; mode=display">x'_i = \sum_{j} x_j.</script><p>这里<script type="math/tex">N(j)</script>表示和原图中的节点<script type="math/tex">x_j</script>的1-hop邻居节点。</p>
+<hr>
+<p>那具体的步骤解释了，如何形式分析和定义呢？指路这家：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/344005023">图神经网络(GNN)入门之旅(三)-拉普拉斯矩阵与GCN - 知乎 (zhihu.com)</a>；（看里面怎么定义拉普拉斯的就够了嗷，不要贪杯= ^ =）。简述就是希望模仿二维离散的拉普拉斯算子（如下），来推广图上的卷积和频谱分析：</p>
+<script type="math/tex; mode=display">\begin{pmatrix}  
+0 & 1  & 0  \\
+1 & -4  & 1 \\
+0 & 1  & 0 \\
+\end{pmatrix}</script><p>最最重要的是以下的这句话：</p>
+<p>“”<br><em>假设具有 <script type="math/tex">N</script> 个节点的图 <script type="math/tex">\mathcal{G}</script> ，此时图中每个节点的自由度至多为 <script type="math/tex">N</script> ，此时该图为<strong>完全图</strong>，即任意两个节点之间都有一条边连接，则对其中一个节点进行微扰，它可能变为图中任意一个节点。</em> </p>
+<p><em>此时以上定义的函数 <script type="math/tex">f</script> 不再是二维，而是 <script type="math/tex">N</script> 维向量： <script type="math/tex">f=(f_1,f_2,...,f_N)</script> ，其中 <script type="math/tex">f_i</script> 为函数 <script type="math/tex">f</script> 在图中节点 <script type="math/tex">x_i</script> 处的函数值。类比于二维函数 <script type="math/tex">f(x,y)</script> 在节点 <script type="math/tex">(x,y)</script> 处的值。</em> </p>
+<p><em>对 <script type="math/tex">i</script> 节点进行扰动，它可能变为任意一个与它相邻的节点 <script type="math/tex">j∈N(i) , N(i)</script> 表示节点 <script type="math/tex">i</script> 的一阶邻域节点。</em> </p>
+<p><em>我们上面已经知道拉普拉斯算子可以计算一个点到它所有自由度上微小扰动的增益，则通过图来表示就是任意一个节点 <script type="math/tex">j</script> 变化到节点 <script type="math/tex">i</script> 所带来的增益……</em><br>“”</p>
+<p>也就是：图卷积是定义在图的边结构上的卷积，而 <script type="math/tex">x_i \sim p(X)</script>，所有的节点都是来自于一个分布的采样；这其实也和其他的离散的信号定义保持了一致，但是其奥妙在于他是<u>基于边的结构的卷积</u>。</p>
+<hr>
+<p>但是显然地，我们会发现一个问题，在CV中，假设从函数的角度出发来看张量的变化，<script type="math/tex">CNN(\cdot) := f(x), x \in \mathbb{R}^{H \times W \times C}</script> ，其输入和输出的张量形状是不一致的，即<script type="math/tex">x^{(k)}= f(x^{(k-1)}), k≥1</script> 的时候 <script type="math/tex">(H^k \times W^k) \propto \frac{1}{k}</script> ，也就是如果不padding的话，CNN的张量随着网络深度的增加是越来越小的。但是GNN并非如此，<script type="math/tex">GNN(\cdot) := f(x), x \in \mathbb{R}^{N \times F}, x^{(k)}= f(x^{(k-1)}), k≥1</script> 的时候， <script type="math/tex">N^k = N^{k-1}</script>,始终都是节点的个数，那自然会出现问题：也就是（当然并没有那么显然哦，只是我说的）GCN会遇到的，<strong><em>过渡平滑</em></strong>。</p>
+<h1 id="IV-图信号过渡平滑"><a href="#IV-图信号过渡平滑" class="headerlink" title="IV. 图信号过渡平滑"></a>IV. 图信号过渡平滑</h1><h2 id="拉普拉斯平滑原理"><a href="#拉普拉斯平滑原理" class="headerlink" title="拉普拉斯平滑原理"></a>拉普拉斯平滑原理</h2><p>在图信号处理中，<strong>过渡平滑</strong>可通过图拉普拉斯矩阵量化，GCN传播一次的数学表达式为：</p>
+<script type="math/tex; mode=display">
+\mathcal{S}(f) = \frac{1}{2} \sum_{i,j=1}^n A_{ij} \| f_i - f_j \|^2 = f^\top L f</script><ul>
+<li><script type="math/tex">f_i, f_j</script>，就是上述的Section.III的最后的引言部分的定义，对于每个节点的变换后的值；</li>
+<li><script type="math/tex">f \in \mathbb{R}^n</script>，图信号向量；</li>
+<li><script type="math/tex">L = D - A</script>， （姑且这样定义，也可以是归一化后的）组合拉普拉斯矩阵。<br>因为拉普拉斯矩阵就是来刻画局部的平滑度，详见图像中运用了拉普拉斯核后的图像。</li>
+</ul>
+<h2 id="平滑传播过程"><a href="#平滑传播过程" class="headerlink" title="平滑传播过程"></a>平滑传播过程</h2><p>在图卷积网络中，多层传播导致的平滑效应可表示为：</p>
+<script type="math/tex; mode=display">
+H^{(k+1)} = P H^{(k)} \quad \text{其中} \quad P = \tilde{D}^{-1/2}\tilde{A}\tilde{D}^{-1/2}</script><p>对传播矩阵<script type="math/tex">P</script>（因为假设是拉普拉斯矩阵）进行特征分解：  </p>
+<script type="math/tex; mode=display">P = U \Lambda U^\top</script><p>经过<script type="math/tex">K</script>次传播后：  </p>
+<script type="math/tex; mode=display">H^{(K)} = P^K H^{(0)} = U \Lambda^K U^\top H^{(0)}</script><h3 id="平滑动态特性"><a href="#平滑动态特性" class="headerlink" title="平滑动态特性"></a>平滑动态特性</h3><p>那么自然地，从单个特征值的角度来看：</p>
+<ul>
+<li>高频分量衰减：<script type="math/tex">\lambda_i^K \rightarrow 0 \ (\text{当}\ |\lambda_i| < 1)</script>；</li>
+<li>低频分量保留：<script type="math/tex">\lambda_i^K \rightarrow 1 \ (\text{当}\ \lambda_i \approx 1)</script>。</li>
+</ul>
+<h2 id="过度平滑的数学描述"><a href="#过度平滑的数学描述" class="headerlink" title="过度平滑的数学描述"></a>过度平滑的数学描述</h2><p>当传播次数<script type="math/tex">K \rightarrow \infty</script>时，信号收敛至：  </p>
+<script type="math/tex; mode=display">\lim_{K \to \infty} P^K = \frac{\phi \phi^\top}{\|\phi\|^2}</script><p>其中<script type="math/tex">\phi</script>是<script type="math/tex">P</script>的主特征向量，导致节点特征趋同：  </p>
+<script type="math/tex; mode=display">H^{(\infty)} \propto \phi \cdot \text{const}</script><p>或者这样表示：</p>
+<ul>
+<li>设 <script type="math/tex">h_i^{(k)}</script> 表示节点 <script type="math/tex">i</script> 在第 <script type="math/tex">k</script> 层的特征；</li>
+<li>如果对于任意两个节点 <script type="math/tex">i</script> 和 <script type="math/tex">j</script>，有：<script type="math/tex; mode=display">\lim_{k \to \infty} \|h_i^{(k)} - h_j^{(k)}\| = 0</script>或者通过方差来刻画： <script type="math/tex">\text{Var}(H^{(k)}) \to 0 \quad \text{当} \quad k \to \infty</script></li>
+</ul>
+<h1 id="V-小结"><a href="#V-小结" class="headerlink" title="V. 小结"></a>V. 小结</h1><p>Kipf的GCN其实不是GCN的最初的频谱分析的流派的继承，而是做出了简单而且大胆的创新，虽然一开始是无向图，但是可以推广到有向图；</p>
+<p>其次是它的计算本质上是可以很快的，因为一切都取决于GPU上对于矩阵的点积操作的优化，但是，在大规模图上他的内存复杂消耗会到 <script type="math/tex">O(N^2)</script> 因为相当于直接存入邻接矩阵，而且稀疏图一般都是用链表或者是字典结构数据来存储的，因此不同存储的转化也存在加速的可能性；</p>
+<p>模型不具有随机性，没有独属于Graph的结构的数据增强和适合图的随机性对于方差的扩充。也就是，模型的泛化性不足 ———— 在OOD和存在分布偏移的数据上的泛化能力不足、对于动态图的适应能力较差。可以说这是由于他是transductive（直推）的，但是我不喜欢这种说辞，因为后续所谓提出inductive（归纳）方式解决了这个问题的GraphSAGE，实际上在动态图或者是分布差异的数据上的表现也不佳。</p>
+<p>虽然这也是其他所有的想要作更好的representation learning的模型的通病，这也有待后续的更多博客来探讨。博客文笔见疏，诸君评论多加指正。</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2025/01/21/fast_startup/tf1_15_gpu_docker/">解决CUDA10以后的GPU对于Tensorflow-1.x-gpu的依赖失败 上一篇 →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/about">Isaac IPF</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#I-%E5%9B%BE%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89"><span class="toc-number">3.</span> <span class="toc-text">I. 图结构数据定义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%80%EF%BC%9A%E5%9F%BA%E4%BA%8E%E5%87%A0%E4%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">3.1.</span> <span class="toc-text">定义一：基于几何结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%BA%8C%EF%BC%9A%E5%9F%BA%E4%BA%8E%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5"><span class="toc-number">3.2.</span> <span class="toc-text">定义二：基于邻接矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">3.2.1.</span> <span class="toc-text">示例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#II-GCN%E5%8E%9F%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">II. GCN原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#III-%E4%B8%8D%E5%90%8C%E8%A7%92%E5%BA%A6%E7%9A%84Rationale"><span class="toc-number">5.</span> <span class="toc-text">III. 不同角度的Rationale</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E6%96%B0%E5%AE%9A%E4%B9%89%E5%9B%BE%E5%8D%B7%E7%A7%AF%EF%BC%88Graph-Convolution%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">重新定义图卷积（Graph Convolution）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IV-%E5%9B%BE%E4%BF%A1%E5%8F%B7%E8%BF%87%E6%B8%A1%E5%B9%B3%E6%BB%91"><span class="toc-number">6.</span> <span class="toc-text">IV. 图信号过渡平滑</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E5%B9%B3%E6%BB%91%E5%8E%9F%E7%90%86"><span class="toc-number">6.1.</span> <span class="toc-text">拉普拉斯平滑原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B3%E6%BB%91%E4%BC%A0%E6%92%AD%E8%BF%87%E7%A8%8B"><span class="toc-number">6.2.</span> <span class="toc-text">平滑传播过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E6%BB%91%E5%8A%A8%E6%80%81%E7%89%B9%E6%80%A7"><span class="toc-number">6.2.1.</span> <span class="toc-text">平滑动态特性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E5%BA%A6%E5%B9%B3%E6%BB%91%E7%9A%84%E6%95%B0%E5%AD%A6%E6%8F%8F%E8%BF%B0"><span class="toc-number">6.3.</span> <span class="toc-text">过度平滑的数学描述</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#V-%E5%B0%8F%E7%BB%93"><span class="toc-number">7.</span> <span class="toc-text">V. 小结</span></a></li></ol></div></div><footer><nobr>构建自 <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> 主题作者 <a target="_blank" rel="noopener" href="https://github.com/IsaacGHX">Isaac_GHX </a></nobr><wbr><nobr> 使用主题 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> 主题作者 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr><wbr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

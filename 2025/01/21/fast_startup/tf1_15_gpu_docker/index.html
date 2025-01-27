@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="en" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>解决CUDA10以后的GPU对于Tensorflow-1.x-gpu的依赖失败 | Isaac</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('/img/building_night.png');
+ --light-background: url('/img/building_bright.png');
+ --theme-encrypt-confirm: '确认'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lio2QITWez44KoAo',
+ clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
+ repo: 'Comment4io',
+ owner: 'IsaacGHX',
+ admin: ['IsaacGHX'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);document.addEventListener('pjax:success', _ => bszCaller.fetch(
+ "//busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback", a => {
+  bszTag.texts(a),
+  bszTag.shows()
+}));reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lio2QITWez44KoAo',
+ clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
+ repo: 'Comment4io',
+ owner: 'IsaacGHX',
+ admin: ['IsaacGHX'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>解决CUDA10以后的GPU对于Tensorflow-1.x-gpu的依赖失败</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2025-01-21T10:37:20.000Z" id="date"> 2025-01-21</time></div></span><br><span>最后更新时间: <div class="control"><time datetime="2025-01-23T13:49:10.867Z" id="updated"> 2025-01-23</time></div></span><br><span>文章总字数: <div class="control">1.2k</div></span><br><span>预计阅读时间: <div class="control">5 分钟</div></span><br><span id="busuanzi_container_page_pv">页面浏览: <span class="control" id="busuanzi_value_page_pv">加载中...</span></span></div></div><hr><div id="post-content"><h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>工业界对于Tensorflow的喜爱是超乎我的意料的，可以说是因为TF1.x的运行前的静态编译使得对于代码和设备的优化能够更加细致，也可以说是大部分在21世纪10年代蓬勃发展的公司——尤其是中国的——都使用的是Nvidia的Volta架构，比如说V100/T4，这也可以说是在第一批贸易战禁令产物。</p>
+<p>其次是当年Meta(from 2021.10.28)还是Facebook，Google的TF有广大的市场，且启蒙我的《Deep Learning with Python》作者François Chollet领衔了Keras的集成进入TF. 以及轰轰烈烈的TF的2.x版本。</p>
+<p>彼时就觉得需要同时兼容pyhton+GPU编译+对应版本的TF库十分麻烦，尤其是对于初学者和便捷的Windows笔记本用户随时拉取一下github的项目测试一下，同时现在Docker越来越受到欢迎因此，姑且本文先通过Docker来省去一切的“为什么我的设备运行不了”的问题来列出解决步骤。</p>
+<p>废话就这么多，七步以内搞定。</p>
+<h1 id="在Windows上使用Docker运行TensorFlow-1-15并启用GPU加速"><a href="#在Windows上使用Docker运行TensorFlow-1-15并启用GPU加速" class="headerlink" title="在Windows上使用Docker运行TensorFlow 1.15并启用GPU加速"></a>在Windows上使用Docker运行TensorFlow 1.15并启用GPU加速</h1><p>本指南以TF1.15为例，将帮助你在Windows上使用Docker运行TensorFlow 1.15，并充分利用你的NVIDIA GPU进行加速。将从安装Docker和NVIDIA支持开始，逐步引导完成整个过程。</p>
+<h2 id="极简叙述"><a href="#极简叙述" class="headerlink" title="极简叙述"></a>极简叙述</h2><ul>
+<li>安装Docker Desktop for Windows。</li>
+<li>安装NVIDIA GPU驱动程序，确保系统支持CUDA。</li>
+<li>拉取Docker镜像, &gt;&gt; <u>docker pull tensorflow/tensorflow:1.15.0-gpu-py3</u></li>
+<li>启动Docker，&gt;&gt; <u>docker run --gpus all -it --rm tensorflow/tensorflow:1.15.0-gpu-py3 bash</u></li>
+<li>确认Docker内CUDA和cuDNN，&gt;&gt; <u>nvcc -V</u></li>
+<li>检查GPU可用， &gt;&gt; <u>python -c “import tensorflow as tf; devices = tf.config.experimental.list_physical_devices(‘GPU’); print(devices)”</u></li>
+<li>输出为你的电脑的GPU数目即可。</li>
+<li><font color=red>!!!该方法并不能够解决编译静态graph时候卡住的问题</font>
+
+</li>
+</ul>
+<h2 id="详细展开与特殊情况"><a href="#详细展开与特殊情况" class="headerlink" title="详细展开与特殊情况"></a>详细展开与特殊情况</h2><h3 id="步骤1：安装Docker和NVIDIA-Docker支持"><a href="#步骤1：安装Docker和NVIDIA-Docker支持" class="headerlink" title="步骤1：安装Docker和NVIDIA Docker支持"></a>步骤1：安装Docker和NVIDIA Docker支持</h3><ol>
+<li><p><strong>安装Docker Desktop for Windows</strong></p>
+<ul>
+<li>下载并安装 <a target="_blank" rel="noopener" href="https://www.docker.com/">Docker Desktop</a>&lt;—点击进入，选择自己的机器对应的型号（通常Windows带了Nvidia的GPU的笔记本都是AMD64）。</li>
+<li>启动Docker并确保它在后台运行。<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">docker --version<br></code></pre></td></tr></table></figure>
+输出理应格式如下：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs output">Docker version 20.10.17, build 100c701<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>安装NVIDIA驱动程序和CUDA支持</strong></p>
+<ul>
+<li>确保安装了最新版本的 <a target="_blank" rel="noopener" href="https://www.nvidia.com/Download/index.aspx">NVIDIA GPU驱动程序</a>&lt;—点击进入，选择自己的机器对应的型号。<br><script type="math/tex">\star</script>只是为了能够运行查看当前的机器是不是有GPU！！<br>如果没有请按照正常的tensorflow(默认cpu版本)安装就可以。<br>在Windows本机环境下运行<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">nvidia-smi<br></code></pre></td></tr></table></figure>
+输出理应格式如下：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs output">+-----------------------------------------------------------------------------------------+<br>| NVIDIA-SMI 566.14                 Driver Version: 566.14         CUDA Version: 12.7     |<br>|-----------------------------------------+------------------------+----------------------+<br>| GPU  Name                  Driver-Model | Bus-Id          Disp.A | Volatile Uncorr. ECC |<br>| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |<br>|                                         |                        |               MIG M. |<br>|=========================================+========================+======================|<br>|   0  NVIDIA GeForce RTX 4060 ...  WDDM  |   00000000:01:00.0  On |                  N/A |<br>| N/A   49C    P4              8W /  109W |    2301MiB /   8188MiB |      2%      Default |<br>|                                         |                        |                  N/A |<br>+-----------------------------------------+------------------------+----------------------+<br><br>+-----------------------------------------------------------------------------------------+<br>| Processes:                                                                              |<br>|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |<br>|        ID   ID                                                               Usage      |<br>|=========================================================================================|<br>|    0   N/A  N/A      ...    C+G   D:\Microsoft VS Code\Code.exe                N/A      |<br>|    ...   N/A  N/A      ...    ...   ...      ...                                         |<br>+-----------------------------------------------------------------------------------------+<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="步骤2：拉取Docker镜像"><a href="#步骤2：拉取Docker镜像" class="headerlink" title="步骤2：拉取Docker镜像"></a>步骤2：拉取Docker镜像</h2><ol>
+<li><p>打开命令行工具并运行以下命令来获得docker镜像：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker pull tensorflow/tensorflow:1.15.0-gpu-py3<br></code></pre></td></tr></table></figure>
+<p> 注意：其中的格式为docker pull tensorflow/tensorflow:1.xx-suffix_1-suffix_2<br> 其中，tensorflow:1.xx-suffix_1，表示需要的版本，suffix_1一般添加gpu（不然你来看这干啥呢是吧）<br> 其次，-suffix_2可以省略，由于其默认的下载是由Python2中的tensorflow包，是由Python2（e.g. 2.7.15+）版本编译的对于需要额外的Python3的语法项目存在部分冲突，所以建议添加此项为-py3。</p>
+</li>
+<li><p>等待下载完成后，运行Docker的镜像：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run --gpus all -it --<span class="hljs-built_in">rm</span> tensorflow/tensorflow:1.15.0-gpu-py3 bash<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="步骤3：拉取TensorFlow镜像"><a href="#步骤3：拉取TensorFlow镜像" class="headerlink" title="步骤3：拉取TensorFlow镜像"></a>步骤3：拉取TensorFlow镜像</h2><p>拉取适用于Python 3环境的TensorFlow 1.15 GPU镜像：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker pull tensorflow/tensorflow:1.15.0-gpu-py3<br></code></pre></td></tr></table></figure>
+<p>输出大致为：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs output">________                               _______________<br>___  __/__________________________________  ____/__  /________      __<br>__  /  _  _ \_  __ \_  ___/  __ \_  ___/_  /_   __  /_  __ \_ | /| / /<br>_  /   /  __/  / / /(__  )/ /_/ /  /   _  __/   _  / / /_/ /_ |/ |/ /<br>/_/    \___//_/ /_//____/ \____//_/    /_/      /_/  \____/____/|__/<br><br><br>WARNING: You are running this container as root, which can cause new files in<br>mounted volumes to be created as the root user on your host machine.<br><br>To avoid this, run the container by specifying your user&#x27;s userid:<br><br>$ docker run -u $(id -u):$(id -g) args...<br>root@container_id:/# **后续的所有的代码运行位置，输入Ctrl^D推出docker镜像<br></code></pre></td></tr></table></figure><br>这时候已经在镜像内了，一切格式都与Linux保持一致<br>运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python -c <span class="hljs-string">&quot;import tensorflow as tf; devices = tf.config.experimental.list_physical_devices(&#x27;GPU&#x27;); print(devices)&quot;</span><br></code></pre></td></tr></table></figure><br>理应输出最后行格式如下：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs output">...blablabla<br>2025-01-21 13:57:35.258965: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0<br>[PhysicalDevice(name=&#x27;/physical_device:GPU:0&#x27;, device_type=&#x27;GPU&#x27;)]<br></code></pre></td></tr></table></figure><br>gpu编号和列表编号一致从0开始，即说明成功啦！</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2025/01/23/insight/Graphs/Backbones/GCN/">← 下一篇 GNN系列1-GCN(Graph Convolutional Networks)</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2025/01/18/hello-world/">Hello World 上一篇 →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/about">Isaac IPF</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8Windows%E4%B8%8A%E4%BD%BF%E7%94%A8Docker%E8%BF%90%E8%A1%8CTensorFlow-1-15%E5%B9%B6%E5%90%AF%E7%94%A8GPU%E5%8A%A0%E9%80%9F"><span class="toc-number">2.</span> <span class="toc-text">在Windows上使用Docker运行TensorFlow 1.15并启用GPU加速</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%81%E7%AE%80%E5%8F%99%E8%BF%B0"><span class="toc-number">2.1.</span> <span class="toc-text">极简叙述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E5%B1%95%E5%BC%80%E4%B8%8E%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5"><span class="toc-number">2.2.</span> <span class="toc-text">详细展开与特殊情况</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A41%EF%BC%9A%E5%AE%89%E8%A3%85Docker%E5%92%8CNVIDIA-Docker%E6%94%AF%E6%8C%81"><span class="toc-number">2.2.1.</span> <span class="toc-text">步骤1：安装Docker和NVIDIA Docker支持</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A42%EF%BC%9A%E6%8B%89%E5%8F%96Docker%E9%95%9C%E5%83%8F"><span class="toc-number">2.3.</span> <span class="toc-text">步骤2：拉取Docker镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A43%EF%BC%9A%E6%8B%89%E5%8F%96TensorFlow%E9%95%9C%E5%83%8F"><span class="toc-number">2.4.</span> <span class="toc-text">步骤3：拉取TensorFlow镜像</span></a></li></ol></li></ol></div></div><footer><nobr>构建自 <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> 主题作者 <a target="_blank" rel="noopener" href="https://github.com/IsaacGHX">Isaac_GHX </a></nobr><wbr><nobr> 使用主题 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> 主题作者 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr><wbr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
