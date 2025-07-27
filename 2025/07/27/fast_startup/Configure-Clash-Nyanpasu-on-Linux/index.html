@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="en" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Configure Clash Nyanpasu on Linux | Isaac's Blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('/img/building_night.png');
+ --light-background: url('/img/building_bright.png');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lio2QITWez44KoAo',
+ clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
+ repo: 'Comment4io',
+ owner: 'IsaacGHX',
+ admin: ['IsaacGHX'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);document.addEventListener('pjax:success', _ => bszCaller.fetch(
+ "//busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback", a => {
+  bszTag.texts(a),
+  bszTag.shows()
+}));reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lio2QITWez44KoAo',
+ clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
+ repo: 'Comment4io',
+ owner: 'IsaacGHX',
+ admin: ['IsaacGHX'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Configure Clash Nyanpasu on Linux</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-07-27T07:40:12.000Z" id="date"> 2025-07-27</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-07-27T07:41:57.919Z" id="updated"> 2025-07-27</time></div></span><br><span>Word Count: <div class="control">1.4k</div></span><br><span>Read Time: <div class="control">8 min</div></span><br><span id="busuanzi_container_page_pv">Page View: <span class="control" id="busuanzi_value_page_pv">loading...</span></span></div></div><hr><div id="post-content"><p>Choosing and Setting up Clash.Nyanpasu Client on Linux</p>
+<hr>
+<p>This guide will walk you through setting up Clash.Nyanpasu on a Linux server without a graphical user interface. We’ll use the Mihomo core, and you’ll learn how to manage your proxy settings via the command line.</p>
+<p>We recommend using <a target="_blank" rel="noopener" href="https://github.com/LibNyanpasu/clash-nyanpasu/releases">Clash.Nyanpasu</a> for its robust features and active development.</p>
+<h2 id="1-Determine-Your-System-Architecture"><a href="#1-Determine-Your-System-Architecture" class="headerlink" title="1. Determine Your System Architecture"></a>1. Determine Your System Architecture</h2><p>First, identify your Linux server’s architecture to download the correct AppImage. For example, if you have an <code>x86_64</code> Ubuntu server, you’ll download the <code>amd64.AppImage</code>.</p>
+<p>To find your architecture, use the command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">uname</span> -m<br></code></pre></td></tr></table></figure>
+<p>This will output something like <code>x86_64</code>, <code>aarch64</code>, etc.</p>
+<h2 id="2-Download-Clash-Nyanpasu"><a href="#2-Download-Clash-Nyanpasu" class="headerlink" title="2. Download Clash.Nyanpasu"></a>2. Download Clash.Nyanpasu</h2><p>Navigate to the <a target="_blank" rel="noopener" href="https://github.com/libnyanpasu/clash-nyanpasu/releases">Clash.Nyanpasu releases page</a>. Find the latest pre-release or stable release and locate the <code>.AppImage</code> file corresponding to your architecture.</p>
+<p>For example, for <code>x86_64</code> (also known as <code>amd64</code>), you might download:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://github.com/libnyanpasu/clash-nyanpasu/releases/download/pre-release/Clash.Nyanpasu_2.0.0-alpha+2c587d0_amd64.AppImage<br></code></pre></td></tr></table></figure>
+<p>Remember to replace the URL with the specific version you are downloading.</p>
+<h2 id="3-Extract-the-AppImage"><a href="#3-Extract-the-AppImage" class="headerlink" title="3. Extract the AppImage"></a>3. Extract the AppImage</h2><p>AppImages are self-contained executables. While they can often be run directly on systems with FUSE set up, on servers without a graphical environment, you might encounter issues like:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">$ ./Clash.Nyanpasu_2.0.0-alpha+2c587d0_amd64.AppImage<br>fuse: device not found, try &#x27;modprobe fuse&#x27; first<br><br>Cannot mount AppImage, please check your FUSE setup.<br>You might still be able to extract the contents of this AppImage<br>if you run it with the --appimage-extract option.<br>See https://github.com/AppImage/AppImageKit/wiki/FUSE<br>for more information<br>open dir error: No such file or directory<br></code></pre></td></tr></table></figure>
+<p>And <code>sudo modprobe fuse</code> might not work if <code>modprobe</code> is not in your <code>PATH</code> or if you don’t have the necessary kernel modules.</p>
+<p>To proceed without FUSE, extract the AppImage’s contents:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> +x Clash.Nyanpasu_2.0.0-alpha+2c587d0_amd64.AppImage<br>./Clash.Nyanpasu_2.0.0-alpha+2c587d0_amd64.AppImage --appimage-extract<br></code></pre></td></tr></table></figure>
+<p>This will create a <code>squashfs-root</code> directory in your current location.</p>
+<h2 id="4-Prepare-Configuration-Files"><a href="#4-Prepare-Configuration-Files" class="headerlink" title="4. Prepare Configuration Files"></a>4. Prepare Configuration Files</h2><h3 id="4-1-Locate-the-Mihomo-Executable"><a href="#4-1-Locate-the-Mihomo-Executable" class="headerlink" title="4.1 Locate the Mihomo Executable"></a>4.1 Locate the Mihomo Executable</h3><p>After extraction, the Mihomo core executable (which Clash.Nyanpasu uses) will be located within the <code>squashfs-root</code> directory. Based on the example, it’s typically found at:</p>
+<p><code>/workspace/squashfs-root/usr/bin/mihomo</code></p>
+<p>(Note: The path in your system might vary if you extracted it elsewhere. Adjust <code>/workspace/</code> accordingly.)</p>
+<h3 id="4-2-Create-Configuration-Directory"><a href="#4-2-Create-Configuration-Directory" class="headerlink" title="4.2 Create Configuration Directory"></a>4.2 Create Configuration Directory</h3><p>Create a directory for your Clash configuration files. We’ll use <code>/etc/clash/</code> as the default in this guide:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">mkdir</span> -p /etc/clash<br></code></pre></td></tr></table></figure>
+<h3 id="4-3-Copy-Configuration-Files"><a href="#4-3-Copy-Configuration-Files" class="headerlink" title="4.3 Copy Configuration Files"></a>4.3 Copy Configuration Files</h3><p>Copy your <code>config.yaml</code> file (which you should have prepared beforehand, containing your proxy settings) into the <code>/etc/clash/</code> directory.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">cp</span> /path/to/your/config.yaml /etc/clash/config.yaml<br></code></pre></td></tr></table></figure>
+<p>Replace <code>/path/to/your/config.yaml</code> with the actual path to your configuration file.</p>
+<h3 id="4-4-GeoIP-Database-MMDB"><a href="#4-4-GeoIP-Database-MMDB" class="headerlink" title="4.4 GeoIP Database (MMDB)"></a>4.4 GeoIP Database (MMDB)</h3><p>Clash uses a GeoIP database (<code>Country.mmdb</code>) for IP-based routing. If you don’t have one, you’ll need to download it. Mihomo typically expects it in the same directory as your <code>config.yaml</code>.</p>
+<p>You can download <code>Country.mmdb</code> from sources like:</p>
+<ul>
+<li><strong>Official MaxMind GeoLite2:</strong> You need to register for a free account to download <code>GeoLite2-Country.mmdb</code>, then rename it to <code>Country.mmdb</code>.</li>
+<li><strong>Third-party Mirrors (use with caution and verify integrity):</strong> Some Clash-related projects provide direct downloads. Search for “Country.mmdb download clash” to find reputable sources.</li>
+</ul>
+<p>Once downloaded, copy it to your configuration directory:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">cp</span> /path/to/your/Country.mmdb /etc/clash/Country.mmdb<br></code></pre></td></tr></table></figure>
+<h2 id="5-Configure-Shell-Environment"><a href="#5-Configure-Shell-Environment" class="headerlink" title="5. Configure Shell Environment"></a>5. Configure Shell Environment</h2><p>To easily manage Clash and proxy settings, add the following functions to your <code>~/.bashrc</code> file. This allows you to start Clash, and enable/disable proxy settings with simple commands.</p>
+<p>Open <code>~/.bashrc</code> with your preferred editor (e.g., <code>nano</code> or <code>vim</code>):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano ~/.bashrc<br></code></pre></td></tr></table></figure>
+<p>Add the following lines to the end of the file:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># --- Clash Functions ---</span><br><span class="hljs-function"><span class="hljs-title">clash</span></span>() &#123;<br>    <span class="hljs-built_in">local</span> MIHOMO_BIN=<span class="hljs-string">&quot;/workspace/squashfs-root/usr/bin/mihomo&quot;</span> <span class="hljs-comment"># Adjust this path if necessary</span><br>    <span class="hljs-built_in">local</span> DEFAULT_CONFIG_DIR=<span class="hljs-string">&quot;/etc/clash/&quot;</span><br>    <span class="hljs-built_in">local</span> CUSTOM_CONFIG_DIR=<span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> <span class="hljs-comment"># First argument can be a custom config directory</span><br><br>    <span class="hljs-comment"># Check if mihomo executable exists</span><br>    <span class="hljs-keyword">if</span> [ ! -f <span class="hljs-string">&quot;<span class="hljs-variable">$MIHOMO_BIN</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Error: Mihomo executable not found at <span class="hljs-variable">$MIHOMO_BIN</span>&quot;</span> &gt;&amp;2 <span class="hljs-comment"># Output to standard error</span><br>        <span class="hljs-built_in">return</span> 1 <span class="hljs-comment"># Return non-zero status code for failure</span><br>    <span class="hljs-keyword">fi</span><br><br>    <span class="hljs-comment"># Determine which config directory to use</span><br>    <span class="hljs-built_in">local</span> CONFIG_TO_USE=<span class="hljs-string">&quot;<span class="hljs-variable">$DEFAULT_CONFIG_DIR</span>&quot;</span><br>    <span class="hljs-keyword">if</span> [ -n <span class="hljs-string">&quot;<span class="hljs-variable">$CUSTOM_CONFIG_DIR</span>&quot;</span> ]; <span class="hljs-keyword">then</span> <span class="hljs-comment"># If a custom config directory is provided</span><br>        CONFIG_TO_USE=<span class="hljs-string">&quot;<span class="hljs-variable">$CUSTOM_CONFIG_DIR</span>&quot;</span><br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Using custom configuration directory: <span class="hljs-variable">$CONFIG_TO_USE</span>&quot;</span><br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Using default configuration directory: <span class="hljs-variable">$DEFAULT_CONFIG_DIR</span>&quot;</span><br>    <span class="hljs-keyword">fi</span><br><br>    <span class="hljs-comment"># Check if the config directory exists</span><br>    <span class="hljs-keyword">if</span> [ ! -d <span class="hljs-string">&quot;<span class="hljs-variable">$CONFIG_TO_USE</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Error: Clash configuration directory not found at <span class="hljs-variable">$CONFIG_TO_USE</span>&quot;</span> &gt;&amp;2<br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Please ensure this directory exists and contains a config.yaml file.&quot;</span> &gt;&amp;2<br>        <span class="hljs-built_in">return</span> 1<br>    <span class="hljs-keyword">fi</span><br><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Starting Mihomo...&quot;</span><br>    <span class="hljs-comment"># Using exec ensures mihomo replaces the current shell process, so when mihomo exits, the function also ends.</span><br>    <span class="hljs-comment"># If you want mihomo to run in the background, remove &#x27;exec&#x27; and add &#x27;&amp;&#x27; at the end.</span><br>    <span class="hljs-string">&quot;<span class="hljs-variable">$MIHOMO_BIN</span>&quot;</span> -d <span class="hljs-string">&quot;<span class="hljs-variable">$CONFIG_TO_USE</span>&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$@</span>&quot;</span><br>    <span class="hljs-comment"># &quot;$@&quot; passes all arguments of the function to mihomo, allowing you to run: clash /path/to/my/config --port 7890</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Mihomo started or exited.&quot;</span><br>&#125;<br><br><span class="hljs-comment"># --- Proxy Control Functions ---</span><br><span class="hljs-comment"># Define a function to set system proxy to Clash</span><br><span class="hljs-function"><span class="hljs-title">proxy_on</span></span>() &#123;<br>    <span class="hljs-comment"># Check if Clash&#x27;s listening port is provided, otherwise use default</span><br>    <span class="hljs-built_in">local</span> CLASH_PORT=<span class="hljs-variable">$&#123;1:-7890&#125;</span> <span class="hljs-comment"># Default port is 7890</span><br><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Setting HTTP/HTTPS proxy to Clash (Port: <span class="hljs-variable">$CLASH_PORT</span>)...&quot;</span><br><br>    <span class="hljs-comment"># Set HTTP and HTTPS proxy environment variables</span><br>    <span class="hljs-comment"># Ensure you use your actual Clash listening address, usually 127.0.0.1 (localhost)</span><br>    <span class="hljs-built_in">export</span> http_proxy=<span class="hljs-string">&quot;http://127.0.0.1:<span class="hljs-variable">$CLASH_PORT</span>&quot;</span><br>    <span class="hljs-built_in">export</span> https_proxy=<span class="hljs-string">&quot;http://127.0.0.1:<span class="hljs-variable">$CLASH_PORT</span>&quot;</span><br><br>    <span class="hljs-comment"># It&#x27;s also often recommended to set all_proxy to cover more applications (e.g., curl)</span><br>    <span class="hljs-built_in">export</span> all_proxy=<span class="hljs-string">&quot;socks5://127.0.0.1:<span class="hljs-variable">$CLASH_PORT</span>&quot;</span> <span class="hljs-comment"># Clash also listens on SOCKS5 proxy</span><br><br>    <span class="hljs-comment"># Set addresses that should not use the proxy, typically including localhost and private network addresses</span><br>    <span class="hljs-comment"># Traffic to these addresses usually doesn&#x27;t need to be proxied and could cause issues otherwise</span><br>    <span class="hljs-built_in">export</span> no_proxy=<span class="hljs-string">&quot;localhost,127.0.0.1,::1,*.local,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16&quot;</span><br><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Proxy set successfully!&quot;</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;   http_proxy: <span class="hljs-variable">$http_proxy</span>&quot;</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;   https_proxy: <span class="hljs-variable">$https_proxy</span>&quot;</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;   all_proxy: <span class="hljs-variable">$all_proxy</span>&quot;</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;   no_proxy: <span class="hljs-variable">$no_proxy</span>&quot;</span><br>&#125;<br><br><span class="hljs-comment"># Define a function to turn off the proxy</span><br><span class="hljs-function"><span class="hljs-title">proxy_off</span></span>() &#123;<br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Turning off HTTP/HTTPS proxy...&quot;</span><br><br>    <span class="hljs-comment"># Unset proxy environment variables</span><br>    <span class="hljs-built_in">unset</span> http_proxy<br>    <span class="hljs-built_in">unset</span> https_proxy<br>    <span class="hljs-built_in">unset</span> all_proxy<br>    <span class="hljs-built_in">unset</span> no_proxy<br><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Proxy turned off.&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>Save the file and exit the editor.</p>
+<p>Apply the changes to your current session:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ~/.bashrc<br></code></pre></td></tr></table></figure>
+<h2 id="6-Running-Clash-with-TMUX"><a href="#6-Running-Clash-with-TMUX" class="headerlink" title="6. Running Clash with TMUX"></a>6. Running Clash with TMUX</h2><p>Since you’re on a server without a GUI, you’ll want to run Clash in a detached session so it continues running even after you close your terminal. <code>tmux</code> is an excellent tool for this.</p>
+<ol>
+<li><p><strong>Start a new tmux session:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tmux new -s clash<br></code></pre></td></tr></table></figure>
+<p>You are now inside a new <code>tmux</code> session named <code>clash</code>.</p>
+</li>
+<li><p><strong>Start Clash:</strong></p>
+<p>Inside the <code>tmux</code> session, run the <code>clash</code> function you defined:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">clash<br></code></pre></td></tr></table></figure>
+<p>You should see output indicating Mihomo is starting.</p>
+</li>
+<li><p><strong>Detach from the tmux session:</strong></p>
+<p>Press <code>Ctrl+b</code> then <code>d</code>. You will be returned to your main shell, and Clash will continue running in the background within the <code>tmux</code> session.</p>
+</li>
+</ol>
+<h2 id="7-Controlling-the-Proxy"><a href="#7-Controlling-the-Proxy" class="headerlink" title="7. Controlling the Proxy"></a>7. Controlling the Proxy</h2><p>From any other terminal window on your server (or your main shell after detaching from tmux):</p>
+<ul>
+<li><p><strong>To enable the proxy:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxy_on<br></code></pre></td></tr></table></figure>
+<p>You can optionally specify a port if your Clash instance is listening on something other than 7890: <code>proxy_on 8888</code>.</p>
+</li>
+<li><p><strong>To disable the proxy:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxy_off<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="8-Managing-the-Clash-Session"><a href="#8-Managing-the-Clash-Session" class="headerlink" title="8. Managing the Clash Session"></a>8. Managing the Clash Session</h2><ul>
+<li><p><strong>To reattach to the Clash tmux session:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tmux attach -t clash<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>To stop Clash:</strong></p>
+<p>If you are attached to the <code>clash</code>, you can stop Clash by pressing <code>Ctrl+c</code> in the terminal where Clash is running. This will terminate the Mihomo process and close the tmux pane.</p>
+</li>
+<li><p><strong>To kill the tmux session (and Clash running within it):</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tmux kill-session -t clash<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>This comprehensive setup allows you to efficiently manage Clash.Nyanpasu and your proxy settings on a headless Linux server.</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2025/07/07/fast_startup/V-PS-VLESS-REALITY-%E4%BB%A3%E7%90%86%E9%83%A8%E7%BD%B2%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/">V-PS VLESS-REALITY 代理部署与客户端配置指南 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/2.png" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/about">Isaac IPF</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Determine-Your-System-Architecture"><span class="toc-number">1.</span> <span class="toc-text">1. Determine Your System Architecture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Download-Clash-Nyanpasu"><span class="toc-number">2.</span> <span class="toc-text">2. Download Clash.Nyanpasu</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Extract-the-AppImage"><span class="toc-number">3.</span> <span class="toc-text">3. Extract the AppImage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Prepare-Configuration-Files"><span class="toc-number">4.</span> <span class="toc-text">4. Prepare Configuration Files</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Locate-the-Mihomo-Executable"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 Locate the Mihomo Executable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-Create-Configuration-Directory"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 Create Configuration Directory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-Copy-Configuration-Files"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 Copy Configuration Files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-GeoIP-Database-MMDB"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 GeoIP Database (MMDB)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Configure-Shell-Environment"><span class="toc-number">5.</span> <span class="toc-text">5. Configure Shell Environment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Running-Clash-with-TMUX"><span class="toc-number">6.</span> <span class="toc-text">6. Running Clash with TMUX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Controlling-the-Proxy"><span class="toc-number">7.</span> <span class="toc-text">7. Controlling the Proxy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-Managing-the-Clash-Session"><span class="toc-number">8.</span> <span class="toc-text">8. Managing the Clash Session</span></a></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/IsaacGHX">Isaac_GHX </a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr><wbr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
