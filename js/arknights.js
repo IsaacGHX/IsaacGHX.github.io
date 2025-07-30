@@ -824,13 +824,54 @@ catch (e) { }
 class ColorMode {
     constructor() {
         this.html = document.documentElement;
-        this.dark = this.html.getAttribute('theme-mode') === 'dark';
+        // 注意：这里不再直接从HTML读取初始值，我们将在下面决定
+        this.dark = false; // 初始设置为false，将在下面的逻辑中确定
         this.inChanging = false;
         this.btn = getElement('#color-mode');
+
+        // ==== 新增的自动切换逻辑开始 ====
+        const storedThemeMode = window.localStorage.getItem('theme-mode');
+
+        // 函数：根据时间设置主题模式
+        const setThemeModeBasedOnTime = () => {
+            const currentHour = new Date().getHours();
+            // 假设：早上 7 点到晚上 7 点 (19点) 为亮色模式
+            // 晚上 7 点 (19点) 到早上 7 点为暗色模式
+            const isNight = currentHour >= 19 || currentHour < 16; // 
+
+            if (isNight) {
+                this.html.setAttribute('theme-mode', 'dark'); // 
+                this.dark = true; // 
+            } else {
+                this.html.setAttribute('theme-mode', 'light'); // 
+                this.dark = false; // 
+            }
+        };
+
+        if (storedThemeMode) {
+            // 如果localStorage中有设置，则优先使用用户的选择
+            this.html.setAttribute('theme-mode', storedThemeMode);
+            this.dark = storedThemeMode === 'dark';
+        } else {
+            // 如果localStorage中没有设置，则根据时间自动切换
+            setThemeModeBasedOnTime();
+            // 并且将当前时间确定的模式保存到localStorage，以便下次加载时仍然是根据时间
+            window.localStorage['theme-mode'] = this.dark ? 'dark' : 'light';
+        }
+
+        // 可以选择添加一个定时器，让主题模式在不刷新页面时也随时间变化
+        // 例如，每小时检查一次。如果不需要，可以注释掉下面这行
+        setInterval(setThemeModeBasedOnTime, 15 * 60 * 1000); // 每分钟 * 秒 * ms 执行一次
+
+        // ==== 新增的自动切换逻辑结束 ====
+
         this.change = () => {
+            if (this.inChanging) { // 防止重复点击过快
+                return;
+            }
             this.inChanging = true;
             let background = document.createElement('div');
-            background.style.transition = '1.5s';
+            background.style.transition = '1.8s';
             background.innerHTML =
                 `<div style='background: var(--${this.dark ? 'dark' : 'light'}-background);
         height: 100vh; width: 100vw;
@@ -847,12 +888,12 @@ class ColorMode {
                 if (this.dark) {
                     this.html.setAttribute('theme-mode', 'light');
                     this.dark = false;
-                    window.localStorage['theme-mode'] = 'light';
+                    window.localStorage['theme-mode'] = 'light'; // 用户手动切换后，更新localStorage
                 }
                 else {
                     this.html.setAttribute('theme-mode', 'dark');
                     this.dark = true;
-                    window.localStorage['theme-mode'] = 'dark';
+                    window.localStorage['theme-mode'] = 'dark'; // 用户手动切换后，更新localStorage
                 }
                 background.style.opacity = '0';
                 code.resetMermaid();
@@ -867,6 +908,7 @@ class ColorMode {
                 this.inChanging = false;
             }, 1000);
         };
+        // 事件监听部分保持不变
         document.addEventListener('keypress', (ev) => {
             if (this.inChanging) {
                 return;

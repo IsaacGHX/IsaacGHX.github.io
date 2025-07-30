@@ -735,7 +735,7 @@ h6 {
 :root[theme-mode=light] {
   --cursor-data: var(--light-cursor);
   --body-background: var(--light-background);
-  --theme-highlight: #2bf;
+  --theme-highlight: #575bc6;
   --theme-subcolor: #fe2;
   --theme-stress: #c0392b;
   --theme-bar-color-0: #fe2;
