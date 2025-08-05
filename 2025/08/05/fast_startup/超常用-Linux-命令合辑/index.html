@@ -1,0 +1,475 @@
+<!DOCTYPE html><html lang="en-us" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>超常用 Linux 命令合辑 | Isaac's Blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('/img/building_night.png');
+ --light-background: url('/img/building_bright.png');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lio2QITWez44KoAo',
+ clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
+ repo: 'Comment4io',
+ owner: 'IsaacGHX',
+ admin: ['IsaacGHX'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);document.addEventListener('pjax:success', _ => bszCaller.fetch(
+ "//busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback", a => {
+  bszTag.texts(a),
+  bszTag.shows()
+}));reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lio2QITWez44KoAo',
+ clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
+ repo: 'Comment4io',
+ owner: 'IsaacGHX',
+ admin: ['IsaacGHX'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>超常用 Linux 命令合辑</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-08-05T15:35:47.000Z" id="date"> 2025-08-05</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-08-05T16:30:23.998Z" id="updated"> 2025-08-06</time></div></span><br><span>Word Count: <div class="control">3.2k</div></span><br><span>Read Time: <div class="control">12 min</div></span><br><span id="busuanzi_container_page_pv">Page View: <span class="control" id="busuanzi_value_page_pv">loading...</span></span></div></div><hr><div id="post-content"><hr>
+<h1 id="Linux-Ubuntu-高频命令精简手册"><a href="#Linux-Ubuntu-高频命令精简手册" class="headerlink" title="Linux Ubuntu 高频命令精简手册"></a>Linux Ubuntu 高频命令精简手册</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#核心目录概念">核心目录概念</a></li>
+<li><a href="#文件与目录管理">文件与目录管理</a></li>
+<li><a href="#文件压缩与解压">文件压缩与解压</a></li>
+<li><a href="#查看文件内容">查看文件内容</a></li>
+<li><a href="#系统与进程信息">系统与进程信息</a></li>
+<li><a href="#网络操作">网络操作</a></li>
+<li><a href="#用户与SSH管理">用户与SSH管理</a></li>
+<li><a href="#权限与管理">权限与管理</a></li>
+<li><a href="#搜索与匹配">搜索与匹配</a></li>
+</ul>
+<hr>
+<h2 id="核心目录概念"><a href="#核心目录概念" class="headerlink" title="核心目录概念"></a>核心目录概念</h2><p>在 Linux 命令行中，路径的表达依赖于几个特殊符号，理解它们的含义至关重要。</p>
+<ul>
+<li><p><strong><code>.</code> (点) 代表当前目录</strong></p>
+<ul>
+<li><strong>意思</strong>: 它代表你光标当前所在的文件夹。</li>
+<li><strong>示例</strong>: <code>cp /etc/hosts .</code> 这条命令的意思是，将 <code>/etc/</code> 目录下的 <code>hosts</code> 文件，复制到<strong>这里</strong>（即当前目录）。</li>
+</ul>
+</li>
+<li><p><strong><code>..</code> (点点) 代表父级目录</strong></p>
+<ul>
+<li><strong>意思</strong>: 它代表当前目录的上一层目录。</li>
+<li><strong>示例</strong>: <code>cd ..</code> 这条命令会让你从当前位置切换到它的上一级目录。例如，从 <code>/home/user/downloads</code> 切换到 <code>/home/user</code>。</li>
+</ul>
+</li>
+<li><p><strong><code>/</code> (斜杠) 代表根目录或分隔符</strong></p>
+<ul>
+<li><strong>意思</strong>:<ol>
+<li>当它出现在路径的<strong>开头</strong>时（如 <code>/home/user</code>），它代表整个文件系统的<strong>根目录</strong>，一切都始于此。</li>
+<li>当它出现在路径的<strong>中间</strong>时（如 <code>home/user</code>），它作为不同目录之间的<strong>分隔符</strong>。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong><code>~</code> (波浪号) 代表用户主目录</strong></p>
+<ul>
+<li><strong>意思</strong>: 这是一个快捷方式，特指当前登录用户的主目录。对用户 <code>user</code> 来说，<code>~</code> 就等同于 <code>/home/user</code>。</li>
+<li><strong>示例</strong>: <code>cd ~/Documents</code> 命令会直接将你带到你个人主目录下的 <code>Documents</code> 文件夹，无论你当前在哪个位置。</li>
+</ul>
+</li>
+</ul>
+<h2 id="文件与目录管理"><a href="#文件与目录管理" class="headerlink" title="文件与目录管理"></a>文件与目录管理</h2><p>这类命令用于日常的文件和文件夹的创建、列出、复制、移动和删除操作。</p>
+<ul>
+<li><p><strong>列出 (List): <code>ls</code></strong></p>
+<ul>
+<li><strong>常用组合</strong>: <code>ls -alh</code> (显示所有、长格式、人类可读)。</li>
+</ul>
+</li>
+<li><p><strong>创建与编辑 (Create &amp; Edit): <code>mkdir</code>, <code>touch</code>, <code>nano</code></strong></p>
+<ul>
+<li><code>mkdir -p &lt;目录名&gt;</code>: 创建新目录 (<code>-p</code> 能一次性创建多层不存在的目录)。</li>
+<li><code>touch &lt;文件名&gt;</code>: 创建一个空文件，或更新一个已有文件的时间戳。</li>
+<li><strong><code>nano &lt;文件名&gt;</code></strong>: 一个对新手友好的终端文本编辑器。<ul>
+<li><strong>安装</strong>: 如果提示命令未找到，请先执行 <code>sudo apt update &amp;&amp; sudo apt install nano</code>。</li>
+<li><strong>使用方法</strong>:<ol>
+<li><strong>打开或创建</strong>: <code>nano my_script.sh</code></li>
+<li><strong>编辑</strong>: 直接输入文字。</li>
+<li><strong>保存</strong>: 按 <code>Ctrl</code> + <code>O</code>，然后按 <code>Enter</code> 确认文件名。</li>
+<li><strong>退出</strong>: 按 <code>Ctrl</code> + <code>X</code>。如果文件未保存，会提示你是否保存，（点击 <code>Y</code> 保存）。然后按 <code>Enter</code> 退出。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>复制 (Copy): <code>cp</code></strong></p>
+<ul>
+<li><code>cp &lt;源&gt; &lt;目标&gt;</code>: 复制文件。</li>
+<li><code>cp -r &lt;源目录&gt; &lt;目标目录&gt;</code>: <strong>复制目录时必须使用 <code>-r</code> (recursive) 选项</strong>。</li>
+</ul>
+</li>
+<li><p><strong>移动与重命名 (Move &amp; Rename): <code>mv</code></strong></p>
+<ul>
+<li><strong>移动</strong>: <code>mv &lt;源&gt; &lt;目标目录&gt;</code></li>
+<li><strong>重命名</strong>: <code>mv &lt;旧名称&gt; &lt;新名称&gt;</code></li>
+</ul>
+</li>
+<li><p><strong>删除 (Remove): <code>rm</code></strong></p>
+<ul>
+<li><code>rm &lt;文件名&gt;</code>: 删除文件 (<code>-f</code> 强制删除)。</li>
+<li><code>rm -r &lt;目录名&gt;</code>: <strong>递归删除目录及其所有内容，操作极度危险，请三思！</strong></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="文件压缩与解压"><a href="#文件压缩与解压" class="headerlink" title="文件压缩与解压"></a>文件压缩与解压</h2><ul>
+<li><p><strong>tar (最常见的打包工具)</strong></p>
+<ul>
+<li><strong>压缩</strong>: <code>tar -cvzf &lt;压缩包名.tar.gz&gt; &lt;要压缩的文件或目录&gt;</code></li>
+<li><strong>解压到当前目录</strong>: <code>tar -xvzf &lt;文件名.tar.gz&gt;</code></li>
+<li><p><strong>解压到指定文件夹</strong>:<br>使用 <code>-C</code> (大写) 选项来指定目标路径。</p>
+<p>示例：将 archive.tar.gz 解压到 /mnt/data/backups 目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -xvzf archive.tar.gz -C /mnt/data/backups<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>unzip (用于 .zip 文件)</strong></p>
+<ul>
+<li><strong>解压到当前目录</strong>: <code>unzip &lt;文件名.zip&gt;</code></li>
+<li><p><strong>解压到指定文件夹</strong>:<br>使用 <code>-d</code> 选项来指定目标路径。</p>
+<p>示例：将 photos.zip 解压到 /home/user/Pictures 目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">unzip photos.zip -d /home/user/Pictures<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>注意事项：避免“双重根目录”</strong></p>
+<ul>
+<li><strong>问题</strong>: 有时解压 <code>archive.zip</code> 后，得到的不是文件，而是一个名为 <code>archive</code> 的文件夹，里面才是真正的文件，形成了 <code>archive/archive/...</code> 的嵌套结构。</li>
+<li><strong>解决方案</strong>: 在解压前，先用 <code>unzip -l &lt;文件名.zip&gt;</code> 命令预览压缩包的内容结构。如果发现所有文件都包裹在一个顶层文件夹内，你就可以做到心中有数，或者选择一个更合适的目录来解压。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h2><ul>
+<li><code>cat &lt;文件名&gt;</code>: 一次性显示整个文件内容。</li>
+<li><code>less &lt;文件名&gt;</code>: 分页显示大文件 (按 <code>q</code> 退出)。</li>
+<li><code>head -n 20 &lt;文件名&gt;</code>: 查看文件的前20行。</li>
+<li><code>tail -f &lt;日志文件名&gt;</code>: 实时监控文件末尾的新增内容，常用于看日志。</li>
+</ul>
+<hr>
+<h2 id="系统与进程信息"><a href="#系统与进程信息" class="headerlink" title="系统与进程信息"></a>系统与进程信息</h2><ul>
+<li><p><code>pwd</code>: 显示当前工作目录。</p>
+</li>
+<li><p><code>df -h</code>: 查看磁盘空间使用情况。</p>
+</li>
+<li><p><code>du -sh &lt;路径&gt;</code>: 查看指定目录或文件的总大小。</p>
+<ul>
+<li><strong>高级用法：列出当前目录内容大小并排序</strong><ul>
+<li>这个功能需要组合多个命令，通过管道 <code>|</code> 连接。</li>
+<li><strong>列出最大的10个文件/目录:</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">du</span> -h --max-depth=1 . | <span class="hljs-built_in">sort</span> -rh | <span class="hljs-built_in">head</span> -n 10<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>du -h --max-depth=1 .</code>: 计算当前目录下(<code>.</code>)第一层(<code>--max-depth=1</code>)所有文件和目录的大小。</li>
+<li><code>sort -rh</code>: <code>r</code>表示逆序(从大到小)，<code>h</code>表示按人类可读数值(K,M,G)排序。</li>
+<li><code>head -n 10</code>: 取排序后的前10行。</li>
+</ul>
+</li>
+<li><strong>列出最小的10个文件/目录 (不含当前目录<code>.</code>):</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">du</span> -h --max-depth=1 . | <span class="hljs-built_in">sort</span> -h | <span class="hljs-built_in">tail</span> -n 11 | <span class="hljs-built_in">head</span> -n 10<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>top</code> / <code>htop</code>: 动态显示系统进程和资源占用。<code>htop</code> 更直观，推荐。</p>
+</li>
+<li><p><code>kill &lt;进程ID&gt;</code>: 终止一个进程 (<code>-9</code> 为强制终止)。</p>
+</li>
+</ul>
+<hr>
+<h2 id="网络操作"><a href="#网络操作" class="headerlink" title="网络操作"></a>网络操作</h2><ul>
+<li><code>ping &lt;主机名或IP&gt;</code>: 测试网络连通性。</li>
+<li><code>wget &lt;URL&gt;</code>: 从指定 URL 下载文件。</li>
+<li><code>curl ifconfig.me</code>: 查看你的公网IP地址。</li>
+</ul>
+<hr>
+<h2 id="用户与SSH管理"><a href="#用户与SSH管理" class="headerlink" title="用户与SSH管理"></a>用户与SSH管理</h2><p>这是系统管理的核心部分，所有操作几乎都需要 <code>sudo</code>。</p>
+<ul>
+<li><p><strong>添加新用户</strong></p>
+<ul>
+<li>使用交互式命令添加用户，会引导你设置密码和其他信息。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> adduser new_username<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>用户分组</strong></p>
+<ul>
+<li>将用户添加到某个组（例如 <code>sudo</code> 组，使其能执行 <code>sudo</code> 命令）。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> usermod -aG <span class="hljs-built_in">sudo</span> new_username<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>-a</code> (append) 表示追加，<code>-G</code> 表示指定次要组。</li>
+</ul>
+</li>
+<li>查看用户所属的组:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">groups</span> new_username<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>设置和确认SSH登录 (推荐使用密钥登录)</strong></p>
+<ul>
+<li><strong>第1步 (服务器): 安装SSH服务</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt update<br><span class="hljs-built_in">sudo</span> apt install openssh-server<br><span class="hljs-comment"># 检查服务状态，确保 active (running)</span><br><span class="hljs-built_in">sudo</span> systemctl status ssh<br></code></pre></td></tr></table></figure></li>
+<li><strong>第2步 (你的本地电脑): 生成SSH密钥</strong><ul>
+<li>如果你的本地电脑上还没有密钥 (<code>~/.ssh/id_rsa</code>不存在)，执行此命令。一路回车即可。<!-- end list -->
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa -b 4096<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><strong>第3步 (你的本地电脑): 将公钥复制到服务器</strong><ul>
+<li>这是最关键的一步，它会自动将你的公钥追加到服务器上对应用户的 <code>~/.ssh/authorized_keys</code> 文件中。<!-- end list -->
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-copy-id new_username@服务器IP地址<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><strong>第4步 (服务器): 提升安全性 (可选但强烈推荐)</strong><ul>
+<li>禁止密码登录，只允许密钥登录。</li>
+<li>编辑SSH配置文件: <code>sudo nano /etc/ssh/sshd_config</code></li>
+<li>找到 <code>PasswordAuthentication yes</code> 这一行，把它改成 <code>PasswordAuthentication no</code>。</li>
+<li>保存 (<code>Ctrl+O</code>) 并退出 (<code>Ctrl+X</code>)。</li>
+<li><strong>重启SSH服务使配置生效</strong>:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> systemctl restart ssh<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><strong>第5步: 确认登录</strong><ul>
+<li>现在你可以无需密码，直接通过密钥登录服务器了。<!-- end list -->
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh new_username@服务器IP地址<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="权限与管理"><a href="#权限与管理" class="headerlink" title="权限与管理"></a>权限与管理</h2><ul>
+<li><code>sudo &lt;命令&gt;</code>: 以超级用户 (root) 权限执行命令。</li>
+<li><code>chmod &lt;权限模式&gt; &lt;文件名&gt;</code>: 更改文件或目录的权限。<ul>
+<li><strong>常用示例</strong>: <code>chmod 755 script.sh</code> (赋予所有者读/写/执行权限，其他用户读/执行权限)。</li>
+</ul>
+</li>
+</ul>
+<p>好的，这是一个专门介绍“搜索与匹配”的独立部分。这部分命令是 Linux 系统管理和日常使用中最高频、最强大的工具之一。</p>
+<hr>
+<h2 id="搜索与匹配"><a href="#搜索与匹配" class="headerlink" title="搜索与匹配"></a>搜索与匹配</h2><p>在复杂的系统中，快速定位文件、查找特定内容或检查进程状态至关重要。<code>find</code>、<code>grep</code> 等命令的组合使用，能极大地提升工作效率。</p>
+<h3 id="1-按名称和属性查找文件-find"><a href="#1-按名称和属性查找文件-find" class="headerlink" title="1. 按名称和属性查找文件: find"></a>1. 按名称和属性查找文件: find</h3><p><code>find</code> 命令用于在目录结构中搜索文件，并执行指定的操作。它的强大之处在于可以根据文件的各种属性（名称、类型、大小、修改时间等）进行精细化查找。</p>
+<p><strong>基本语法</strong>: <code>find [搜索路径] [表达式选项]</code></p>
+<p><strong>应用场景举例</strong>:</p>
+<ul>
+<li><p><strong>场景一：查找特定的配置文件</strong></p>
+<ul>
+<li><strong>需求</strong>：服务器上部署了很多服务，你想找到所有名为 <code>nginx.conf</code> 的配置文件。</li>
+<li><strong>应用</strong>：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 从根目录 / 开始搜索</span><br><span class="hljs-built_in">sudo</span> find / -name <span class="hljs-string">&quot;nginx.conf&quot;</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>/</code>：指定搜索的起始路径为整个系统。</li>
+<li><code>-name</code>：按文件名进行精确匹配。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>场景二：清理临时的备份文件</strong></p>
+<ul>
+<li><strong>需求</strong>：查找并删除所有由开发者或编辑器自动生成的以 <code>.bak</code> 结尾的备份文件。</li>
+<li><strong>应用</strong>：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 在当前项目目录 . 中查找所有 .bak 文件</span><br>find . -name <span class="hljs-string">&quot;*.bak&quot;</span><br><br><span class="hljs-comment"># 找到后直接删除（请谨慎操作！）</span><br>find . -name <span class="hljs-string">&quot;*.bak&quot;</span> -<span class="hljs-built_in">exec</span> <span class="hljs-built_in">rm</span> &#123;&#125; \;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>*</code>：是通配符，<code>&quot;*.bak&quot;</code> 匹配所有以 <code>.bak</code> 结尾的名称。</li>
+<li><code>-exec rm &#123;&#125; \;</code>：是对找到的每个结果 <code>&#123;&#125;</code> 执行 <code>rm</code> 命令。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>场景三：按文件类型查找</strong></p>
+<ul>
+<li><strong>需求</strong>：你只想查找所有名为 <code>project</code> 的<strong>目录</strong>，而不是同名的文件。</li>
+<li><strong>应用</strong>：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find . -<span class="hljs-built_in">type</span> d -name <span class="hljs-string">&quot;project&quot;</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>-type d</code>：指定查找类型为目录 (directory)。相应地，<code>-type f</code> 表示只查找普通文件 (file)。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>场景四：查找近期修改过的文件</strong></p>
+<ul>
+<li><strong>需求</strong>：排查问题时，需要查看 <code>/etc</code> 目录下最近24小时内被修改过的所有文件。</li>
+<li><strong>应用</strong>：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find /etc -mtime -1<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>-mtime -1</code>：表示修改时间 (Modification Time) 在1天（24小时）之内。<code>+1</code> 则表示超过1天。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>场景五：查找占用空间的大文件</strong></p>
+<ul>
+<li><strong>需求</strong>：磁盘空间告急，需要找出系统中所有超过 500MB 的大文件。</li>
+<li><strong>应用</strong>：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find / -<span class="hljs-built_in">type</span> f -size +500M<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>-size +500M</code>：表示文件大小 (size) 超过 (+) 500兆字节 (M)。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-在文件内容中搜索文本-grep"><a href="#2-在文件内容中搜索文本-grep" class="headerlink" title="2. 在文件内容中搜索文本: grep"></a>2. 在文件内容中搜索文本: grep</h3><p><code>grep</code> (Global Regular Expression Print) 是最强大的文本搜索工具，用于在文件内容中查找包含指定模式（字符串或正则表达式）的行。</p>
+<p><strong>基本语法</strong>: <code>grep [选项] &quot;要搜索的模式&quot; [文件名]</code></p>
+<p><strong>应用场景举例</strong>:</p>
+<ul>
+<li><p><strong>场景一：检查配置项</strong></p>
+<ul>
+<li><strong>需求</strong>：确认 SSH 服务的监听端口号。</li>
+<li><strong>应用</strong>：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep <span class="hljs-string">&quot;Port&quot;</span> /etc/ssh/sshd_config<br></code></pre></td></tr></table></figure>
+<ul>
+<li>这会从指定文件中找出所有包含 “Port” 字符串的行。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>场景二：在代码库中全局搜索</strong></p>
+<ul>
+<li><strong>需求</strong>：作为一名开发者，你想在整个项目代码中查找某个函数名或变量 <code>getUserProfile</code> 的所有引用。</li>
+<li><strong>应用</strong>：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep -r <span class="hljs-string">&quot;getUserProfile&quot;</span> .<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>-r</code> (recursive)：递归地搜索当前目录 (<code>.</code>) 及其所有子目录下的文件。</li>
+<li><code>-i</code>：如果需要忽略大小写（同时匹配 <code>getuserprofile</code>），可以使用 <code>grep -ri ...</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>场景三：分析日志文件</strong></p>
+<ul>
+<li><strong>需求</strong>：你需要从巨大的系统日志中，筛选出所有关于 “error” 的记录来进行故障分析。</li>
+<li><strong>应用</strong>：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep -i <span class="hljs-string">&quot;error&quot;</span> /var/log/syslog<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>场景四：过滤命令的输出（管道 <code>|</code> 的威力）</strong></p>
+<ul>
+<li><strong>需求</strong>：<code>ls -l</code> 命令列出的文件太多，你只想看其中和 <code>python</code> 相关的文件。</li>
+<li><strong>应用</strong>：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -l | grep <span class="hljs-string">&quot;python&quot;</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>管道符 <code>|</code> 将前一个命令 (<code>ls -l</code>) 的输出，作为后一个命令 (<code>grep</code>) 的输入。这是 Linux 中最核心、最强大的特性之一。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>场景五：反向匹配</strong></p>
+<ul>
+<li><strong>需求</strong>：查看一个配置文件，但想隐藏所有以 <code>#</code> 开头的注释行，只看有效的配置。</li>
+<li><strong>应用</strong>：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep -v <span class="hljs-string">&quot;^#&quot;</span> /etc/nginx/nginx.conf<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>-v</code> (invert-match)：反向匹配，即输出所有<strong>不包含</strong>指定模式的行。</li>
+<li><code>^#</code> 是一个简单的正则表达式，<code>^</code> 表示一行的开始。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-查找正在运行的进程"><a href="#3-查找正在运行的进程" class="headerlink" title="3. 查找正在运行的进程"></a>3. 查找正在运行的进程</h3><ul>
+<li><p><strong>场景一：快速检查服务是否在运行</strong></p>
+<ul>
+<li><strong>需求</strong>：确认 <code>nginx</code> 服务是否已经成功启动。</li>
+<li><strong>传统方式</strong>: <code>ps aux | grep &quot;nginx&quot;</code><ul>
+<li><code>ps aux</code>：列出系统中所有正在运行的进程。</li>
+<li><code>grep &quot;nginx&quot;</code>：从进程列表中筛选出含 “nginx” 的行。</li>
+<li>（缺点：通常会把 <code>grep</code> 命令本身也搜出来）。</li>
+</ul>
+</li>
+<li><strong>现代方式</strong>: <code>pgrep</code><ul>
+<li><code>pgrep</code> 是专门用于按名称查找进程ID (PID) 的命令，更简洁、准确。</li>
+<li><strong>应用</strong>：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pgrep nginx<br></code></pre></td></tr></table></figure>
+如果返回一个或多个数字（进程ID），说明服务正在运行。如果无任何返回，则表示服务未运行。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>场景二：找到进程并获取其详细信息</strong></p>
+<ul>
+<li><strong>需求</strong>：你用 <code>pgrep</code> 找到了 <code>nginx</code> 的进程ID，现在想看这个进程的完整信息（如启动用户、CPU占用等）。</li>
+<li><strong>应用</strong>：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># pgrep 的输出可以被其他命令直接使用</span><br>ps -f -p $(pgrep nginx)<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>$(...)</code>：命令替换，它会先执行括号里的 <code>pgrep nginx</code> 命令，然后将其输出（即进程ID）作为 <code>ps -p</code> 命令的参数。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2025/07/30/insight/RL/PPO/">Brief Reinforcement Learning 01 - Proximal Policy Optimization (PPO) 简单理解近端策略优化 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/2.png" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/about">Isaac IPF</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-Ubuntu-%E9%AB%98%E9%A2%91%E5%91%BD%E4%BB%A4%E7%B2%BE%E7%AE%80%E6%89%8B%E5%86%8C"><span class="toc-number">1.</span> <span class="toc-text">Linux Ubuntu 高频命令精简手册</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%9B%AE%E5%BD%95%E6%A6%82%E5%BF%B5"><span class="toc-number">1.2.</span> <span class="toc-text">核心目录概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86"><span class="toc-number">1.3.</span> <span class="toc-text">文件与目录管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B"><span class="toc-number">1.4.</span> <span class="toc-text">文件压缩与解压</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="toc-number">1.5.</span> <span class="toc-text">查看文件内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%BF%9B%E7%A8%8B%E4%BF%A1%E6%81%AF"><span class="toc-number">1.6.</span> <span class="toc-text">系统与进程信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%93%8D%E4%BD%9C"><span class="toc-number">1.7.</span> <span class="toc-text">网络操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E4%B8%8ESSH%E7%AE%A1%E7%90%86"><span class="toc-number">1.8.</span> <span class="toc-text">用户与SSH管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E4%B8%8E%E7%AE%A1%E7%90%86"><span class="toc-number">1.9.</span> <span class="toc-text">权限与管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%8C%B9%E9%85%8D"><span class="toc-number">1.10.</span> <span class="toc-text">搜索与匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8C%89%E5%90%8D%E7%A7%B0%E5%92%8C%E5%B1%9E%E6%80%A7%E6%9F%A5%E6%89%BE%E6%96%87%E4%BB%B6-find"><span class="toc-number">1.10.1.</span> <span class="toc-text">1. 按名称和属性查找文件: find</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9C%A8%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E4%B8%AD%E6%90%9C%E7%B4%A2%E6%96%87%E6%9C%AC-grep"><span class="toc-number">1.10.2.</span> <span class="toc-text">2. 在文件内容中搜索文本: grep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9F%A5%E6%89%BE%E6%AD%A3%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E8%BF%9B%E7%A8%8B"><span class="toc-number">1.10.3.</span> <span class="toc-text">3. 查找正在运行的进程</span></a></li></ol></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/IsaacGHX">Isaac_GHX </a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr><wbr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
