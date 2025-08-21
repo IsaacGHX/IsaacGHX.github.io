@@ -3735,3 +3735,49 @@ table .code {
   padding: 10px 0; /* 上下内边距 */
   box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* 可选：添加阴影 */
 }
+.github-star-promo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  flex-wrap: wrap;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+  background: rgba(255,240,245,0.65);
+  border-left: 5px solid rgba(255,141,161,0.8);
+  border-top: 1px solid rgba(255,255,255,0.5);
+  border-right: 1px solid rgba(255,255,255,0.5);
+}
+.github-star-promo .star-button {
+  margin-right: 15px;
+  margin-bottom: 5px;
+}
+.github-star-promo .promo-text {
+  font-size: 1em;
+  color: #5c5c5c;
+}
+.github-star-promo .promo-text iframe {
+  vertical-align: middle;
+  margin: 0 8px;
+}
+html[theme-mode="dark"] .github-star-promo {
+  background: rgba(29,34,45,0.65);
+  border-left: 5px solid rgba(74,144,226,0.8);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+html[theme-mode="dark"] .github-star-promo .promo-text {
+  color: #c9d1d9;
+}
+@supports not (backdrop-filter: blur(1px)) {
+  .github-star-promo {
+    background: #fff0f5;
+  }
+  html[theme-mode="dark"] .github-star-promo {
+    background: #1e222d;
+  }
+}
