@@ -116,7 +116,7 @@ lightGallery(document.getElementById('post-bg'), {
    }
  }
 });
-document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>About Me</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-01-19T07:18:28.000Z" id="date"> 2025-01-18</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-10-17T22:02:12.371Z" id="updated"> 2025-10-17</time></div></span><br><span>Word Count: <div class="control">1.8k</div></span><br><span>Read Time: <div class="control">10 min</div></span><br><span id="busuanzi_container_page_pv">Page View: <span class="control" id="busuanzi_value_page_pv">loading...</span></span></div></div><hr><div id="post-content"><style>
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>About Me</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-01-19T07:18:28.000Z" id="date"> 2025-01-18</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-10-17T23:18:49.841Z" id="updated"> 2025-10-17</time></div></span><br><span>Word Count: <div class="control">1.9k</div></span><br><span>Read Time: <div class="control">11 min</div></span><br><span id="busuanzi_container_page_pv">Page View: <span class="control" id="busuanzi_value_page_pv">loading...</span></span></div></div><hr><div id="post-content"><style>
 /* 全局段落文字左对齐 */
 p {
     text-align: left;
@@ -174,6 +174,43 @@ li {
 .author-tooltip:hover .tooltip-text {
     visibility: visible;
     opacity: 1;
+}
+
+/* Mobile responsive layout for publications */
+@media screen and (max-width: 768px) {
+    /* Make publication items stack vertically on mobile */
+    .publication-container {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+
+    /* Make left side (tag + image) full width on mobile */
+    .publication-left {
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+    /* Center align the image on mobile */
+    .publication-left img {
+        width: 100% !important;
+        max-width: 300px;
+        height: auto !important;
+        margin: 0 auto;
+        display: block;
+    }
+
+    /* Make right side content full width */
+    .publication-right {
+        flex: none !important;
+        width: 100% !important;
+    }
+}
+
+/* Extra narrow screens (very small phones) */
+@media screen and (max-width: 480px) {
+    .publication-left img {
+        max-width: 250px;
+    }
 }
 </style>
 
@@ -281,9 +318,9 @@ li {
         <div style="display: flex; flex-direction: column; gap: 3rem;">
         <!-- Publication 1 - AgentFlow -->
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
+                <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <!-- 左侧：标签+图片 -->
-                    <div style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
                         <!-- 毛玻璃会议标签 -->
                         <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
                             <span style="font-size: 0.75rem; font-weight: 600;">NIPS 2025</span>
@@ -292,7 +329,7 @@ li {
                         <img src="/img/AgentFlow.png" alt="AgentFlow Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/AgentFlow.png')">
                     </div>
                     <!-- 右侧内容 -->
-                    <div style="flex: 1; min-width: 0; line-height: 1.4;">
+                    <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
                         <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             In-the-Flow Agentic System Optimization for Effective Planning and Tool Use
                         </h4>
@@ -330,6 +367,14 @@ li {
                             <span class="text-gray-400 mx-1">|</span>
                             <a href="#" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="toggleBibtex('ood-bibtex'); return false;">BibTeX</a>
                         </div>
+                        <div style="margin-top: 0.5rem;">
+                            <span class="text-xs text-gray-600">
+                                <i class="fas fa-star text-yellow-500"></i> Hugging Face Daily Paper #2
+                                <span class="text-gray-400 mx-2">•</span>
+                                GitHub ⭐
+                                <iframe src="https://ghbtns.com/github-btn.html?user=lupantech&repo=AgentFlow&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="Star this project on GitHub" style="vertical-align: middle;"></iframe>
+                            </span>
+                        </div>
                         <div id="ood-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
                             <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 This paper introduces AgentFlow, a trainable agentic framework that coordinates four specialized modules through evolving memory to optimize planning within multi-turn interactions. The authors propose Flow-GRPO, a training method that converts long-horizon optimization into tractable single-turn updates. Testing across ten benchmarks shows the 7B-scale model achieves substantial improvements, including 14.9% on search, 14.0% on agentic, 14.5% on mathematical, and 4.1% on scientific tasks, even surpassing GPT-4o on some evaluations.
@@ -346,9 +391,9 @@ li {
             </div>
             <!-- Publication 2 -->
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
+                <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <!-- 左侧：标签+图片 -->
-                    <div style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
                         <!-- 毛玻璃会议标签 -->
                         <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
                             <span style="font-size: 0.75rem; font-weight: 600;">TMLR</span>
@@ -357,7 +402,7 @@ li {
                         <img src="/img/PromptOOD.png" alt="PromptOOD Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/PromptOOD.png')">
                     </div>
                     <!-- 右侧内容 -->
-                    <div style="flex: 1; min-width: 0; line-height: 1.4;">
+                    <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
                         <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             Avoiding Structural Pitfalls: Self-Supervised Low-Rank Feature Tuning for Graph Test-Time Adaptation
                         </h4>
@@ -399,9 +444,9 @@ li {
             </div>
             <!-- Publication 1 -->
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
+                <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <!-- 左侧：标签+图片 -->
-                    <div style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
                         <!-- 毛玻璃会议标签 -->
                         <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
                             <span style="font-size: 0.75rem; font-weight: 600;">Dataset</span>
@@ -410,7 +455,7 @@ li {
                         <img src="/img/AIME25_2.png" alt="AIME25 Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/AIME25_2.png')">
                     </div>
                     <!-- 右侧内容 -->
-                    <div style="flex: 1; min-width: 0; line-height: 1.4;">
+                    <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
                         <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             Sci-Bench-AIME25: A Multi-Modal Chain-of-Thought Dataset for Advanced Tool-Intergrated Mathematical Reasoning
                         </h4>
@@ -456,9 +501,9 @@ li {
             </div>
             <!-- Publication 2 -->
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
+                <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <!-- 左侧：标签+图片 -->
-                    <div style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
                         <!-- 毛玻璃会议标签 -->
                         <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
                             <span style="font-size: 0.75rem; font-weight: 600;">CIKM 2025</span>
@@ -467,7 +512,7 @@ li {
                         <img src="/img/GReF.png" alt="GReF Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/GReF.png')">
                     </div>
                     <!-- 右侧内容 -->
-                    <div style="flex: 1; min-width: 0; line-height: 1.4;">
+                    <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
                         <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             GReF: A Unified Generative Framework for Efficient Reranking via Ordered Multi-token Prediction
                         </h4>
@@ -505,9 +550,9 @@ li {
             </div>
             <!-- Publication 3 -->
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
+                <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <!-- 左侧：标签+图片 -->
-                    <div style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
                         <!-- 毛玻璃会议标签 -->
                         <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
                             <span style="font-size: 0.75rem; font-weight: 600;">CIKM 2024</span>
@@ -516,7 +561,7 @@ li {
                         <img src="/img/CFKGC.png" alt="CFKGC Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/CFKGC.png')">
                     </div>
                     <!-- 右侧内容 -->
-                    <div style="flex: 1; min-width: 0; line-height: 1.4;">
+                    <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
                         <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             Learning from Novel Knowledge: Continual Few-shot Knowledge Graph Completion
                         </h4>
@@ -559,9 +604,9 @@ li {
             </div>
             <!-- Publication 4 -->
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
+                <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <!-- 左侧：标签+图片 -->
-                    <div style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
                         <!-- 毛玻璃会议标签 -->
                         <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
                             <span style="font-size: 0.75rem; font-weight: 600;">Mathematics</span>
@@ -570,7 +615,7 @@ li {
                         <img src="/img/SGNET.png" alt="SGNet Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/SGNET.png')">
                     </div>
                     <!-- 右侧内容 -->
-                    <div style="flex: 1; min-width: 0; line-height: 1.4;">
+                    <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
                         <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             SGNet: Efficient Snow Removal Deep Network with a Global Windowing Transformer
                         </h4>
@@ -666,13 +711,13 @@ li {
             </p>
             <!-- MAA-TSF Publication -->
             <div class="mt-4">
-                <div style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
+                <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <!-- 左侧：图片 -->
-                    <div style="flex-shrink: 0; width: 200px;">
+                    <div class="publication-left" style="flex-shrink: 0; width: 200px;">
                         <img src="/img/MAA-TSF.png" alt="MAA-TSF Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/MAA-TSF.png')">
                     </div>
                     <!-- 右侧内容 -->
-                    <div style="flex: 1; min-width: 0; line-height: 1.4;">
+                    <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
                         <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             MAA-TSF: Multi-Agent Adversarial Time Series Forecasting
                         </h4>
@@ -720,7 +765,7 @@ li {
             </div>
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                 <h4 class="font-bold text-lg text-blue-500">Bank of Communications, Shanghai Branch
-                <a target="_blank" rel="noopener" href="https://www.google.com/maps/place/Bank+of+Communications/@31.2358761,121.4871578,16.42z/data=!4m6!3m5!1s0x35b270590dee661b:0xee8d4e4b5fd888cb!8m2!3d31.2361036!4d121.4872453!16s%2Fg%2F1tdcv35b?hl=eng&entry=ttu&g_ep=EgoyMDI1MDExNS4wIKXMDSoASAFQAw%3D%3D" class="text-sm text-gray-500 hover:text-gray-700 ml-2"><i class="fas fa-external-link-alt"></i></a>
+                <a href="https://www.bankcomm.com/BankCommSite/shtml/jyjr/en/2600212/list.shtml?channelId=2600212" class="text-sm text-gray-500 hover:text-gray-700 ml-2" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
                 </h4>
                 <p class="text-gray-600">Intern, Internet Finance Team & Data Application Team. Decentralized Finance. </p>
                 <p class="text-gray-600 text-sm">07/2024</p>
