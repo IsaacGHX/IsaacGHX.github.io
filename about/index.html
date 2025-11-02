@@ -116,7 +116,7 @@ lightGallery(document.getElementById('post-bg'), {
    }
  }
 });
-document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>About Me</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-01-19T07:18:28.000Z" id="date"> 2025-01-18</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-10-25T21:58:32.083Z" id="updated"> 2025-10-25</time></div></span><br><span>Word Count: <div class="control">1.9k</div></span><br><span>Read Time: <div class="control">11 min</div></span><br><span id="busuanzi_container_page_pv">Page View: <span class="control" id="busuanzi_value_page_pv">loading...</span></span></div></div><hr><div id="post-content"><style>
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>About Me</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-01-19T07:18:28.000Z" id="date"> 2025-01-18</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-11-02T01:55:19.249Z" id="updated"> 2025-11-01</time></div></span><br><span>Word Count: <div class="control">1.9k</div></span><br><span>Read Time: <div class="control">11 min</div></span><br><span id="busuanzi_container_page_pv">Page View: <span class="control" id="busuanzi_value_page_pv">loading...</span></span></div></div><hr><div id="post-content"><style>
 /* 全局段落文字左对齐 */
 p {
     text-align: left;
@@ -264,7 +264,7 @@ li {
 
 <div class="container mx-auto px-4 py-8">
     <!-- About Me Section -->
-    <section class="mb-12">
+    <section id="hello" class="mb-12">
         <h2 class="text-2xl font-bold mb-6 text-blue-600">
             Hello! 好呀 ~ こんにちは！
         </h2>
@@ -281,7 +281,7 @@ li {
         </div>
     </section>
     <!-- Education Section -->
-    <section class="mb-12">
+    <section id="education" class="mb-12">
         <h2 class="text-2xl font-bold mb-6 text-blue-600">
             <i class="fas fa-graduation-cap mr-2"></i>&nbsp;Education
         </h2>
@@ -311,7 +311,7 @@ li {
         </div>
     </section>
     <!-- Publication Section -->
-    <section class="mb-12">
+    <section id="publication" class="mb-12">
         <h2 class="text-2xl font-bold mb-6 text-blue-600">
             <i class="fas fa-book-open"></i>&nbsp;Publication
         </h2>
@@ -338,7 +338,7 @@ li {
                             <span class="font-bold" style="text-decoration: underline;">Haoxiang Zhang</span><sup class="text-xs align-top text-blue-500 author-tooltip">*<span class="tooltip-text">Equal contribution</span></sup>,
                             <span id="ood-short">
                                 <span class="font-bold">Pan Lu</span>,
-                                <a href="#" onclick="document.getElementById('ood-short').style.display='none'; document.getElementById('ood-full').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 5 more authors</a>
+                                <a href="javascript:void(0);" onclick="document.getElementById('ood-short').style.display='none'; document.getElementById('ood-full').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 5 more authors</a>
                             </span>
                             <span id="ood-full" style="display: none;">
                                 <span class="font-bold">Seungju Han</span>,
@@ -361,9 +361,9 @@ li {
                             <span class="text-gray-400 mx-1">|</span>
                             <a href="https://join.slack.com/t/agentflow-co/shared_invite/zt-3f712xngl-LfxS4gmftAeKvcxR3nSkWQ" class="text-xs px-2 py-1 bg-pink-100 text-pink-700 hover:bg-pink-200 rounded inline-block mr-1" target="_blank" rel="noopener noreferrer">Slack</a>
                             <span class="text-gray-400 mx-1">|</span>
-                            <a href="#" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="toggleAbstract('ood-abstract'); return false;">Abstract</a>
+                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleAbstract('ood-abstract');">Abstract</a>
                             <span class="text-gray-400 mx-1">|</span>
-                            <a href="#" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="toggleBibtex('ood-bibtex'); return false;">BibTeX</a>
+                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleBibtex('ood-bibtex');">BibTeX</a>
                         </div>
                         <div style="margin-top: 0.5rem;">
                             <span class="text-xs text-gray-600">
@@ -378,7 +378,7 @@ li {
                                 This paper introduces AgentFlow, a trainable agentic framework that coordinates four specialized modules through evolving memory to optimize planning within multi-turn interactions. The authors propose Flow-GRPO, a training method that converts long-horizon optimization into tractable single-turn updates. Testing across ten benchmarks shows the 7B-scale model achieves substantial improvements, including 14.9% on search, 14.0% on agentic, 14.5% on mathematical, and 4.1% on scientific tasks, even surpassing GPT-4o on some evaluations.
                             </p>
                         </div>
-                        <div id="ood-bibtex" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px; font-family: monospace; font-size: 0.5rem; white-space: pre-wrap; overflow-x: auto;">@article{li2025flow,
+                        <div id="ood-bibtex" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px; font-family: monospace; font-size: 0.75rem; white-space: pre-wrap; overflow-x: auto;">@article{li2025flow,
     title={In-the-Flow Agentic System Optimization for Effective Planning and Tool Use},
     author={Li, Zhuofeng and Zhang, Haoxiang and Han, Seungju and Liu, Sheng and Xie, Jianwen and Zhang, Yu and Choi, Yejin and Zou, James and Lu, Pan},
     journal={arXiv preprint arXiv:2510.05592},
@@ -409,7 +409,7 @@ li {
                             <span class="font-bold">Zhuofeng Li</span>,
                             <span id="tmlr-short">
                                 <span class="font-bold">Qiannan Zhang</span>,
-                                <a href="#" onclick="document.getElementById('tmlr-short').style.display='none'; document.getElementById('tmlr-full').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 3 more authors</a>
+                                <a href="javascript:void(0);" onclick="document.getElementById('tmlr-short').style.display='none'; document.getElementById('tmlr-full').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 3 more authors</a>
                             </span>
                             <span id="tmlr-full" style="display: none;">
                                 <span class="font-bold">Qiannan Zhang</span>,
@@ -423,9 +423,9 @@ li {
                             <span class="text-gray-400 mx-1">|</span>
                             <a target="_blank" rel="noopener" href="https://github.com/IsaacGHX/GOAT" class="text-xs px-2 py-1 bg-blue-100 text-blue-700 hover:bg-blue-200 rounded inline-block mr-1">Code</a>
                             <span class="text-gray-400 mx-1">|</span>
-                            <a href="#" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="toggleAbstract('tmlr-abstract'); return false;">Abstract</a>
+                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleAbstract('tmlr-abstract');">Abstract</a>
                             <span class="text-gray-400 mx-1">|</span>
-                            <a href="#" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="toggleBibtex('tmlr-bibtex'); return false;">BibTeX</a>
+                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleBibtex('tmlr-bibtex');">BibTeX</a>
                         </div>
                         <div id="tmlr-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
                             <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
@@ -433,11 +433,14 @@ li {
                                  To further address the issue of transformation collapse, where feature transformations converge to trivial solutions—such as when the test-time learned data-centric transformation degenerates into a constant or identity mapping across different inputs, we introduce a parameter-efficient low-rank adapter that generates diverse transformations tailored to individual input graphs. This design not only enhances adaptation performance but also improves interpretability by avoiding modifications to the graph structure. Through extensive experiments on six real-world datasets with diverse distribution shifts, we demonstrate that GOAT achieves consistent performance improvements across different pre-trained GNN backbones, outperforming state-of-the-art test-time adaptation methods.
                             </p>
                         </div>
-                        <div id="tmlr-bibtex" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px; font-family: monospace; font-size: 0.5rem; white-space: pre-wrap; overflow-x: auto;">@article{zhang2025goat,
+                        <div id="tmlr-bibtex" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px; font-family: monospace; font-size: 0.75rem; white-space: pre-wrap; overflow-x: auto;">@article{zhang2025avoiding,
     title={Avoiding Structural Pitfalls: Self-Supervised Low-Rank Feature Tuning for Graph Test-Time Adaptation},
-    author={Zhang, Haoxiang and Li, Zhuofeng and Zhang, Qiannan and Kou, Ziyi and Qi, Lianyong and Pei, Shichao},
+    author={Haoxiang Zhang and Zhuofeng Li and Qiannan Zhang and Ziyi Kou and Juncheng Li and Shichao Pei},
     journal={Transactions on Machine Learning Research},
-    year={2025}
+    issn={2835-8856},
+    year={2025},
+    url={https://openreview.net/forum?id=yiS6q42LLt},
+    note={}
 }</div>
                     </div>
                 </div>
@@ -464,7 +467,7 @@ li {
                             <span class="font-bold">Siyuan Wang</span><sup class="text-xs align-top text-blue-500 author-tooltip">✝<span class="tooltip-text">Corresponding author</span></sup>,
                             <span id="aime-short">
                                 <span class="font-bold">Xueji Fang</span>,
-                                <a href="#" onclick="document.getElementById('aime-short').style.display='none'; document.getElementById('aime-full').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 5 more authors</a>
+                                <a href="javascript:void(0);" onclick="document.getElementById('aime-short').style.display='none'; document.getElementById('aime-full').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 5 more authors</a>
                             </span>
                             <span id="aime-full" style="display: none;">
                                 <span class="font-bold">Xueji Fang</span>,
@@ -478,16 +481,16 @@ li {
                         <div style="margin-bottom: 0.25rem;">
                             <a target="_blank" rel="noopener" href="https://huggingface.co/datasets/IPF/AIME25-CoT-CN" class="text-xs px-2 py-1 bg-blue-100 text-blue-700 hover:bg-blue-200 rounded inline-block mr-1">Dataset</a>
                             <span class="text-gray-400 mx-1">|</span>
-                            <a href="#" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="toggleAbstract('aime-abstract'); return false;">Abstract</a>
+                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleAbstract('aime-abstract');">Abstract</a>
                             <span class="text-gray-400 mx-1">|</span>
-                            <a href="#" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="toggleBibtex('aime-bibtex'); return false;">BibTeX</a>
+                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleBibtex('aime-bibtex');">BibTeX</a>
                         </div>
                         <div id="aime-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
                             <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 A comprehensive multi-modal dataset designed for advancing mathematical reasoning capabilities through chain-of-thought methodologies and tool integration.
                             </p>
                         </div>
-                        <div id="aime-bibtex" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px; font-family: monospace; font-size: 0.5rem; white-space: pre-wrap; overflow-x: auto;">@dataset{zhang2025scibench_aime25,
+                        <div id="aime-bibtex" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px; font-family: monospace; font-size: 0.75rem; white-space: pre-wrap; overflow-x: auto;">@dataset{zhang2025scibench_aime25,
     title = {{Sci-Bench-AIME25}: A Multi-Modal Chain-of-Thought Dataset for Advanced Tool-Intergrated Mathematical Reasoning},
     author = {Zhang, Haoxiang and Wang, Siyuan and Fang, Xueji and Zou, Xinkai and Lyu, Tiange and Cao, Siyuan and Huang, Jingyuan and Xing, Jie},
     year = {2025},
@@ -521,7 +524,7 @@ li {
                             <span class="font-bold">Zhuofeng Li</span><sup class="text-xs align-top text-blue-500 author-tooltip">*<span class="tooltip-text">Equal contribution</span></sup>,
                             <span id="gref-short">
                                 <span class="font-bold" style="text-decoration: underline;">Haoxiang Zhang</span>,
-                                <a href="#" onclick="document.getElementById('gref-short').style.display='none'; document.getElementById('gref-full').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 4 more authors</a>
+                                <a href="javascript:void(0);" onclick="document.getElementById('gref-short').style.display='none'; document.getElementById('gref-full').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 4 more authors</a>
                             </span>
                             <span id="gref-full" style="display: none;">
                                 <span class="font-bold">Chenglei Dai</span>,
@@ -534,9 +537,9 @@ li {
                         <div style="margin-bottom: 0.25rem;">
                             <a target="_blank" rel="noopener" href="https://cikm2025.org/program/accepted-papers" class="text-xs px-2 py-1 bg-blue-100 text-blue-700 hover:bg-blue-200 rounded inline-block mr-1">Paper</a>
                             <span class="text-gray-400 mx-1">|</span>
-                            <a href="#" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="toggleAbstract('gref-abstract'); return false;">Abstract</a>
+                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleAbstract('gref-abstract');">Abstract</a>
                             <span class="text-gray-400 mx-1">|</span>
-                            <a href="#" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1">BibTeX</a>
+                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1">BibTeX</a>
                         </div>
                         <div id="gref-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
                             <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
@@ -568,7 +571,7 @@ li {
                             <span class="font-bold" style="text-decoration: underline;">Haoxiang Zhang</span><sup class="text-xs align-top text-blue-500 author-tooltip">*<span class="tooltip-text">Equal contribution</span></sup>,
                             <span id="cfkgc-short">
                                 <span class="font-bold">Qiannan Zhang</span>,
-                                <a href="#" onclick="document.getElementById('cfkgc-short').style.display='none'; document.getElementById('cfkgc-full').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 2 more authors</a>
+                                <a href="javascript:void(0);" onclick="document.getElementById('cfkgc-short').style.display='none'; document.getElementById('cfkgc-full').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 2 more authors</a>
                             </span>
                             <span id="cfkgc-full" style="display: none;">
                                 <span class="font-bold">Qiannan Zhang</span>,
@@ -581,16 +584,16 @@ li {
                             <span class="text-gray-400 mx-1">|</span>
                             <a target="_blank" rel="noopener" href="https://github.com/cfkgc-paper/CFKGC-paper/tree/main" class="text-xs px-2 py-1 bg-green-100 text-green-700 hover:bg-green-200 rounded inline-block mr-1">Code</a>
                             <span class="text-gray-400 mx-1">|</span>
-                            <a href="#" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="toggleAbstract('cfkgc-abstract'); return false;">Abstract</a>
+                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleAbstract('cfkgc-abstract');">Abstract</a>
                             <span class="text-gray-400 mx-1">|</span>
-                            <a href="#" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="toggleBibtex('cfkgc-bibtex'); return false;">BibTeX</a>
+                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleBibtex('cfkgc-bibtex');">BibTeX</a>
                         </div>
                         <div id="cfkgc-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
                             <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 This work addresses the challenge of continual few-shot learning in knowledge graph completion, enabling models to learn from novel knowledge while preserving previously learned information.
                             </p>
                         </div>
-                        <div id="cfkgc-bibtex" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px; font-family: monospace; font-size: 0.5rem; white-space: pre-wrap; overflow-x: auto;">@inproceedings{li2024learning,
+                        <div id="cfkgc-bibtex" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px; font-family: monospace; font-size: 0.75rem; white-space: pre-wrap; overflow-x: auto;">@inproceedings{li2024learning,
   title={Learning from novel knowledge: Continual few-shot knowledge graph completion},
   author={Li, Zhuofeng and Zhang, Haoxiang and Zhang, Qiannan and Kou, Ziyi and Pei, Shichao},
   booktitle={Proceedings of the 33rd ACM International Conference on Information and Knowledge Management},
@@ -625,16 +628,16 @@ li {
                         <div style="margin-bottom: 0.25rem;">
                             <a target="_blank" rel="noopener" href="https://www.mdpi.com/2227-7390/12/10/1424" class="text-xs px-2 py-1 bg-blue-100 text-blue-700 hover:bg-blue-200 rounded inline-block mr-1">Paper</a>
                             <span class="text-gray-400 mx-1">|</span>
-                            <a href="#" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="toggleAbstract('sgnet-abstract'); return false;">Abstract</a>
+                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleAbstract('sgnet-abstract');">Abstract</a>
                             <span class="text-gray-400 mx-1">|</span>
-                            <a href="#" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="toggleBibtex('sgnet-bibtex'); return false;">BibTeX</a>
+                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleBibtex('sgnet-bibtex');">BibTeX</a>
                         </div>
                         <div id="sgnet-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
                             <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 An efficient deep learning approach for snow removal in images using a global windowing transformer architecture, achieving state-of-the-art performance in image restoration tasks.
                             </p>
                         </div>
-                        <div id="sgnet-bibtex" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px; font-family: monospace; font-size: 0.5rem; white-space: pre-wrap; overflow-x: auto;">@article{shan2024sgnet,
+                        <div id="sgnet-bibtex" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px; font-family: monospace; font-size: 0.75rem; white-space: pre-wrap; overflow-x: auto;">@article{shan2024sgnet,
   title={SGNet: Efficient Snow Removal Deep Network with a Global Windowing Transformer},
   author={Shan, Lie and Zhang, Haoxiang and Cheng, Bodong},
   journal={Mathematics},
@@ -671,7 +674,7 @@ li {
             </div> -->
         </div><!-- Close flex container -->
     </section>
-    <section class="mb-12">
+    <section id="long-term-collaboration" class="mb-12">
     <h2 class="text-2xl font-bold mb-6 text-blue-600">
         <i class="fas fa-handshake"></i> Long-term Collaboration
     </h2>
@@ -724,7 +727,7 @@ li {
                             <span class="font-bold">Cheng Chen</span>,
                             <span id="maa-short-collab">
                                 <span class="font-bold" style="text-decoration: underline;">Haoxiang Zhang</span><sup class="text-xs align-top text-blue-500 author-tooltip">✝<span class="tooltip-text">Corresponding author</span></sup>,
-                                <a href="#" onclick="document.getElementById('maa-short-collab').style.display='none'; document.getElementById('maa-full-collab').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 2 more authors</a>
+                                <a href="javascript:void(0);" onclick="document.getElementById('maa-short-collab').style.display='none'; document.getElementById('maa-full-collab').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 2 more authors</a>
                             </span>
                             <span id="maa-full-collab" style="display: none;">
                                 <span class="font-bold">Tong Niu</span>,
@@ -737,7 +740,7 @@ li {
                             <span class="text-gray-400 mx-1">|</span>
                             <a href="#" class="text-xs px-2 py-1 bg-yellow-100 text-yellow-700 hover:bg-yellow-200 rounded inline-block mr-1">Demo</a>
                             <span class="text-gray-400 mx-1">|</span>
-                            <a href="#" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="toggleAbstract('maa-abstract-collab'); return false;">Abstract</a>
+                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleAbstract('maa-abstract-collab');">Abstract</a>
                         </div>
                         <div id="maa-abstract-collab" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
                             <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
@@ -751,7 +754,7 @@ li {
     </div>
 </section>
     <!-- Intern Section -->
-    <section class="mb-12">
+    <section id="internship" class="mb-12">
         <h2 class="text-2xl font-bold mb-6 text-blue-600">
             <i class="fas fa-briefcase"></i>&nbsp;Internship
         </h2>
@@ -777,7 +780,7 @@ li {
         </div>
     </section>
     <!-- Skills Section -->
-    <section class="mb-12">
+    <section id="technical-skills" class="mb-12">
         <h2 class="text-2xl font-bold mb-6 text-blue-600">
             <i class="fas fa-code mr-2"></i>&nbsp;Technical Skills
         </h2>
@@ -847,22 +850,29 @@ li {
 
 <!-- JavaScript for Abstract Toggle and Image Modal -->
 <script>
+// 确保所有函数在全局作用域中定义，并且在DOM加载完成后初始化
 function toggleAbstract(id) {
     var element = document.getElementById(id);
-    if (element.style.display === 'none') {
-        element.style.display = 'block';
-    } else {
-        element.style.display = 'none';
+    if (element) {
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
     }
+    return false; // 防止默认行为
 }
 
 function toggleBibtex(id) {
     var element = document.getElementById(id);
-    if (element.style.display === 'none') {
-        element.style.display = 'block';
-    } else {
-        element.style.display = 'none';
+    if (element) {
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
     }
+    return false; // 防止默认行为
 }
 
 function openImageModal(event, imageSrc) {
@@ -931,34 +941,34 @@ document.addEventListener('DOMContentLoaded', function() {
     <p class="text-blue-100">Data Scientist | Researcher | Engineer</p>
 </footer><div id="paginator"></div></div><div id="post-footer"></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/2.png" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/about">Isaac IPF</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">
             Haoxiang Zhang 张灏翔
-            </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.1.</span> <span class="toc-text">
+            </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hello"><span class="toc-number">1.1.</span> <span class="toc-text">
             Hello! 好呀 ~ こんにちは！
-        </span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.2.</span> <span class="toc-text">
+        </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#education"><span class="toc-number">1.2.</span> <span class="toc-text">
              Education
-        </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">University of California San Diego</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">Shanghai University</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">Hong Kong University of Science and Technology</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.2.0.4.</span> <span class="toc-text">University of Pennsylvania, Wharton School</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.3.</span> <span class="toc-text">
+        </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#education"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">University of California San Diego</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#education"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">Shanghai University</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#education"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">Hong Kong University of Science and Technology</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#education"><span class="toc-number">1.2.0.4.</span> <span class="toc-text">University of Pennsylvania, Wharton School</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#publication"><span class="toc-number">1.3.</span> <span class="toc-text">
              Publication
-        </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">
+        </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">
                             In-the-Flow Agentic System Optimization for Effective Planning and Tool Use
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">
+                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">
                             Avoiding Structural Pitfalls: Self-Supervised Low-Rank Feature Tuning for Graph Test-Time Adaptation
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.0.3.</span> <span class="toc-text">
+                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.3.0.3.</span> <span class="toc-text">
                             Sci-Bench-AIME25: A Multi-Modal Chain-of-Thought Dataset for Advanced Tool-Intergrated Mathematical Reasoning
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.0.4.</span> <span class="toc-text">
+                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.3.0.4.</span> <span class="toc-text">
                             GReF: A Unified Generative Framework for Efficient Reranking via Ordered Multi-token Prediction
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.0.5.</span> <span class="toc-text">
+                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.3.0.5.</span> <span class="toc-text">
                             Learning from Novel Knowledge: Continual Few-shot Knowledge Graph Completion
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.0.6.</span> <span class="toc-text">
+                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.3.0.6.</span> <span class="toc-text">
                             SGNet: Efficient Snow Removal Deep Network with a Global Windowing Transformer
-                        </span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.4.</span> <span class="toc-text">
+                        </span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#long-term-collaboration"><span class="toc-number">1.4.</span> <span class="toc-text">
          Long-term Collaboration
-    </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">Shanghai Tongliang Intelligent Technology Co., Ltd.
+    </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#long-term-collaboration"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">Shanghai Tongliang Intelligent Technology Co., Ltd.
                 
-            </span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">
+            </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#long-term-collaboration"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">
                             MAA-TSF: Multi-Agent Adversarial Time Series Forecasting
-                        </span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.5.</span> <span class="toc-text">
+                        </span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#internship"><span class="toc-number">1.5.</span> <span class="toc-text">
              Internship
-        </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.5.0.1.</span> <span class="toc-text">Shanghai Artificial Intelligence Labotary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.5.0.2.</span> <span class="toc-text">Bank of Communications, Shanghai Branch
+        </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#internship"><span class="toc-number">1.5.0.1.</span> <span class="toc-text">Shanghai Artificial Intelligence Labotary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#internship"><span class="toc-number">1.5.0.2.</span> <span class="toc-text">Bank of Communications, Shanghai Branch
                 
-                </span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.5.0.3.</span> <span class="toc-text">FASOTEC Co., Ltd.</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.6.</span> <span class="toc-text">
+                </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#internship"><span class="toc-number">1.5.0.3.</span> <span class="toc-text">FASOTEC Co., Ltd.</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#technical-skills"><span class="toc-number">1.6.</span> <span class="toc-text">
              Technical Skills
-        </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.6.1.</span> <span class="toc-text">Programming Languages &amp; Tools</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.6.2.</span> <span class="toc-text">Frameworks &amp; Technologies</span></a></li></ol></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/IsaacGHX">Isaac_GHX </a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr><wbr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
+        </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#technical-skills"><span class="toc-number">1.6.1.</span> <span class="toc-text">Programming Languages &amp; Tools</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#technical-skills"><span class="toc-number">1.6.2.</span> <span class="toc-text">Frameworks &amp; Technologies</span></a></li></ol></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/IsaacGHX">Isaac_GHX </a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr><wbr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
