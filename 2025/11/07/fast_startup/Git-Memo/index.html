@@ -1,0 +1,193 @@
+<!DOCTYPE html><html lang="en-us" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Git-Memo0-Config on New Server and Stash | Isaac's Blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('/img/building_night.png');
+ --light-background: url('/img/building_bright.png');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lio2QITWez44KoAo',
+ clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
+ repo: 'Comment4io',
+ owner: 'IsaacGHX',
+ admin: ['IsaacGHX'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);document.addEventListener('pjax:success', _ => bszCaller.fetch(
+ "//busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback", a => {
+  bszTag.texts(a),
+  bszTag.shows()
+}));reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lio2QITWez44KoAo',
+ clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
+ repo: 'Comment4io',
+ owner: 'IsaacGHX',
+ admin: ['IsaacGHX'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Git-Memo0-Config on New Server and Stash</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-11-07T22:02:24.000Z" id="date"> 2025-11-07</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-12-02T02:23:14.638Z" id="updated"> 2025-12-01</time></div></span><br><span>Word Count: <div class="control">921</div></span><br><span>Read Time: <div class="control">5 min</div></span><br><span id="busuanzi_container_page_pv">Page View: <span class="control" id="busuanzi_value_page_pv">loading...</span></span></div></div><hr><div id="post-content"><hr>
+<h1 id="0-Preface"><a href="#0-Preface" class="headerlink" title="0. Preface"></a>0. Preface</h1><p>When developing on a shared Team server, we often face two core challenges:</p>
+<ol>
+<li><strong>Multi-Account &amp; Privacy Management</strong>: How to configure your own SSH Key without overwriting the server’s default Key, ensuring you can clone your Private projects, and that Commit records accurately show your account (instead of root or others).</li>
+<li><strong>Temporary Code Backup</strong>: When you have a large number of unfinished changes (Stash) locally that need to be saved, or need to transfer these temporary changes to another machine, what is the safest way to do so?</li>
+</ol>
+<p>This article will use the <strong>IsaacGHX</strong> account as an example to provide a set of Git best practice configuration guides in a shared environment.</p>
+<hr>
+<h1 id="1-Configure-SSH-Key-IsaacGHX-Example"><a href="#1-Configure-SSH-Key-IsaacGHX-Example" class="headerlink" title="1. Configure SSH Key (IsaacGHX Example)"></a>1. Configure SSH Key (IsaacGHX Example)</h1><p>Before configuring the SSH Key, <strong>be sure to check if a Key already exists</strong> to prevent overwriting someone else’s configuration (especially on a shared server).</p>
+<h2 id="Step-1-Check-Existing-Keys"><a href="#Step-1-Check-Existing-Keys" class="headerlink" title="Step 1: Check Existing Keys"></a>Step 1: Check Existing Keys</h2><p>Run in the terminal:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -al ~/.ssh<br></code></pre></td></tr></table></figure>
+<p>If you see files like <code>id_rsa</code> or <code>id_ed25519</code>, it means a Key already exists.<br><strong>Note:</strong> If there is already someone else’s Key on the server, <strong>DO NOT</strong> run <code>ssh-keygen</code> directly to overwrite the default file. Instead, you should generate a new filename.</p>
+<h2 id="Step-2-Generate-a-New-SSH-Key"><a href="#Step-2-Generate-a-New-SSH-Key" class="headerlink" title="Step 2: Generate a New SSH Key"></a>Step 2: Generate a New SSH Key</h2><p>Generate a new Key using your email. To avoid overwriting, we can specify a filename.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Replace with your email</span><br>ssh-keygen -t ed25519 -C <span class="hljs-string">&quot;124448943+IsaacGHX@users.noreply.github.com&quot;</span> -f ~/.ssh/id_ed25519_IsaacGHX<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>-C</code>: Comment, usually filled with email.</li>
+<li><code>-f</code>: Specify filename to avoid overwriting the default <code>id_ed25519</code>.</li>
+</ul>
+<h2 id="Step-3-Configure-SSH-Config-Multi-Key-Management"><a href="#Step-3-Configure-SSH-Config-Multi-Key-Management" class="headerlink" title="Step 3: Configure SSH Config (Multi-Key Management)"></a>Step 3: Configure SSH Config (Multi-Key Management)</h2><p>To let Git know which Key to use when connecting to GitHub, you need to configure the <code>~/.ssh/config</code> file.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano ~/.ssh/config<br></code></pre></td></tr></table></figure>
+<p>Add the following content:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text"># IsaacGHX GitHub Account<br>Host github.com<br>  HostName github.com<br>  User git<br>  IdentityFile ~/.ssh/id_ed25519_IsaacGHX<br>  IdentitiesOnly yes<br></code></pre></td></tr></table></figure>
+<h2 id="Step-4-Copy-Public-Key-to-GitHub"><a href="#Step-4-Copy-Public-Key-to-GitHub" class="headerlink" title="Step 4: Copy Public Key to GitHub"></a>Step 4: Copy Public Key to GitHub</h2><p>Display public key content:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> ~/.ssh/id_ed25519_IsaacGHX.pub<br></code></pre></td></tr></table></figure>
+<p>Copy the output (starting with <code>ssh-ed25519</code>), then:</p>
+<ol>
+<li>Open GitHub -&gt; Settings -&gt; <strong>SSH and GPG keys</strong>.</li>
+<li>Click <strong>New SSH key</strong>.</li>
+<li>Title fill in “IsaacGHX Laptop” (example), paste the content just copied into Key.</li>
+<li>Click <strong>Add SSH key</strong>.</li>
+</ol>
+<hr>
+<h1 id="2-Verify-SSH-Connection"><a href="#2-Verify-SSH-Connection" class="headerlink" title="2. Verify SSH Connection"></a>2. Verify SSH Connection</h1><p>After configuration is complete, verify if you can successfully connect to GitHub.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -T git@github.com<br></code></pre></td></tr></table></figure>
+<p>If successful, you will see a message like:</p>
+<blockquote>
+<p>Hi IsaacGHX! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
+</blockquote>
+<h3 id="🔴-Common-Issue-Showing-Someone-Else’s-Name"><a href="#🔴-Common-Issue-Showing-Someone-Else’s-Name" class="headerlink" title="🔴 Common Issue: Showing Someone Else’s Name?"></a>🔴 Common Issue: Showing Someone Else’s Name?</h3><p>If the output shows <strong>not IsaacGHX</strong>, but someone else’s name (e.g., <code>Hi OtherUser!</code>), it means SSH is still using the default Key on the server.</p>
+<p><strong>Solution 1: Use Host Alias (Recommended, Safest)</strong></p>
+<p>Modify <code>~/.ssh/config</code> and change <code>Host github.com</code> to an alias, for example <code>Host github-isaac</code>:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs text"># Before modification<br>Host github.com<br>  ...<br><br># After modification<br>Host github-isaac<br>  HostName github.com<br>  User git<br>  IdentityFile ~/.ssh/id_ed25519_IsaacGHX<br>  IdentitiesOnly yes<br></code></pre></td></tr></table></figure>
+<p>Then test the connection:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -T git@github-isaac<br></code></pre></td></tr></table></figure></p>
+<p><strong>Note:</strong> When cloning projects in the future, the address must also be changed:<br><code>git clone git@github-isaac:IsaacGHX/MyProject.git</code></p>
+<p><strong>Solution 2: Adjust Config Order</strong></p>
+<p>If you insist on using <code>github.com</code> as the Host, you need to ensure your configuration block is at the <strong>very top</strong> of the <code>~/.ssh/config</code> file. SSH will use the first match it finds.<br>Open the config file, cut your configuration block and paste it to the top of the file.</p>
+<hr>
+<h1 id="3-Clone-Project-Using-SSH"><a href="#3-Clone-Project-Using-SSH" class="headerlink" title="3. Clone Project Using SSH"></a>3. Clone Project Using SSH</h1><p>After configuring SSH, use the <strong>SSH URL</strong> instead of the HTTPS URL when cloning projects.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Format: git clone git@github.com:username/repo_name.git</span><br>git <span class="hljs-built_in">clone</span> git@github.com:IsaacGHX/MyProject.git<br></code></pre></td></tr></table></figure>
+<p>If you previously cloned using HTTPS, you can modify the remote url:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> MyProject<br>git remote set-url origin git@github.com:IsaacGHX/MyProject.git<br></code></pre></td></tr></table></figure>
+<hr>
+<h1 id="4-Configure-Git-User-Info-Avatar-Display"><a href="#4-Configure-Git-User-Info-Avatar-Display" class="headerlink" title="4. Configure Git User Info (Avatar Display)"></a>4. Configure Git User Info (Avatar Display)</h1><p>In order for GitHub commit records to correctly display your avatar and link, the local Git email must match the email bound to your GitHub account.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Enter project directory</span><br><span class="hljs-built_in">cd</span> MyProject<br><br><span class="hljs-comment"># Configure username</span><br>git config user.name <span class="hljs-string">&quot;IsaacGHX&quot;</span><br><br><span class="hljs-comment"># Configure email (Critical! Must match GitHub account)</span><br>git config user.email <span class="hljs-string">&quot;124448943+IsaacGHX@users.noreply.github.com&quot;</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>💡 How to find this numeric ID?</strong></p>
+<ol>
+<li><strong>Method A (Simple):</strong> Visit <code>https://api.github.com/users/YOUR_USERNAME</code> (e.g., <a target="_blank" rel="noopener" href="https://api.github.com/users/IsaacGHX">https://api.github.com/users/IsaacGHX</a>) and look for the <code>&quot;id&quot;: 124448943</code> field.</li>
+<li><strong>Method B (Settings):</strong> In GitHub Settings -&gt; Emails, check “Keep my email addresses private”, and GitHub will directly display your noreply email address.</li>
+</ol>
+</blockquote>
+<p><strong>Verify Configuration:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config user.name<br><span class="hljs-comment"># Output: IsaacGHX</span><br><br>git config user.email<br><span class="hljs-comment"># Output: 124448943+IsaacGHX@users.noreply.github.com</span><br></code></pre></td></tr></table></figure>
+<p>This way, the pushed commits will show IsaacGHX’s avatar.</p>
+<hr>
+<h1 id="5-Git-Stash-Temporarily-Save-Changes"><a href="#5-Git-Stash-Temporarily-Save-Changes" class="headerlink" title="5. Git Stash (Temporarily Save Changes)"></a>5. Git Stash (Temporarily Save Changes)</h1><p>When you are developing feature A and suddenly need to fix a Bug, but don’t want to commit the current unfinished code, use Stash.</p>
+<h2 id="1-Stash-Current-Changes"><a href="#1-Stash-Current-Changes" class="headerlink" title="1. Stash Current Changes"></a>1. Stash Current Changes</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Simple stash</span><br>git stash<br><br><span class="hljs-comment"># Recommended: Add a message for easy finding later</span><br>git stash push -m <span class="hljs-string">&quot;IsaacGHX: dev feature A pending&quot;</span><br></code></pre></td></tr></table></figure>
+<h2 id="2-View-Stash-List"><a href="#2-View-Stash-List" class="headerlink" title="2. View Stash List"></a>2. View Stash List</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git stash list<br></code></pre></td></tr></table></figure>
+<p>Output example:<br><code>stash@&#123;0&#125;: On main: IsaacGHX: dev feature A pending</code></p>
+<h2 id="3-Restore-Stash"><a href="#3-Restore-Stash" class="headerlink" title="3. Restore Stash"></a>3. Restore Stash</h2><p><strong>Scenario 1: Restore and Keep Stash (Recommended)</strong><br>If you want to apply changes but keep a backup in the stash list:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git stash apply stash@&#123;0&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>Scenario 2: Restore and Delete Stash</strong><br>If you are sure you no longer need this stash:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git stash pop stash@&#123;0&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="4-Delete-Stash"><a href="#4-Delete-Stash" class="headerlink" title="4. Delete Stash"></a>4. Delete Stash</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Delete specific stash</span><br>git stash drop stash@&#123;0&#125;<br><br><span class="hljs-comment"># Clear all stashes (Use with caution)</span><br>git stash clear<br></code></pre></td></tr></table></figure>
+<div class="github-star-promo"><!-- [新] 现在只有一个 promo-text 的 div--><div class="promo-text">If you find this helpful, please give my project a ⭐<!-- [新] iframe 直接放在文字中间--><iframe src="https://ghbtns.com/github-btn.html?user=IsaacGHX&amp;repo=IsaacGHX.github.io&amp;type=star&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="170" height="30" title="Star this project on GitHub"></iframe>on GitHub! =w=/</div></div><div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2025/08/21/fast_startup/Tmux-quick-start/">tmux Quickstart Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/2.png" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/about">Isaac IPF</a></h1><div id="description"><p></p></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0-Preface"><span class="toc-number">1.</span> <span class="toc-text">0. Preface</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Configure-SSH-Key-IsaacGHX-Example"><span class="toc-number">2.</span> <span class="toc-text">1. Configure SSH Key (IsaacGHX Example)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-1-Check-Existing-Keys"><span class="toc-number">2.1.</span> <span class="toc-text">Step 1: Check Existing Keys</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-2-Generate-a-New-SSH-Key"><span class="toc-number">2.2.</span> <span class="toc-text">Step 2: Generate a New SSH Key</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-3-Configure-SSH-Config-Multi-Key-Management"><span class="toc-number">2.3.</span> <span class="toc-text">Step 3: Configure SSH Config (Multi-Key Management)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-4-Copy-Public-Key-to-GitHub"><span class="toc-number">2.4.</span> <span class="toc-text">Step 4: Copy Public Key to GitHub</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Verify-SSH-Connection"><span class="toc-number">3.</span> <span class="toc-text">2. Verify SSH Connection</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B4-Common-Issue-Showing-Someone-Else%E2%80%99s-Name"><span class="toc-number">3.0.1.</span> <span class="toc-text">🔴 Common Issue: Showing Someone Else’s Name?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Clone-Project-Using-SSH"><span class="toc-number">4.</span> <span class="toc-text">3. Clone Project Using SSH</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Configure-Git-User-Info-Avatar-Display"><span class="toc-number">5.</span> <span class="toc-text">4. Configure Git User Info (Avatar Display)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Git-Stash-Temporarily-Save-Changes"><span class="toc-number">6.</span> <span class="toc-text">5. Git Stash (Temporarily Save Changes)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Stash-Current-Changes"><span class="toc-number">6.1.</span> <span class="toc-text">1. Stash Current Changes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-View-Stash-List"><span class="toc-number">6.2.</span> <span class="toc-text">2. View Stash List</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Restore-Stash"><span class="toc-number">6.3.</span> <span class="toc-text">3. Restore Stash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Delete-Stash"><span class="toc-number">6.4.</span> <span class="toc-text">4. Delete Stash</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/IsaacGHX">Isaac_GHX </a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr><wbr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
