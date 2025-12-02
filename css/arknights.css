@@ -295,6 +295,11 @@ aside footer {
 #Dr a {
   color: var(--theme-text-light);
 }
+#author-info {
+  background-color: rgba(240,240,240,0.95);
+  padding: 10px 0;
+  margin-top: 10px;
+}
 #total {
   font-family: BenderLight;
 }
@@ -994,10 +999,13 @@ nav li {
     transform: translateY(-2em);
   }
 }
-[theme-mode=light] .navBlock > .navItemTitle {
-  background-color: rgba(240,240,240,0.4);
+[theme-mode=light] .navBlock > .navItemTitle,
+[theme-mode=light] #search-header .navItemTitle {
+  background-color: rgba(240,240,240,0.8);
+  transition: background-color 1s;
 }
-[theme-mode=light] .navBlock > .navItemTitle:hover {
+[theme-mode=light] .navBlock > .navItemTitle:hover,
+[theme-mode=light] #search-header .navItemTitle:hover {
   background-color: #d0d0d0;
 }
 .navItemList {
@@ -2635,6 +2643,10 @@ main:not(.up) .search #search-header input {
   -webkit-box-flex: 1;
   -ms-flex: 1;
 }
+[theme-mode=light] .gt-container .gt-comment-content {
+  background-color: rgba(240,240,240,0.64);
+  transition: background-color 1s;
+}
 .gt-container .gt-comment-content:hover {
   border-color: var(--theme-highlight);
   background-color: var(--theme-bg-soft-hover);
@@ -2908,6 +2920,7 @@ a:hover .gt-ico {
 }
 #comments {
   border-top: var(--theme-border) solid 2px;
+  margin-top: 20px;
 }
 .lg-container[role='dialog'] .lg-outer.lg-css3 * {
   cursor: var(--dark-cursor) 3 3, grab;
