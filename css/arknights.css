@@ -296,9 +296,11 @@ aside footer {
   color: var(--theme-text-light);
 }
 #author-info {
-  background-color: rgba(240,240,240,0.95);
   padding: 10px 0;
   margin-top: 10px;
+}
+[theme-mode=light] #author-info {
+  background-color: rgba(240,240,240,0.8);
 }
 #total {
   font-family: BenderLight;
