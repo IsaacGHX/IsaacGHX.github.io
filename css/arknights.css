@@ -3595,15 +3595,18 @@ table .code {
   max-width: 100%;
 }
 #post-title {
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: 16px;
 }
 #post-title h1 {
-  display: inline-block;
+  flex: 1;
+  min-width: 0;
   font-size: 2em;
+  word-break: break-word;
 }
 #post-title hr {
   color: var(--theme-unimportant-2);
@@ -3620,6 +3623,11 @@ table .code {
   left: -1px;
 }
 #post-info {
+  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  column-gap: 8px;
+  align-items: center;
   text-align: right;
 }
 #post-info time {
@@ -3627,8 +3635,7 @@ table .code {
 }
 #post-info .control {
   text-align: left;
-  display: inline-block;
-  width: 90px;
+  white-space: nowrap;
 }
 #post-source span {
   color: var(--theme-subcolor);

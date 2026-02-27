@@ -62,7 +62,7 @@ code.paintMermaid();
     displayMath: [["\\[", "\\]"]]
   }
 });
-</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+</script><script defer src="/js/mathjax-pjax.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
  clientID: 'Ov23lio2QITWez44KoAo',
  clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
  repo: 'Comment4io',
@@ -116,7 +116,7 @@ lightGallery(document.getElementById('post-bg'), {
    }
  }
 });
-document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>超常用 Linux 命令合辑</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-08-06T06:35:47.000Z" id="date"> 2025-08-05</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-08-21T10:21:24.390Z" id="updated"> 2025-08-21</time></div></span><br><span>Word Count: <div class="control">3.2k</div></span><br><span>Read Time: <div class="control">12 min</div></span><br><span id="busuanzi_container_page_pv">Page View: <span class="control" id="busuanzi_value_page_pv">loading...</span></span></div></div><hr><div id="post-content"><hr>
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>超常用 Linux 命令合辑</h1><div id="post-info"><span>First Post: </span><div class="control"><time datetime="2025-08-06T06:35:47.000Z" id="date"> 2025-08-05</time></div><span>Last Update: </span><div class="control"><time datetime="2026-02-26T22:32:08.879Z" id="updated"> 2026-02-26</time></div><span>Word Count: </span><div class="control">3.3k</div><span>Read Time: </span><div class="control">12 min</div><span>Page View: </span><span class="control" id="busuanzi_value_page_pv">loading...</span></div></div><hr><div id="post-content"><hr>
 <h1 id="Linux-Ubuntu-高频命令精简手册"><a href="#Linux-Ubuntu-高频命令精简手册" class="headerlink" title="Linux Ubuntu 高频命令精简手册"></a>Linux Ubuntu 高频命令精简手册</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
 <li><a href="#核心目录概念">核心目录概念</a></li>
 <li><a href="#文件与目录管理">文件与目录管理</a></li>
@@ -263,6 +263,21 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <li><p><code>top</code> / <code>htop</code>: 动态显示系统进程和资源占用。<code>htop</code> 更直观，推荐。</p>
 </li>
 <li><p><code>kill &lt;进程ID&gt;</code>: 终止一个进程 (<code>-9</code> 为强制终止)。</p>
+</li>
+<li><p><code>free -h</code>: 查看内存与 Swap 交换空间的使用情况。</p>
+<ul>
+<li><p><strong>创建 Swap 文件（适用于内存不足的场景，如小型 VPS）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> fallocate -l 1G /swapfile<br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chmod</span> 600 /swapfile<br><span class="hljs-built_in">sudo</span> mkswap /swapfile<br><span class="hljs-built_in">sudo</span> swapon /swapfile<br>free -h<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>fallocate -l 1G /swapfile</code>：在根目录创建一个 1GB 大小的文件，作为 Swap 文件。</li>
+<li><code>chmod 600</code>：将文件权限设为仅 root 可读写，防止其他用户访问。</li>
+<li><code>mkswap</code>：将该文件格式化为 Swap 格式。</li>
+<li><code>swapon</code>：启用该 Swap 文件，立即生效。</li>
+<li>最后用 <code>free -h</code> 确认 Swap 已成功挂载。</li>
+<li><strong>注意</strong>：重启后 Swap 会失效。若需持久化，需将 <code>/swapfile none swap sw 0 0</code> 追加到 <code>/etc/fstab</code>。</li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 <hr>

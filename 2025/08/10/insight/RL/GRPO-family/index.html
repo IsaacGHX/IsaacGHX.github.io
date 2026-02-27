@@ -1,0 +1,402 @@
+<!DOCTYPE html><html lang="en-us" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Brief Reinforcement Learning 02 - From GRPO to ?: 更优与更稳定的 LLM critic-free RL | Isaac's Blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('/img/building_night.png');
+ --light-background: url('/img/building_bright.png');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});
+</script><script defer src="/js/mathjax-pjax.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lio2QITWez44KoAo',
+ clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
+ repo: 'Comment4io',
+ owner: 'IsaacGHX',
+ admin: ['IsaacGHX'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);document.addEventListener('pjax:success', _ => bszCaller.fetch(
+ "//busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback", a => {
+  bszTag.texts(a),
+  bszTag.shows()
+}));reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lio2QITWez44KoAo',
+ clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
+ repo: 'Comment4io',
+ owner: 'IsaacGHX',
+ admin: ['IsaacGHX'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Brief Reinforcement Learning 02 - From GRPO to ?: 更优与更稳定的 LLM critic-free RL</h1><div id="post-info"><span>First Post: </span><div class="control"><time datetime="2025-08-10T08:42:48.000Z" id="date"> 2025-08-10</time></div><span>Last Update: </span><div class="control"><time datetime="2026-02-27T00:49:15.315Z" id="updated"> 2026-02-26</time></div><span>Word Count: </span><div class="control">6.6k</div><span>Read Time: </span><div class="control">25 min</div><span>Page View: </span><span class="control" id="busuanzi_value_page_pv">loading...</span></div></div><hr><div id="post-content"><h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>相关论文与资料参考：</p>
+<ul>
+<li>GRPO 原论文 (DeepSeekMath): <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2402.03300">https://arxiv.org/abs/2402.03300</a></li>
+<li>RLOO 原论文: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2402.14740">https://arxiv.org/abs/2402.14740</a></li>
+<li>REINFORCE++: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2501.03262">https://arxiv.org/abs/2501.03262</a></li>
+<li>Dr. GRPO: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2503.20783">https://arxiv.org/abs/2503.20783</a></li>
+<li>GSPO (Group Sequence Policy Optimization): <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2507.18071">https://arxiv.org/abs/2507.18071</a></li>
+<li>DAPO 论文: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2503.14476">https://arxiv.org/abs/2503.14476</a></li>
+<li>DeepSWE Blog (GRPO++): <a target="_blank" rel="noopener" href="https://www.together.ai/blog/deepswe">https://www.together.ai/blog/deepswe</a></li>
+</ul>
+<p>这篇文章从一个问题出发：<strong>当我们把 RL 用于 LLM 训练时，advantage 究竟应该怎么估计？优化的目标应该怎么设计来尽可能保证训练的稳定性？</strong></p>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#一ppo-回顾为什么需要-clip">一、PPO 回顾：为什么需要 Clip？</a></li>
+<li><a href="#二grpo用组内对比代替-critic">二、GRPO：用组内对比代替 Critic</a><ul>
+<li><a href="#21-设计动机">2.1 设计动机</a></li>
+<li><a href="#22-llm-中的-mdp-映射动作与状态">2.2 LLM 中的 MDP 映射：动作与状态</a></li>
+<li><a href="#23-目标函数">2.3 目标函数</a></li>
+<li><a href="#24-与-ppo-的本质差异">2.4 与 PPO 的本质差异</a></li>
+<li><a href="#25-grpo-的内在问题">2.5 GRPO 的内在问题</a></li>
+</ul>
+</li>
+<li><a href="#三修补路径从-rloo-到-dapo">三、修补路径：从 RLOO 到 DAPO</a><ul>
+<li><a href="#31-rloo无偏的留一法基线">3.1 RLOO：无偏的留一法基线</a></li>
+<li><a href="#32-reinforce稳定的单采样基线">3.2 REINFORCE++：稳定的单采样基线</a></li>
+<li><a href="#33-gspo把-clip-的语义对齐到序列级别">3.3 GSPO：把 Clip 的语义对齐到序列级别</a></li>
+<li><a href="#34-dr-grpo诊断并移除两种偏差">3.4 Dr. GRPO：诊断并移除两种偏差</a></li>
+<li><a href="#35-dapo四个方向的系统性修复">3.5 DAPO：四个方向的系统性修复</a></li>
+<li><a href="#36-grpo汇聚以上走向-agent">3.6 GRPO++：汇聚以上，走向 Agent</a></li>
+</ul>
+</li>
+<li><a href="#四long-horizon-的更深挑战">四、Long-Horizon 的更深挑战</a><ul>
+<li><a href="#41-holistic-policy-update整体轨迹的梯度问题">4.1 Holistic Policy Update</a></li>
+<li><a href="#42-compositional-rl分解任务分解奖励">4.2 Compositional RL</a></li>
+</ul>
+</li>
+<li><a href="#小结">小结</a></li>
+</ul>
+<hr>
+<h2 id="一、PPO-回顾：为什么需要-Clip？"><a href="#一、PPO-回顾：为什么需要-Clip？" class="headerlink" title="一、PPO 回顾：为什么需要 Clip？"></a>一、PPO 回顾：为什么需要 Clip？</h2><p>在进入 GRPO 之前，先简短回顾 PPO，因为 GRPO 的很多设计选择只有在对比 PPO 时才能讲清楚。</p>
+<p>PPO（Proximal Policy Optimization）的核心目标是：在策略梯度更新时，<strong>不让新策略和旧策略偏离太远</strong>。它用 Clip 机制实现这个约束：</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_\text{PPO}(\theta) = \mathbb{E}_t\left[\min\left(r_t(\theta)\cdot A_t,\ \text{clip}(r_t(\theta), 1-\varepsilon, 1+\varepsilon)\cdot A_t\right)\right]</script><p>其中 <script type="math/tex">r_t(\theta) = \pi_\theta(a_t|s_t) / \pi_{\theta_\text{old}}(a_t|s_t)</script> 是概率比，<script type="math/tex">A_t</script> 是 advantage。</p>
+<p>PPO 的关键依赖是 <strong>Critic 网络</strong>——它负责估计状态价值函数 <script type="math/tex">V(s)</script>，从而计算出 <script type="math/tex">A_t = R_t - V(s_t)</script>。Critic 网络需要单独训练，这意味着：</p>
+<ul>
+<li>额外的计算成本（通常是一个与 Actor 同规模的模型）</li>
+<li>额外的训练稳定性问题（Critic 和 Actor 需要协同更新）</li>
+<li>在 LLM 场景下，状态空间是 token 序列，价值函数的泛化难度极高</li>
+</ul>
+<p>GRPO 的出发点就是：<strong>能不能不要 Critic？</strong></p>
+<hr>
+<h2 id="二、GRPO：用组内对比代替-Critic"><a href="#二、GRPO：用组内对比代替-Critic" class="headerlink" title="二、GRPO：用组内对比代替 Critic"></a>二、GRPO：用组内对比代替 Critic</h2><h3 id="2-1-设计动机"><a href="#2-1-设计动机" class="headerlink" title="2.1 设计动机"></a>2.1 设计动机</h3><p>GRPO（Group Relative Policy Optimization）的核心洞察是：对于同一个 prompt，如果同时采样多个输出，<strong>输出之间的奖励差异本身就是 advantage 的天然来源</strong>。不需要一个 Critic 来告诉模型”这个状态值多少”，组内对比就能告诉模型”这个输出比其他的好多少”。</p>
+<h3 id="2-2-LLM-中的-MDP-映射：动作与状态"><a href="#2-2-LLM-中的-MDP-映射：动作与状态" class="headerlink" title="2.2 LLM 中的 MDP 映射：动作与状态"></a>2.2 LLM 中的 MDP 映射：动作与状态</h3><p>在经典 RL 的记号里，概率比写作：</p>
+<script type="math/tex; mode=display">
+r_t(\theta) = \frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_\text{old}}(a_t \mid s_t)}</script><p>但在 LLM 场景中，<script type="math/tex">a_t</script> 和 <script type="math/tex">s_t</script> 具体指什么，值得停下来想清楚，因为这个映射直接决定了很多设计选择的合理性。</p>
+<p><strong>动作 <script type="math/tex">a_t</script>：下一个 token</strong></p>
+<p>LLM 每一步生成一个 token。在 RL 的语言里，第 <script type="math/tex">t</script> 步的”动作”就是从词表 <script type="math/tex">\mathcal{V}</script> 中选出第 <script type="math/tex">t</script> 个 token：</p>
+<script type="math/tex; mode=display">
+a_t = o_{i,t} \in \mathcal{V}</script><p><strong>状态 <script type="math/tex">s_t</script>：已生成的完整上下文</strong></p>
+<p>第 <script type="math/tex">t</script> 步的”状态”是到目前为止所有已知的 token 序列——包括原始 prompt <script type="math/tex">q</script> 和已经生成的前 <script type="math/tex">t-1</script> 个 token：</p>
+<script type="math/tex; mode=display">
+s_t = \left(q,\ o_{i,1},\ o_{i,2},\ \ldots,\ o_{i,t-1}\right)</script><p>因此，概率比在 LLM 中展开为：</p>
+<script type="math/tex; mode=display">
+r_{i,t}(\theta) = \frac{\pi_\theta\!\left(o_{i,t} \;\middle|\; q, o_{i,1}, \ldots, o_{i,t-1}\right)}{\pi_{\theta_\text{old}}\!\left(o_{i,t} \;\middle|\; q, o_{i,1}, \ldots, o_{i,t-1}\right)}</script><p>这是新策略和旧策略在<strong>同一个上下文下</strong>对<strong>同一个 token</strong> 赋予的概率之比。</p>
+<p>这个映射有一个重要含义：LLM 的”状态空间”是所有可能的 token 序列，规模随序列长度指数增长。这正是 Critic 网络在 LLM 场景下极难训练的根本原因——它需要对一个天文数字量级的状态空间学出可靠的价值估计。GRPO 绕开 Critic 的动机，部分就来自于此。</p>
+<h3 id="2-3-目标函数"><a href="#2-3-目标函数" class="headerlink" title="2.3 目标函数"></a>2.3 目标函数</h3><p>给定一个 prompt <script type="math/tex">q</script>，采样 <script type="math/tex">G</script> 个输出 <script type="math/tex">\{o_1, o_2, \ldots, o_G\}</script>，每个输出得到奖励 <script type="math/tex">R_i</script>。GRPO 计算组内归一化的 advantage：</p>
+<script type="math/tex; mode=display">
+A_{i,t} = \frac{R_i - \text{mean}(\{R_j\}_{j=1}^G)}{\text{std}(\{R_j\}_{j=1}^G)}</script><p>然后用 PPO 风格的 Clip 目标来更新策略：</p>
+<script type="math/tex; mode=display">
+J_\text{GRPO}(\theta) = \mathbb{E}\left[\frac{1}{G}\sum_{i=1}^G \frac{1}{|o_i|}\sum_{t=1}^{|o_i|} \left(\min\left(r_{i,t}(\theta) \cdot A_{i,t},\ \text{clip}(r_{i,t}(\theta), 1-\varepsilon, 1+\varepsilon) \cdot A_{i,t}\right) - \beta \cdot D_\text{KL}(\pi_\theta \| \pi_\text{ref})\right)\right]</script><h3 id="2-4-与-PPO-的本质差异"><a href="#2-4-与-PPO-的本质差异" class="headerlink" title="2.4 与 PPO 的本质差异"></a>2.4 与 PPO 的本质差异</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>PPO</th>
+<th>GRPO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Advantage 来源</td>
+<td>Critic 网络估计的 <script type="math/tex">V(s)</script></td>
+<td>组内奖励的相对排名</td>
+</tr>
+<tr>
+<td>需要 Critic</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>Advantage 粒度</td>
+<td>每个 token/步骤独立</td>
+<td>整条序列共享同一个值</td>
+</tr>
+<tr>
+<td>KL 约束</td>
+<td>通过 Clip 隐式实现</td>
+<td>Clip + 显式 KL 惩罚项</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>通用 RL</td>
+<td>可以枚举多个答案的任务（如数学、代码）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>最核心的区别在于：PPO 的 advantage 是<strong>逐步骤</strong>的，而 GRPO 的 advantage 是<strong>逐序列</strong>的——整条输出共享同一个来自最终奖励的信号。这个设计在 LLM 推理任务（只有最终答案对错的稀疏奖励）中尤为自然，但也埋下了若干隐患。</p>
+<h3 id="2-5-GRPO-的内在问题"><a href="#2-5-GRPO-的内在问题" class="headerlink" title="2.5 GRPO 的内在问题"></a>2.5 GRPO 的内在问题</h3><p>GRPO 在简洁性上做了很好的工程取舍，但在大规模 long-CoT 训练中，它的几个设计决策会导致系统性的失效：</p>
+<p><strong>问题一：对称 Clip 压制探索，导致熵坍塌</strong></p>
+<p>Clip 约束对低概率 token 和高概率 token 的限制是不对等的。一个概率为 0.01 的 token，即使 clip 上界是 <script type="math/tex">1 + \varepsilon</script>，其概率的绝对提升空间也极其有限。长此以往，策略的熵持续下降，模型对同一个 prompt 开始输出几乎相同的内容——探索停止了，但训练还在继续。</p>
+<p><strong>问题二：advantage 归一化中的统计偏差</strong></p>
+<p>GRPO 用组内的均值和标准差来归一化 advantage。这里有一个微妙的问题：计算某个样本 <script type="math/tex">i</script> 的 advantage 时，用到的标准差 <script type="math/tex">\text{std}(\{R_j\})</script> 包含了 <script type="math/tex">R_i</script> 本身。这产生了<strong>统计上的相关性</strong>，使得梯度估计是有偏的。此外，当组内所有奖励相同时，标准差为零，导致数值不稳定。</p>
+<p><strong>问题三：序列级均值引入长度偏差</strong></p>
+<p>GRPO 的 loss 先在序列内取均值 <script type="math/tex">\frac{1}{|o_i|}</script>，再在组内取均值 <script type="math/tex">\frac{1}{G}</script>：这使得每条序列对总 loss 的贡献权重相同，无论它有多长。这个隐含假设在 long-CoT 场景下是错的：一条 2000 token 的深度推理链和一条 200 token 的简短答案，被等权重对待了。更严重的是，这种归一化方式对<strong>错误的长序列惩罚不足</strong>——模型学不到”不该用这么多 token 来表达错误的推理”。</p>
+<p><strong>问题四：全对/全错的 prompt 产生零梯度</strong></p>
+<p>当一个组内所有 <script type="math/tex">G</script> 个输出的奖励相同（全对或全错），归一化后 advantage 均为零，该 prompt 对梯度无任何贡献。随着训练推进、模型能力提升，”全对”的 prompt 越来越多，有效梯度来源不断萎缩，训练效率下降，梯度方差增大。</p>
+<hr>
+<h2 id="三、修补路径：从-RLOO-到-DAPO"><a href="#三、修补路径：从-RLOO-到-DAPO" class="headerlink" title="三、修补路径：从 RLOO 到 DAPO"></a>三、修补路径：从 RLOO 到 DAPO</h2><p>理解了 GRPO 的四个问题，接下来的几个算法就像是针对这些问题的”专科门诊”。每一路改进都有明确的靶点：RLOO 和 REINFORCE++ 修的是基线与方差问题，GSPO 修的是 clip 语义错位问题，Dr. GRPO 修的是归一化中的偏差问题，DAPO 是多维系统性修复，GRPO++ 则是这一切的 agent 时代集成。</p>
+<h3 id="3-1-RLOO：无偏的留一法基线"><a href="#3-1-RLOO：无偏的留一法基线" class="headerlink" title="3.1 RLOO：无偏的留一法基线"></a>3.1 RLOO：无偏的留一法基线</h3><p>RLOO（REINFORCE Leave-One-Out）是 GRPO 之前就已存在的方法，但它的思路对理解 GRPO 的偏差问题极有帮助。</p>
+<p><strong>核心思想</strong>：计算第 <script type="math/tex">i</script> 个样本的 advantage 时，用<strong>其余所有样本的平均奖励</strong>作为基线，而不是包含自身的全组平均：</p>
+<script type="math/tex; mode=display">
+A_i^\text{RLOO} = R_i - \frac{1}{G-1}\sum_{j \neq i} R_j</script><p><strong>为什么这是无偏的？</strong> 因为样本 <script type="math/tex">i</script> 的奖励 <script type="math/tex">R_i</script> 与其他样本的平均值在统计上是独立的（它们来自同一策略，但是独立采样）。这消除了 GRPO 中因”用自身参与计算基线”而引入的统计相关性。</p>
+<p><strong>与 GRPO 的关系</strong>：Dr. GRPO 的论文证明，当移除标准差归一化后 (即不再用 <script type="math/tex">/ \text{std}(\{R_j\}_{j=1}^G)</script>，GRPO 的更新方向实际上等价于 RLOO——只差一个常数缩放因子。换言之，GRPO 加上标准差除法，反而引入了不必要的偏差。</p>
+<p><strong>RLOO 的设计哲学</strong>是回归到更纯粹的 REINFORCE 框架：不需要 Critic，也不需要参数化的基线，只需要组内的相互参照。代价是方差通常高于有 Critic 的方法，但在 LLM 场景中，多采样带来的信息增益往往足以补偿这一点。</p>
+<h3 id="3-2-REINFORCE-：稳定的单采样基线"><a href="#3-2-REINFORCE-：稳定的单采样基线" class="headerlink" title="3.2 REINFORCE++：稳定的单采样基线"></a>3.2 REINFORCE++：稳定的单采样基线</h3><p>RLOO 需要同一个 prompt 采样 <script type="math/tex">G</script> 个输出来构造基线，而 <strong>REINFORCE++</strong> 的出发点是：能否在只有单条或少量轨迹的情况下，也做到稳定训练？</p>
+<p><strong>核心修改</strong>：在标准 REINFORCE 的基础上叠加三个 PPO 时代的工程经验：</p>
+<ol>
+<li><p><strong>Mini-batch 更新</strong>：不再每条轨迹更新一次，而是攒成 mini-batch 后统一更新。这复用了同一批数据多个梯度步，大幅提升样本效率——这正是 PPO 相比原始策略梯度的核心优势之一，REINFORCE++ 把它带回了无 Critic 的框架。</p>
+</li>
+<li><p><strong>Token 级 KL 惩罚</strong>：用每个 token 处的 KL 散度作为 per-step 惩罚，而不是在序列末端统一施加：</p>
+</li>
+</ol>
+<script type="math/tex; mode=display">
+\mathcal{L}_\text{REINFORCE++} = \sum_t \left[ -r_t(\theta) \cdot A_t - \beta \cdot \log \frac{\pi_\theta(o_t|s_t)}{\pi_\text{ref}(o_t|s_t)} \right]</script><p>序列末端的 KL 惩罚覆盖所有 token 的行为，但真正偏离 ref 的往往只是少数几个关键位置。逐 token 施加惩罚，让约束力和实际偏离程度精确对齐。</p>
+<ol>
+<li><strong>优势归一化</strong>：对批内所有样本的 advantage 做标准化，降低不同难度 prompt 之间的梯度尺度差异，稳定训练。</li>
+</ol>
+<p><strong>与 GRPO 的定位差异</strong>：GRPO 依赖”组内有对比”才能产生有效 advantage；REINFORCE++ 不要求这一点，哪怕只有单条轨迹也能工作。在对话任务、RAG 任务等<strong>难以枚举多个同质答案</strong>的场景下，REINFORCE++ 更具实用性。</p>
+<h3 id="3-3-GSPO：把-Clip-的语义对齐到序列级别"><a href="#3-3-GSPO：把-Clip-的语义对齐到序列级别" class="headerlink" title="3.3 GSPO：把 Clip 的语义对齐到序列级别"></a>3.3 GSPO：把 Clip 的语义对齐到序列级别</h3><p>GRPO 继承自 PPO 的 Clip 机制，在 token 级别计算概率比并进行裁剪：</p>
+<script type="math/tex; mode=display">
+r_{i,t}(\theta) = \frac{\pi_\theta(o_{i,t} | s_t)}{\pi_\text{old}(o_{i,t} | s_t)}, \quad \text{clip}(r_{i,t}, 1-\varepsilon, 1+\varepsilon)</script><p><strong>GSPO（Group Sequence Policy Optimization）</strong> 指出了一个被长期忽视的语义错位：<strong>我们真正关心的是整条序列有没有发生过大的偏移，但 token 级 clip 无法捕捉这一点。</strong></p>
+<p>两个策略对某条序列的概率比是所有 token 概率比的乘积：</p>
+<script type="math/tex; mode=display">
+r_i(\theta) = \prod_{t=1}^{|o_i|} r_{i,t}(\theta) = \frac{\pi_\theta(o_i | q)}{\pi_\text{old}(o_i | q)}</script><p>即使每个 token 的 <script type="math/tex">r_{i,t}</script> 都在 clip 范围内，它们连乘之后完全可能产生极端值——序列越长，这个问题越严重。反过来，某个 token 的 <script type="math/tex">r_{i,t}</script> 略微超出 clip 范围，也不代表这条序列整体发生了大的偏移。Token 级 clip 和序列级语义之间存在根本的不匹配。</p>
+<p>GSPO 的解法是<strong>直接在序列级别计算概率比并进行 clip</strong>：</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_\text{GSPO} = \mathbb{E}\left[\sum_i A_i \cdot \min\!\left(r_i(\theta),\ \text{clip}(r_i(\theta), 1-\varepsilon, 1+\varepsilon)\right)\right]</script><p>在实现上，为避免长序列的数值溢出，用 log 空间计算：<script type="math/tex">\log r_i(\theta) = \sum_t \log r_{i,t}(\theta)</script>，再还原成比值。</p>
+<p>这使得 Clip 真正保护了”新旧策略对整条序列的联合概率不要偏离太远”这一直觉，而不是对 token 逐个检查。</p>
+<h3 id="3-4-Dr-GRPO：诊断并移除两种偏差"><a href="#3-4-Dr-GRPO：诊断并移除两种偏差" class="headerlink" title="3.4 Dr. GRPO：诊断并移除两种偏差"></a>3.4 Dr. GRPO：诊断并移除两种偏差</h3><p>Dr. GRPO（”GRPO Done Right”）对 GRPO 做了两处精准的外科手术，分别对应两种不同性质的偏差。</p>
+<p><strong>修改一：移除标准差归一化</strong></p>
+<p>原始 GRPO 的 advantage：</p>
+<script type="math/tex; mode=display">
+A_i = \frac{R_i - \mu}{\sigma}</script><p>Dr. GRPO 将其改为：</p>
+<script type="math/tex; mode=display">
+A_i = R_i - \mu</script><p>移除 <script type="math/tex">\sigma</script> 的动机是：除以标准差相当于按难度缩放梯度——容易的题（奖励方差小，<script type="math/tex">\sigma</script> 小）会产生更大的更新幅度，而难题（<script type="math/tex">\sigma</script> 大）反而更新更保守。这在逻辑上是倒置的：<strong>模型应该更努力地学习困难样本，而不是被难题的方差”稀释”了梯度</strong>。</p>
+<p><strong>修改二：按最大上下文长度归一化，而非按序列长度</strong></p>
+<p>原始 GRPO 用 <script type="math/tex">1/|o_i|</script> 对每条序列的 loss 归一化（即 GRPO 的序列级均值），Dr. GRPO 改为用固定常数（最大上下文长度 <script type="math/tex">L_\text{max}</script>）归一化：</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_\text{Dr.GRPO} = \frac{1}{L_\text{max}} \sum_i \sum_t (\cdots)</script><p>这消除了<strong>长度偏差</strong>：在原始 GRPO 中，对正确答案来说，较短的序列会产生更大的归一化 loss（因为分母更小），无意中鼓励了模型用更短的序列来”凑对”；对错误答案来说，较长的序列又被”稀释”了惩罚。两者组合的结果是训练过程中错误序列越来越长。Dr. GRPO 用固定分母斩断了这种隐蔽的激励。</p>
+<h3 id="3-5-DAPO：四个方向的系统性修复"><a href="#3-5-DAPO：四个方向的系统性修复" class="headerlink" title="3.5 DAPO：四个方向的系统性修复"></a>3.5 DAPO：四个方向的系统性修复</h3><p>DAPO（Decoupled Clip and Dynamic sAmpling Policy Optimization）更为全面，同时从策略层、数据层、损失层、奖励层四个维度出发，对应 GRPO 的四个问题。</p>
+<h4 id="Clip-Higher：不对称裁剪，守住探索空间"><a href="#Clip-Higher：不对称裁剪，守住探索空间" class="headerlink" title="Clip-Higher：不对称裁剪，守住探索空间"></a>Clip-Higher：不对称裁剪，守住探索空间</h4><p>对称 clip 对低概率 token 不公平，DAPO 将上下界解耦：</p>
+<script type="math/tex; mode=display">
+\text{clip}\left(r_{i,t}(\theta),\ 1 - \varepsilon_\text{low},\ 1 + \varepsilon_\text{high}\right)</script><p>令 <script type="math/tex">\varepsilon_\text{high} > \varepsilon_\text{low}</script>（如 0.28 vs 0.20）。设计逻辑是：clip 的下界保守，防止策略突然崩坏；clip 的上界宽松，给低概率 token 留有足够的提升空间。两者的职责本就不同，用同一个 <script type="math/tex">\varepsilon</script> 统一对待，是一种不必要的耦合。</p>
+<p>同时，DAPO <strong>移除了显式的 KL 惩罚项</strong>。KL 约束在 RLHF 对齐场景下有其道理：防止模型偏离安全的 SFT 初始化。但在 long-CoT 推理训练中，模型必须习得全新的思考方式，势必大幅偏离 SFT checkpoint——此时 KL 惩罚是学习的阻力，而非保护。</p>
+<h4 id="Dynamic-Sampling：保证每步都有有效梯度"><a href="#Dynamic-Sampling：保证每步都有有效梯度" class="headerlink" title="Dynamic Sampling：保证每步都有有效梯度"></a>Dynamic Sampling：保证每步都有有效梯度</h4><script type="math/tex; mode=display">
+0 < \left|\{o_i \mid \text{is\_equivalent}(a, o_i)\}\right| < G</script><p>在送入训练前，过滤掉组内全对或全错的 prompt，只保留”有区分度”的样本。通过过采样 + 筛选来凑满目标 batch size。</p>
+<p>这个设计的本质是：RL 的梯度信号来源于<strong>对比</strong>。如果一个 batch 里大量 prompt 的组内奖励没有分差，模型根本学不到任何东西——批次的计算成本实实在在地花了，但梯度方向几乎为零。Dynamic Sampling 把信息密度的维护变成了训练流程的一部分，而不是寄希望于数据分布自然产生足够的难度区分。</p>
+<h4 id="Token-Level-Policy-Gradient-Loss：序列不是原子单位"><a href="#Token-Level-Policy-Gradient-Loss：序列不是原子单位" class="headerlink" title="Token-Level Policy Gradient Loss：序列不是原子单位"></a>Token-Level Policy Gradient Loss：序列不是原子单位</h4><p>DAPO 将 loss 从序列级均值改为 token 级均值：</p>
+<script type="math/tex; mode=display">
+\mathcal{L}_\text{DAPO} = \frac{1}{\sum_i |o_i|} \sum_i \sum_t (\cdots)</script><p>每个 token 权重相同，序列的影响与其长度成正比。这背后是一个简单的公平性原则：损失函数的权重应该反映信息量，而信息量的载体是 token，不是”一条序列”这个抽象单位。序列级均值把”产生了 200 个 token 的正确推理”和”产生了 2000 个 token 的正确推理”等价对待，这在 long-CoT 场景中是一种根本性的信息丢失。</p>
+<h4 id="Overlong-Reward-Shaping：软性惩罚，避免奖励跳变"><a href="#Overlong-Reward-Shaping：软性惩罚，避免奖励跳变" class="headerlink" title="Overlong Reward Shaping：软性惩罚，避免奖励跳变"></a>Overlong Reward Shaping：软性惩罚，避免奖励跳变</h4><script type="math/tex; mode=display">
+R_\text{length}(y) = \begin{cases}
+0 & \text{if } |y| \leq L_\text{max} - L_\text{cache} \\
+\dfrac{(L_\text{max} - L_\text{cache}) - |y|}{L_\text{cache}} & \text{if } L_\text{max} - L_\text{cache} < |y| \leq L_\text{max} \\
+-1 & \text{if } |y| > L_\text{max}
+\end{cases}</script><p>硬截断奖励（超过长度就直接 -1）会在奖励函数中引入跳变：序列差一个 token，奖励可能天差地别。这种不连续性对梯度是纯噪声。软性过渡区间让惩罚与”偏离合理范围的程度”连续对应，模型能从中感知方向，而不是面对一个无法微分的断崖。</p>
+<h3 id="3-6-GRPO-：汇聚以上，走向-Agent"><a href="#3-6-GRPO-：汇聚以上，走向-Agent" class="headerlink" title="3.6 GRPO++：汇聚以上，走向 Agent"></a>3.6 GRPO++：汇聚以上，走向 Agent</h3><p>DeepSWE 的 GRPO++ 将上述多路改进整合成一套用于 long-horizon agent 任务的训练算法，并增加了一个专为多步骤场景设计的修改：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>来源</th>
+<th>解决的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Clip High</strong></td>
+<td>DAPO</td>
+<td>探索空间被对称 clip 压制</td>
+</tr>
+<tr>
+<td><strong>No KL Loss</strong></td>
+<td>DAPO</td>
+<td>KL 约束阻碍推理策略大幅偏移</td>
+</tr>
+<tr>
+<td><strong>No Reward Std</strong></td>
+<td>Dr. GRPO</td>
+<td>标准差归一化引入难度偏差</td>
+</tr>
+<tr>
+<td><strong>Length Normalization</strong></td>
+<td>Dr. GRPO</td>
+<td>序列级归一化的长度偏差</td>
+</tr>
+<tr>
+<td><strong>Leave One Out</strong></td>
+<td>RLOO</td>
+<td>包含自身的基线引入统计偏差</td>
+</tr>
+<tr>
+<td><strong>Compact Filtering</strong></td>
+<td>DeepSWE 原创</td>
+<td>Agent 场景特有的”幸运成功”污染</td>
+</tr>
+<tr>
+<td><strong>No Entropy Loss</strong></td>
+<td>DeepSWE 原创</td>
+<td>熵正则项在多步任务中引入不稳定</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>其中 <strong>Compact Filtering</strong> 是 agent 场景独有的问题所对应的解法：在软件工程任务中，agent 偶尔会”蒙对”——随机提交一个改动恰好通过测试，但整个推理轨迹毫无逻辑。如果不过滤这类轨迹，模型会把”随机试探+侥幸命中”当成正确的策略来学习，导致奖励坍塌而非真正的能力提升。Compact Filtering 的本质是：只允许<strong>通过真正推理获得的成功</strong>贡献梯度。</p>
+<hr>
+<h2 id="四、Long-Horizon-的更深挑战"><a href="#四、Long-Horizon-的更深挑战" class="headerlink" title="四、Long-Horizon 的更深挑战"></a>四、Long-Horizon 的更深挑战</h2><p>上述算法都在一个共同的假设下工作：<strong>奖励信号来自单次、完整的输出</strong>。这在数学推理（答对或答错）、代码生成（测试通过或不通过）等任务中是成立的。但当任务时序变长、步骤变多、环境可交互时，这个假设开始崩塌。</p>
+<h3 id="4-1-Holistic-Policy-Update：整体轨迹的梯度问题"><a href="#4-1-Holistic-Policy-Update：整体轨迹的梯度问题" class="headerlink" title="4.1 Holistic Policy Update：整体轨迹的梯度问题"></a>4.1 Holistic Policy Update：整体轨迹的梯度问题</h3><p>在多步骤 agent 任务中，模型执行一系列动作（搜索文件、修改代码、运行测试），最终奖励只在任务结束时给出。这带来了一个根本问题：<strong>如何把末端的稀疏奖励归因到具体的每一步？</strong></p>
+<p>当前的 GRPO 系列方法，包括 GRPO++，本质上仍在用<strong>轨迹级的单一奖励</strong>来训练 token 级的策略。这意味着：</p>
+<ul>
+<li>整条轨迹中每个 token 获得相同的 advantage，不管它是”关键的一步”还是”无足轻重的过渡”。</li>
+<li>早期步骤的探索行为受到的奖励信号极其延迟，梯度方差极大。</li>
+<li>模型无法从”哪一步导致了失败”中学习，只知道”这条轨迹失败了”。</li>
+</ul>
+<p>真正的 <strong>holistic policy update</strong> 应该能够对轨迹中的每一步分配合理的功劳或过失。这需要某种形式的<strong>过程奖励模型（Process Reward Model, PRM）</strong>，在轨迹的中间节点提供密集反馈，而不是只有终态的稀疏信号。但 PRM 本身的标注与训练是另一个难题——谁来告诉模型”这一步的中间状态值多少分”？</p>
+<h3 id="4-2-Compositional-RL：分解任务，分解奖励"><a href="#4-2-Compositional-RL：分解任务，分解奖励" class="headerlink" title="4.2 Compositional RL：分解任务，分解奖励"></a>4.2 Compositional RL：分解任务，分解奖励</h3><p>Long-horizon 任务面临的另一个挑战是：任务本身就是<strong>由多个子目标组合而成</strong>的。一个完整的软件工程任务，包含了”理解需求”、”定位代码”、”设计方案”、”实现修改”、”验证结果”等多个阶段，每个阶段都有自己的成功标准。</p>
+<p><strong>Compositional RL</strong> 的思路是把这个结构显式地引入训练：</p>
+<ul>
+<li><p><strong>奖励分解（Reward Decomposition）</strong>：不只给最终任务奖励，而是给每个子目标独立的奖励信号，把稀疏的末端奖励转化为密集的过程信号，从根本上改善信用分配。</p>
+</li>
+<li><p><strong>分层策略（Hierarchical Policy）</strong>：高层策略（meta-controller）负责分解任务、分配子目标；低层策略负责在单个子目标内做具体动作。两者可以独立用 RL 训练，再通过接口组合，把一个极难探索的大问题降维成若干个更容易覆盖的小问题。</p>
+</li>
+<li><p><strong>选项框架（Options Framework）</strong>：每个”选项”是一个带有终止条件的子策略，让策略的时间尺度自适应，而不是强迫用同一粒度处理”单步改动”和”整体架构决策”。</p>
+</li>
+</ul>
+<h4 id="常见的子奖励信号：设计实例"><a href="#常见的子奖励信号：设计实例" class="headerlink" title="常见的子奖励信号：设计实例"></a>常见的子奖励信号：设计实例</h4><p>奖励分解不是抽象概念，在工程落地中已经形成了若干经验性的奖励组合模式。以下是在 tool-use 和 agent 任务中常见的几类子奖励：</p>
+<p><strong>① 格式正确性奖励（Format Reward）</strong></p>
+<p>模型调用外部工具时，输出必须是可被解析的结构化格式（如 JSON、XML 或特定模板）。格式奖励检查的是：function call 的字段是否完整、嵌套层级是否正确、必填参数是否缺失。</p>
+<script type="math/tex; mode=display">
+R_\text{format} = \begin{cases} +1 & \text{if } \texttt{parse}(\text{output}) \text{ succeeds} \\ -1 & \text{if output is malformed} \end{cases}</script><p>这是最低层的奖励，属于”连参与任务的资格都需要用奖励来训练”的类型。格式错误会导致整条轨迹后续全部失效，它的信号应该强而清晰。</p>
+<p><strong>② 工具调用正确性奖励（Tool Correctness Reward）</strong></p>
+<p>格式正确只是第一步，工具调用的语义是否合理是第二层。检查内容包括：工具名称是否合法（调用了存在的 API）、参数类型是否匹配、调用时机是否合适（在需要检索时调用了检索工具而非生成工具）。</p>
+<p>这类奖励通常需要一个轻量的校验器（validator）来实现，而不只是字面匹配。</p>
+<p><strong>③ 工具使用激励（Tool Usage Incentive）</strong></p>
+<p>在 RAG 或 search-augmented agent 中，模型有时会倾向于”靠记忆直接回答”而非主动调用工具——因为调用工具需要多步骤，失败风险更高。工具使用激励给主动调用工具的行为一个正向信号，防止模型退化成纯参数记忆的检索模式。</p>
+<p>这类奖励需要谨慎校准：激励过强会导致模型<strong>过度调用工具</strong>，对简单问题也要反复查询，增加延迟和成本。</p>
+<p><strong>④ 超长输出惩罚（Length Penalty）</strong></p>
+<p>对应 DAPO 的 Overlong Reward Shaping，但在 agent 任务中语义略有不同：超长不只是”token 太多”，也包括”思考轮次太多”、”工具调用次数超出合理范围”。软性惩罚的设计原则相同：让惩罚与偏离程度成比例，避免硬截断引入奖励跳变。</p>
+<p><strong>⑤ 引用真实性奖励（Grounding Reward）</strong></p>
+<p>当模型生成引用了文献、代码函数名、API 端点、数据库字段等实体时，可以对这些引用做存在性验证：引用的论文 DOI 是否真实、调用的函数名是否在当前代码库中存在、提到的 URL 是否可访问。这是一类<strong>事实核查型奖励</strong>，专门用于抑制模型”自信地编造引用”这一顽固问题（即 hallucination 的一种具体形态）。</p>
+<script type="math/tex; mode=display">
+R_\text{grounding} = \frac{1}{|E|}\sum_{k=1}^{|E|} \mathbb{1}\!\left[\texttt{verify}(e_k) = \text{true}\right]</script><p>实现上常用工具调用的返回结果（检索到了 → 正分，404 → 负分）来替代人工标注。</p>
+<h4 id="子奖励的组合与冲突"><a href="#子奖励的组合与冲突" class="headerlink" title="子奖励的组合与冲突"></a>子奖励的组合与冲突</h4><p>将以上奖励线性组合是最常见的起点：</p>
+<script type="math/tex; mode=display">
+R_\text{total} = \sum_{k} w_k R_k^\text{sub} + R_\text{outcome}</script><p>但线性组合并不总是稳定的。子奖励之间存在若干典型的干扰模式：</p>
+<ul>
+<li><strong>格式奖励与内容奖励冲突</strong>：模型可能学会”生成格式合法但内容无意义的调用”来刷格式分。</li>
+<li><strong>工具激励与长度惩罚冲突</strong>：鼓励多用工具，但多轮工具调用又会增加长度，两个信号相互抵消。</li>
+<li><strong>Grounding 奖励被 hack</strong>：模型学会只引用高频出现的、容易验证的实体，而回避需要深度推理才能确定的引用。</li>
+</ul>
+<p>这些冲突没有通用解法，是 compositional reward 工程中需要针对具体任务反复调试的核心难点。</p>
+<p>然而，Compositional RL 并非免费的午餐。子目标的设计本身需要领域知识；子奖励之间可能互相干扰或被 hack；分层策略的训练稳定性比单层更难保证。<strong>这些问题目前还没有被 GRPO 系列的任何变体正面解决——它们代表了从”让模型做对一道题”到”让模型真正解决一个工程问题”之间尚未跨越的鸿沟。</strong></p>
+<hr>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>从 GRPO 出发，这条演化路径可以用一张图来理解：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">GRPO<br>├── 统计偏差（含自身的基线）         → RLOO（留一法，无偏估计）<br>├── 单轨迹场景下方差过高             → REINFORCE++（mini-batch + token KL）<br>├── Token 级 clip 语义错位          → GSPO（序列级概率比 + clip）<br>├── 难度偏差（std 归一化）           → Dr. GRPO（移除 std）<br>├── 长度偏差（序列级均值）            → Dr. GRPO / DAPO Token-Level Loss<br>├── 探索坍塌（对称 clip）            → DAPO Clip-Higher<br>├── 梯度空转（全对/全错组）           → DAPO Dynamic Sampling<br>├── 奖励噪声（硬截断惩罚）            → DAPO Overlong Reward Shaping<br>├── KL 约束阻碍 long-CoT            → DAPO / GRPO++ No KL Loss<br>└── Agent 场景的幸运成功污染         → GRPO++ Compact Filtering<br></code></pre></td></tr></table></figure>
+<p>每一个改动背后都有清晰的诊断：<strong>某个设计假设在大规模 long-CoT 或 agent 训练中不再成立，因此要修正它</strong>。这种”找到假设、打破假设、重建假设”的思路，比任何具体的超参数或公式都更值得记住。</p>
+<p>而 long-horizon 任务的挑战，则要求我们在这个框架之上再进一步——不只是修补 advantage 估计的统计问题，而是重新思考<strong>奖励的结构、策略的层次、以及”学会解决问题”和”学会通过测试”之间的根本差别</strong>。</p>
+<hr>
+<blockquote>
+<p>本文由 <strong>IsaacGHX</strong> 与 <strong>Claude Code</strong> 合著。<br>如有错误或讨论，欢迎在评论区指出。</p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2025/08/21/fast_startup/Tmux-quick-start/">← Next tmux Quickstart</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2025/08/08/solutions/Hand-made-Solution-and-CoT-for-AIME25/">Hand-made Solution and CoT for AIME25'(浅浅手撕 AIME25') Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/2.png" alt="Logo" style="margin:0;border-radius:0;"></a><div id="author-info"><h1 id="Dr"><a href="/about">Isaac IPF</a></h1><div id="description"><p></p></div></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81PPO-%E5%9B%9E%E9%A1%BE%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-Clip%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">一、PPO 回顾：为什么需要 Clip？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81GRPO%EF%BC%9A%E7%94%A8%E7%BB%84%E5%86%85%E5%AF%B9%E6%AF%94%E4%BB%A3%E6%9B%BF-Critic"><span class="toc-number">1.3.</span> <span class="toc-text">二、GRPO：用组内对比代替 Critic</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E8%AE%BE%E8%AE%A1%E5%8A%A8%E6%9C%BA"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.1 设计动机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-LLM-%E4%B8%AD%E7%9A%84-MDP-%E6%98%A0%E5%B0%84%EF%BC%9A%E5%8A%A8%E4%BD%9C%E4%B8%8E%E7%8A%B6%E6%80%81"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.2 LLM 中的 MDP 映射：动作与状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.3.</span> <span class="toc-text">2.3 目标函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E4%B8%8E-PPO-%E7%9A%84%E6%9C%AC%E8%B4%A8%E5%B7%AE%E5%BC%82"><span class="toc-number">1.3.4.</span> <span class="toc-text">2.4 与 PPO 的本质差异</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-GRPO-%E7%9A%84%E5%86%85%E5%9C%A8%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.5.</span> <span class="toc-text">2.5 GRPO 的内在问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BF%AE%E8%A1%A5%E8%B7%AF%E5%BE%84%EF%BC%9A%E4%BB%8E-RLOO-%E5%88%B0-DAPO"><span class="toc-number">1.4.</span> <span class="toc-text">三、修补路径：从 RLOO 到 DAPO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-RLOO%EF%BC%9A%E6%97%A0%E5%81%8F%E7%9A%84%E7%95%99%E4%B8%80%E6%B3%95%E5%9F%BA%E7%BA%BF"><span class="toc-number">1.4.1.</span> <span class="toc-text">3.1 RLOO：无偏的留一法基线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-REINFORCE-%EF%BC%9A%E7%A8%B3%E5%AE%9A%E7%9A%84%E5%8D%95%E9%87%87%E6%A0%B7%E5%9F%BA%E7%BA%BF"><span class="toc-number">1.4.2.</span> <span class="toc-text">3.2 REINFORCE++：稳定的单采样基线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-GSPO%EF%BC%9A%E6%8A%8A-Clip-%E7%9A%84%E8%AF%AD%E4%B9%89%E5%AF%B9%E9%BD%90%E5%88%B0%E5%BA%8F%E5%88%97%E7%BA%A7%E5%88%AB"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.3 GSPO：把 Clip 的语义对齐到序列级别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-Dr-GRPO%EF%BC%9A%E8%AF%8A%E6%96%AD%E5%B9%B6%E7%A7%BB%E9%99%A4%E4%B8%A4%E7%A7%8D%E5%81%8F%E5%B7%AE"><span class="toc-number">1.4.4.</span> <span class="toc-text">3.4 Dr. GRPO：诊断并移除两种偏差</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-DAPO%EF%BC%9A%E5%9B%9B%E4%B8%AA%E6%96%B9%E5%90%91%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%80%A7%E4%BF%AE%E5%A4%8D"><span class="toc-number">1.4.5.</span> <span class="toc-text">3.5 DAPO：四个方向的系统性修复</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Clip-Higher%EF%BC%9A%E4%B8%8D%E5%AF%B9%E7%A7%B0%E8%A3%81%E5%89%AA%EF%BC%8C%E5%AE%88%E4%BD%8F%E6%8E%A2%E7%B4%A2%E7%A9%BA%E9%97%B4"><span class="toc-number">1.4.5.1.</span> <span class="toc-text">Clip-Higher：不对称裁剪，守住探索空间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Dynamic-Sampling%EF%BC%9A%E4%BF%9D%E8%AF%81%E6%AF%8F%E6%AD%A5%E9%83%BD%E6%9C%89%E6%9C%89%E6%95%88%E6%A2%AF%E5%BA%A6"><span class="toc-number">1.4.5.2.</span> <span class="toc-text">Dynamic Sampling：保证每步都有有效梯度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Token-Level-Policy-Gradient-Loss%EF%BC%9A%E5%BA%8F%E5%88%97%E4%B8%8D%E6%98%AF%E5%8E%9F%E5%AD%90%E5%8D%95%E4%BD%8D"><span class="toc-number">1.4.5.3.</span> <span class="toc-text">Token-Level Policy Gradient Loss：序列不是原子单位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Overlong-Reward-Shaping%EF%BC%9A%E8%BD%AF%E6%80%A7%E6%83%A9%E7%BD%9A%EF%BC%8C%E9%81%BF%E5%85%8D%E5%A5%96%E5%8A%B1%E8%B7%B3%E5%8F%98"><span class="toc-number">1.4.5.4.</span> <span class="toc-text">Overlong Reward Shaping：软性惩罚，避免奖励跳变</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-GRPO-%EF%BC%9A%E6%B1%87%E8%81%9A%E4%BB%A5%E4%B8%8A%EF%BC%8C%E8%B5%B0%E5%90%91-Agent"><span class="toc-number">1.4.6.</span> <span class="toc-text">3.6 GRPO++：汇聚以上，走向 Agent</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Long-Horizon-%E7%9A%84%E6%9B%B4%E6%B7%B1%E6%8C%91%E6%88%98"><span class="toc-number">1.5.</span> <span class="toc-text">四、Long-Horizon 的更深挑战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Holistic-Policy-Update%EF%BC%9A%E6%95%B4%E4%BD%93%E8%BD%A8%E8%BF%B9%E7%9A%84%E6%A2%AF%E5%BA%A6%E9%97%AE%E9%A2%98"><span class="toc-number">1.5.1.</span> <span class="toc-text">4.1 Holistic Policy Update：整体轨迹的梯度问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-Compositional-RL%EF%BC%9A%E5%88%86%E8%A7%A3%E4%BB%BB%E5%8A%A1%EF%BC%8C%E5%88%86%E8%A7%A3%E5%A5%96%E5%8A%B1"><span class="toc-number">1.5.2.</span> <span class="toc-text">4.2 Compositional RL：分解任务，分解奖励</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%AD%90%E5%A5%96%E5%8A%B1%E4%BF%A1%E5%8F%B7%EF%BC%9A%E8%AE%BE%E8%AE%A1%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">常见的子奖励信号：设计实例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%90%E5%A5%96%E5%8A%B1%E7%9A%84%E7%BB%84%E5%90%88%E4%B8%8E%E5%86%B2%E7%AA%81"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">子奖励的组合与冲突</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">1.6.</span> <span class="toc-text">小结</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/IsaacGHX">Isaac_GHX </a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr><wbr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
