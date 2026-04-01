@@ -841,7 +841,7 @@ h6 {
   }
   .navBlock {
     position: relative;
-    padding: 2.142857142857143em 0;
+    padding: 1.764705882352941em 0;
   }
   .navItemTitle {
     color: var(--theme-text-light);
