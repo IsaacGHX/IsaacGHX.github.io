@@ -116,7 +116,7 @@ lightGallery(document.getElementById('post-bg'), {
    }
  }
 });
-document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/publication/"><span class="navItemTitle">Publication</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>About Me</h1><div id="post-info"><span>First Post: </span><div class="control"><time datetime="2025-01-19T07:18:28.000Z" id="date"> 2025-01-18</time></div><span>Last Update: </span><div class="control"><time datetime="2026-04-03T16:40:49.274Z" id="updated"> 2026-04-03</time></div><span>Word Count: </span><div class="control">2.2k</div><span>Read Time: </span><div class="control">13 min</div><span>Page View: </span><span class="control" id="busuanzi_value_page_pv">loading...</span></div></div><hr><div id="post-content"><style>
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/publication/"><span class="navItemTitle">Publication</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>About Me</h1><div id="post-info"><span>First Post: </span><div class="control"><time datetime="2025-01-19T07:18:28.000Z" id="date"> 2025-01-18</time></div><span>Last Update: </span><div class="control"><time datetime="2026-04-18T04:22:42.737Z" id="updated"> 2026-04-17</time></div><span>Word Count: </span><div class="control">2.1k</div><span>Read Time: </span><div class="control">12 min</div><span>Page View: </span><span class="control" id="busuanzi_value_page_pv">loading...</span></div></div><hr><div id="post-content"><style>
 /* 全局段落文字左对齐 */
 p {
     text-align: left;
@@ -680,11 +680,11 @@ li {
             </div> -->
         </div><!-- Close flex container -->
     </section>
-    <section id="long-term-collaboration" class="mb-12">
+    <section id="long-term-collaboration" class="mb-12" style="margin-top: 4rem;">
     <h2 class="text-2xl font-bold mb-6 text-blue-600">
         <i class="fas fa-handshake"></i> Long-term Collaboration
     </h2>
-    <div class="grid gap-6">
+    <div class="grid" style="gap: 4rem;">
         <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
             <h4 class="font-bold text-lg text-blue-500">Lambda, Inc.
                 <a href="https://lambda.ai/" class="text-sm text-gray-500 hover:text-gray-700 ml-2" target="_blank" rel="noopener noreferrer">
@@ -696,77 +696,43 @@ li {
             </p>
         </div>
         <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+            <h4 class="font-bold text-lg text-blue-500">CocoaBench Team
+                <a href="https://cocoabench.github.io/" class="text-sm text-gray-500 hover:text-gray-700 ml-2" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </h4>
+            <div class="mt-4">
+                <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
+                    <div class="publication-left" style="flex-shrink: 0; width: 200px;">
+                        <img src="/img/cocoabench-main.png" alt="CocoaBench Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/cocoabench-main.png')">
+                    </div>
+                    <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
+                        <p class="text-gray-600 mb-2">
+                            Collaborative research with the CocoaBench team on multimodal evaluation and benchmarking.
+                        </p>
+                        <div style="margin-bottom: 0.25rem;">
+                            <a href="https://cocoabench.github.io/" class="text-xs px-2 py-1 bg-purple-100 text-purple-700 hover:bg-purple-200 rounded inline-block mr-1" target="_blank" rel="noopener noreferrer">Homepage</a>
+                            <span class="text-gray-400 mx-1">|</span>
+                            <a href="https://arxiv.org/abs/2604.11201" class="text-xs px-2 py-1 bg-blue-100 text-blue-700 hover:bg-blue-200 rounded inline-block mr-1" target="_blank" rel="noopener noreferrer">Paper</a>
+                            <span class="text-gray-400 mx-1">|</span>
+                            <a href="https://github.com/cocoabench/cocoa-agent" class="text-xs px-2 py-1 bg-green-100 text-green-700 hover:bg-green-200 rounded inline-block mr-1" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <span class="text-gray-400 mx-1">|</span>
+                            <a href="https://cocoabench.github.io/blog-v1-release.html" class="text-xs px-2 py-1 bg-orange-100 text-orange-700 hover:bg-orange-200 rounded inline-block mr-1" target="_blank" rel="noopener noreferrer">Blog</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
             <h4 class="font-bold text-lg text-blue-500">Shanghai Tongliang Intelligent Technology Co., Ltd.
                 <a href="https://rengong-zhineng.com/" class="text-sm text-gray-500 hover:text-gray-700 ml-2" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-external-link-alt"></i>
                 </a>
             </h4>
             <p class="text-gray-600">
-                > Research Consultant (Permenant).
+                Research Consultant (Permanent) &amp; Chief Scientist (04/2025 – 06/2025). Developed and validated Multi-Agent Adversarial (MAA) strategies for medium-frequency quantitative trading across futures, options, crypto, and equities.
             </p>
-            <p class="text-gray-600">
-                Focused on exploring <b> Multi-Agent Adversarial (MAA)</b> strategies for competitive and collaborative dynamics in quantitative trading algorithms. Solved challenges related to high instability of financial data and Out-of-Distribution issues in algorithms.
-            </p>
-            <p class="text-gray-600">
-                > Chief Scientist (04/2025 - 06/2025)
-            </p>
-            <p class="text-gray-600">
-                During this tenure, managed the team to innovate and validate in medium-frequency live trading various MAA-integrated algorithms across diverse asset classes, including but not limited to Chinese market futures and options, cryptocurrencies, and equity investments. 
-            <p>
-            <p class="text-gray-600">
-                These algorithms included:            
-            </p>
-            <ul class="list-disc list-inside text-gray-600 ml-4">
-                <li>Adaptive VWAP multi-scale order splitting strategies.</li>
-                <li>Q-LEARNING Reinforcement Learning.</li>
-                <li>VIX based strategies.</li>
-                <li>Automated feature factor screening.</li>
-                <li>News information factor mining.</li>
-            </ul>
-            <p class="text-gray-600 mt-2">
-                Collaborated with the team to achieve a positive corporate annual profit of <b> 20% </b> (annualized) with a maximum drawdown of 8%.
-            </p>
-            <!-- MAA-TSF Publication -->
-            <div class="mt-4">
-                <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
-                    <!-- 左侧：图片 -->
-                    <div class="publication-left" style="flex-shrink: 0; width: 200px;">
-                        <img src="/img/MAA-TSF.png" alt="MAA-TSF Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/MAA-TSF.png')">
-                    </div>
-                    <!-- 右侧内容 -->
-                    <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
-                            MAA-TSF: Multi-Agent Adversarial Time Series Forecasting
-                        </h4>
-                        <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
-                            <span class="font-bold">Ye Qiao</span>,
-                            <span class="font-bold">Cheng Chen</span>,
-                            <span id="maa-short-collab">
-                                <span class="font-bold" style="text-decoration: underline;">Haoxiang Zhang</span><sup class="text-xs align-top text-blue-500 author-tooltip">✝<span class="tooltip-text">Corresponding author</span></sup>,
-                                <a href="javascript:void(0);" onclick="document.getElementById('maa-short-collab').style.display='none'; document.getElementById('maa-full-collab').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 2 more authors</a>
-                            </span>
-                            <span id="maa-full-collab" style="display: none;">
-                                <span class="font-bold">Tong Niu</span>,
-                                <span class="font-bold">Zhiyuan Bai</span>,
-                                <span class="font-bold" style="text-decoration: underline;">Haoxiang Zhang</span><sup class="text-xs align-top text-blue-500 author-tooltip">✝<span class="tooltip-text">Corresponding author</span></sup>
-                            </span>
-                        </p>
-                        <div style="margin-bottom: 0.25rem;">
-                            <a target="_blank" rel="noopener" href="https://github.com/IsaacGHX/MAA" class="text-xs px-2 py-1 bg-green-100 text-green-700 hover:bg-green-200 rounded inline-block mr-1">Code</a>
-                            <span class="text-gray-400 mx-1">|</span>
-                            <a href="#" class="text-xs px-2 py-1 bg-yellow-100 text-yellow-700 hover:bg-yellow-200 rounded inline-block mr-1">Demo</a>
-                            <span class="text-gray-400 mx-1">|</span>
-                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleAbstract('maa-abstract-collab');">Abstract</a>
-                        </div>
-                        <div id="maa-abstract-collab" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
-                                A novel multi-agent adversarial framework for time series forecasting that leverages competitive dynamics between multiple agents to improve prediction accuracy and robustness.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
+        </div>
     </div>
 </section>
     <!-- Intern Section -->
@@ -965,11 +931,11 @@ document.addEventListener('keydown', function(event) {
          Long-term Collaboration
     </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#long-term-collaboration"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">Lambda, Inc.
                 
-            </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#long-term-collaboration"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">Shanghai Tongliang Intelligent Technology Co., Ltd.
+            </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#long-term-collaboration"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">CocoaBench Team
                 
-            </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#long-term-collaboration"><span class="toc-number">1.4.0.3.</span> <span class="toc-text">
-                            MAA-TSF: Multi-Agent Adversarial Time Series Forecasting
-                        </span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#internship"><span class="toc-number">1.5.</span> <span class="toc-text">
+            </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#long-term-collaboration"><span class="toc-number">1.4.0.3.</span> <span class="toc-text">Shanghai Tongliang Intelligent Technology Co., Ltd.
+                
+            </span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#internship"><span class="toc-number">1.5.</span> <span class="toc-text">
              Industrial Internship
         </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#internship"><span class="toc-number">1.5.0.1.</span> <span class="toc-text">Shanghai Artificial Intelligence Labotary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#internship"><span class="toc-number">1.5.0.2.</span> <span class="toc-text">Bank of Communications, Shanghai Branch
                 
