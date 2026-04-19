@@ -280,10 +280,12 @@
 					// execute scripts when DOM have been completely updated
 					this.options.selectors.forEach(function (selector) {
 						forEachEls(document.querySelectorAll(selector), function (el) {
-							// executeScripts(el);
-							if (el === 0);  // intentially left blank!
-						});
-					});
+							var pjaxScripts = Array.prototype.slice.call(el.querySelectorAll('script[data-pjax]'));
+							if (pjaxScripts.length) {
+								this.executeScripts(pjaxScripts);
+							}
+						}.bind(this));
+					}.bind(this));
 
 					this.forEachSelectors(function (el) {
 						this.parseDOM(el);

@@ -116,7 +116,7 @@ lightGallery(document.getElementById('post-bg'), {
    }
  }
 });
-document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/publication/"><span class="navItemTitle">Publication</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Publications</h1><div id="post-info"><span>First Post: </span><div class="control"><time datetime="2025-01-19T07:18:28.000Z" id="date"> 2025-01-18</time></div><span>Last Update: </span><div class="control"><time datetime="2026-04-19T08:08:29.749Z" id="updated"> 2026-04-19</time></div><span>Word Count: </span><div class="control">2.5k</div><span>Read Time: </span><div class="control">15 min</div><span>Page View: </span><span class="control" id="busuanzi_value_page_pv">loading...</span></div></div><hr><div id="post-content"><style>
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/publication/"><span class="navItemTitle">Publication</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Publications</h1><div id="post-info"><span>First Post: </span><div class="control"><time datetime="2025-01-19T07:18:28.000Z" id="date"> 2025-01-18</time></div><span>Last Update: </span><div class="control"><time datetime="2026-04-19T09:07:00.017Z" id="updated"> 2026-04-19</time></div><span>Word Count: </span><div class="control">2.5k</div><span>Read Time: </span><div class="control">15 min</div><span>Page View: </span><span class="control" id="busuanzi_value_page_pv">loading...</span></div></div><hr><div id="post-content"><style>
 /* 全局段落文字左对齐 */
 p {
     text-align: left;
@@ -926,8 +926,7 @@ li {
 </div>
 
 <!-- JavaScript for Abstract Toggle and Image Modal -->
-<script>
-// 确保所有函数在全局作用域中定义，并且在DOM加载完成后初始化
+<script data-pjax>
 function toggleAbstract(id) {
     var element = document.getElementById(id);
     if (element) {
@@ -990,31 +989,34 @@ function closeImageModal() {
     }, 300); // 300ms = 0.3s
 }
 
-// Click anywhere on modal background to close
-document.addEventListener('DOMContentLoaded', function() {
+// Click anywhere on modal background to close (use onclick to avoid duplicate listeners on PJAX re-execution)
+(function() {
     var modal = document.getElementById('imageModal');
     if (modal) {
-        modal.addEventListener('click', function(event) {
-            if (event.target === this) {
+        modal.onclick = function(event) {
+            if (event.target === modal) {
                 closeImageModal();
             }
-        });
+        };
     }
-
     var modalImg = document.getElementById('modalImage');
     if (modalImg) {
-        modalImg.addEventListener('click', function(event) {
+        modalImg.onclick = function(event) {
             event.stopPropagation();
-        });
+        };
     }
-});
+})();
 
-// Close modal when pressing Escape key
-document.addEventListener('keydown', function(event) {
+// Close modal on Escape — remove previous listener before re-adding to avoid duplicates on PJAX re-execution
+if (window._pubEscHandler) {
+    document.removeEventListener('keydown', window._pubEscHandler);
+}
+window._pubEscHandler = function(event) {
     if (event.key === 'Escape') {
         closeImageModal();
     }
-});
+};
+document.addEventListener('keydown', window._pubEscHandler);
 </script>
 <div id="paginator"></div></div><div id="post-footer"></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/2.png" alt="Logo" style="margin:0;border-radius:0;"></a><div id="author-info"><h1 id="Dr"><a href="/about">Isaac IPF</a></h1><div id="description"><p></p></div></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#publication"><span class="toc-number">1.</span> <span class="toc-text">
              Publications
