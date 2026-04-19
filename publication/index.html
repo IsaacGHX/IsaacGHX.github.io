@@ -116,7 +116,7 @@ lightGallery(document.getElementById('post-bg'), {
    }
  }
 });
-document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/publication/"><span class="navItemTitle">Publication</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Publications</h1><div id="post-info"><span>First Post: </span><div class="control"><time datetime="2025-01-19T07:18:28.000Z" id="date"> 2025-01-18</time></div><span>Last Update: </span><div class="control"><time datetime="2026-04-18T04:06:53.344Z" id="updated"> 2026-04-17</time></div><span>Word Count: </span><div class="control">2.3k</div><span>Read Time: </span><div class="control">14 min</div><span>Page View: </span><span class="control" id="busuanzi_value_page_pv">loading...</span></div></div><hr><div id="post-content"><style>
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/publication/"><span class="navItemTitle">Publication</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Publications</h1><div id="post-info"><span>First Post: </span><div class="control"><time datetime="2025-01-19T07:18:28.000Z" id="date"> 2025-01-18</time></div><span>Last Update: </span><div class="control"><time datetime="2026-04-19T08:08:29.749Z" id="updated"> 2026-04-19</time></div><span>Word Count: </span><div class="control">2.5k</div><span>Read Time: </span><div class="control">15 min</div><span>Page View: </span><span class="control" id="busuanzi_value_page_pv">loading...</span></div></div><hr><div id="post-content"><style>
 /* 全局段落文字左对齐 */
 p {
     text-align: left;
@@ -308,6 +308,63 @@ li {
                     </div>
                 </div>
             </div>
+        <!-- Publication - ReviewGrounder -->
+            <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
+                    <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
+                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
+                            <span style="font-size: 0.75rem; font-weight: 600;">ACL 2026</span>
+                        </div>
+                        <img src="/img/ReviewGrounder.png" alt="ReviewGrounder Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/ReviewGrounder.png')">
+                    </div>
+                    <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
+                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                            ReviewGrounder: Improving Review Substantiveness with Rubric-Guided, Tool-Integrated Agents
+                        </h4>
+                        <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
+                            <span class="font-bold">Zhuofeng Li</span><sup class="text-xs align-top text-blue-500 author-tooltip">*<span class="tooltip-text">Equal contribution</span></sup>,
+                            <span class="font-bold">Yi Lu</span><sup class="text-xs align-top text-blue-500 author-tooltip">*<span class="tooltip-text">Equal contribution</span></sup>,
+                            <span id="reviewgrounder-short">
+                                <span class="font-bold">Dongfu Jiang</span>,
+                                <span class="font-bold" style="text-decoration: underline;">Haoxiang Zhang</span>,
+                                <a href="javascript:void(0);" onclick="document.getElementById('reviewgrounder-short').style.display='none'; document.getElementById('reviewgrounder-full').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 6 more authors</a>
+                            </span>
+                            <span id="reviewgrounder-full" style="display: none;">
+                                <span class="font-bold">Dongfu Jiang</span>,
+                                <span class="font-bold" style="text-decoration: underline;">Haoxiang Zhang</span>,
+                                <span class="font-bold">Yuyang Bai</span>,
+                                <span class="font-bold">Chuan Li</span>,
+                                <span class="font-bold">Yu Wang</span>,
+                                <span class="font-bold">Shuiwang Ji</span>,
+                                <span class="font-bold">Jianwen Xie</span>,
+                                <span class="font-bold">Yu Zhang</span><sup class="text-xs align-top text-blue-500 author-tooltip">✝<span class="tooltip-text">Corresponding author</span></sup>
+                            </span>
+                        </p>
+                        <div style="margin-bottom: 0.25rem;">
+                            <a href="https://eigentom.github.io/ReviewGrounder/" class="text-xs px-2 py-1 bg-purple-100 text-purple-700 hover:bg-purple-200 rounded inline-block mr-1" target="_blank" rel="noopener noreferrer">Homepage</a>
+                            <span class="text-gray-400 mx-1">|</span>
+                            <a href="https://arxiv.org/abs/2604.14261" class="text-xs px-2 py-1 bg-blue-100 text-blue-700 hover:bg-blue-200 rounded inline-block mr-1" target="_blank" rel="noopener noreferrer">Paper</a>
+                            <span class="text-gray-400 mx-1">|</span>
+                            <a href="https://github.com/EigenTom/ReviewGrounder" class="text-xs px-2 py-1 bg-green-100 text-green-700 hover:bg-green-200 rounded inline-block mr-1" target="_blank" rel="noopener noreferrer">Code</a>
+                            <span class="text-gray-400 mx-1">|</span>
+                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleAbstract('reviewgrounder-abstract');">Abstract</a>
+                            <span class="text-gray-400 mx-1">|</span>
+                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleBibtex('reviewgrounder-bibtex');">BibTeX</a>
+                        </div>
+                        <div id="reviewgrounder-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
+                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                                Peer reviews generated by language models tend to be superficial, lacking paper-specific evidence. We introduce REVIEWBENCH, a benchmark that evaluates review text according to paper-specific rubrics derived from official guidelines, the paper's content, and human-written reviews. We also propose REVIEWGROUNDER, a framework that decomposes reviewing into drafting and grounding stages, enriching shallow drafts via targeted evidence consolidation. REVIEWGROUNDER outperforms larger models including GPT-4.1 and DeepSeek-R1-670B across multiple quality dimensions.
+                            </p>
+                        </div>
+                        <div id="reviewgrounder-bibtex" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px; font-family: monospace; font-size: 0.75rem; white-space: pre-wrap; overflow-x: auto;">@inproceedings{li2026reviewgrounder,
+    title={ReviewGrounder: Improving Review Substantiveness with Rubric-Guided, Tool-Integrated Agents},
+    author={Li, Zhuofeng and Lu, Yi and Jiang, Dongfu and Zhang, Haoxiang and Bai, Yuyang and Li, Chuan and Wang, Yu and Ji, Shuiwang and Xie, Jianwen and Zhang, Yu},
+    booktitle={Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics},
+    year={2026}
+}</div>
+                    </div>
+                </div>
+            </div>
         <!-- Publication - OpenResearcher -->
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                 <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
@@ -329,8 +386,9 @@ li {
                             <span class="font-bold">Zhuofeng Li</span><sup class="text-xs align-top text-blue-500 author-tooltip">*<span class="tooltip-text">Equal contribution</span></sup>,
                             <span id="openresearcher-short">
                                 <span class="font-bold">Dongfu Jiang</span><sup class="text-xs align-top text-blue-500 author-tooltip">*<span class="tooltip-text">Equal contribution</span></sup>,
+                                <span class="font-bold">Xueguang Ma</span>,
                                 <span class="font-bold" style="text-decoration: underline;">Haoxiang Zhang</span>,
-                                <a href="javascript:void(0);" onclick="document.getElementById('openresearcher-short').style.display='none'; document.getElementById('openresearcher-full').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 7 more authors</a>
+                                <a href="javascript:void(0);" onclick="document.getElementById('openresearcher-short').style.display='none'; document.getElementById('openresearcher-full').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 6 more authors</a>
                             </span>
                             <span id="openresearcher-full" style="display: none;">
                                 <span class="font-bold">Dongfu Jiang</span><sup class="text-xs align-top text-blue-500 author-tooltip">*<span class="tooltip-text">Equal contribution</span></sup>,
@@ -404,8 +462,9 @@ li {
                             <span class="font-bold">Pan Lu</span><sup class="text-xs align-top text-blue-500 author-tooltip">*<span class="tooltip-text">Equal contribution</span></sup>,
                             <span class="font-bold">Yifan Gao</span><sup class="text-xs align-top text-blue-500 author-tooltip">*<span class="tooltip-text">Equal contribution</span></sup>,
                             <span id="eubiota-short">
+                                <span class="font-bold">William G. Peng</span>,
                                 <span class="font-bold" style="text-decoration: underline;">Haoxiang Zhang</span>,
-                                <a href="javascript:void(0);" onclick="document.getElementById('eubiota-short').style.display='none'; document.getElementById('eubiota-full').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 12 more authors</a>
+                                <a href="javascript:void(0);" onclick="document.getElementById('eubiota-short').style.display='none'; document.getElementById('eubiota-full').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 11 more authors</a>
                             </span>
                             <span id="eubiota-full" style="display: none;">
                                 <span class="font-bold">William G. Peng</span>,
@@ -962,19 +1021,21 @@ document.addEventListener('keydown', function(event) {
         </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.0.1.</span> <span class="toc-text">
                             CocoaBench: Evaluating Unified Digital Agents in the Wild
                         </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.0.2.</span> <span class="toc-text">
-                            OpenResearcher: A Fully Open Pipeline for Long-Horizon Deep Research Trajectory Synthesis
+                            ReviewGrounder: Improving Review Substantiveness with Rubric-Guided, Tool-Integrated Agents
                         </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.0.3.</span> <span class="toc-text">
-                            Eubiota: Modular Agentic AI for Autonomous Discovery in the Gut Microbiome
+                            OpenResearcher: A Fully Open Pipeline for Long-Horizon Deep Research Trajectory Synthesis
                         </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.0.4.</span> <span class="toc-text">
-                            In-the-Flow Agentic System Optimization for Effective Planning and Tool Use
+                            Eubiota: Modular Agentic AI for Autonomous Discovery in the Gut Microbiome
                         </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.0.5.</span> <span class="toc-text">
-                            Avoiding Structural Pitfalls: Self-Supervised Low-Rank Feature Tuning for Graph Test-Time Adaptation
+                            In-the-Flow Agentic System Optimization for Effective Planning and Tool Use
                         </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.0.6.</span> <span class="toc-text">
-                            Learning from Novel Knowledge: Continual Few-shot Knowledge Graph Completion
+                            Avoiding Structural Pitfalls: Self-Supervised Low-Rank Feature Tuning for Graph Test-Time Adaptation
                         </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.0.7.</span> <span class="toc-text">
-                            Sci-Bench-AIME25: A Multi-Modal Chain-of-Thought Dataset for Advanced Tool-Intergrated Mathematical Reasoning
+                            Learning from Novel Knowledge: Continual Few-shot Knowledge Graph Completion
                         </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.0.8.</span> <span class="toc-text">
-                            GReF: A Unified Generative Framework for Efficient Reranking via Ordered Multi-token Prediction
+                            Sci-Bench-AIME25: A Multi-Modal Chain-of-Thought Dataset for Advanced Tool-Intergrated Mathematical Reasoning
                         </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.0.9.</span> <span class="toc-text">
+                            GReF: A Unified Generative Framework for Efficient Reranking via Ordered Multi-token Prediction
+                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.0.10.</span> <span class="toc-text">
                             SGNet: Efficient Snow Removal Deep Network with a Global Windowing Transformer
                         </span></a></li></ol></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/IsaacGHX">Isaac_GHX </a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr><wbr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
