@@ -985,3 +985,16 @@ new Comments();
 /// <reference path="include/ColorMode.ts" />
 /// <reference path="include/Comments.ts" />
 /// <reference path="include/Expands.ts" />
+// Re-execute inline scripts tagged [data-pjax] after each PJAX navigation.
+// Inline scripts from innerHTML-parsed content are inert by spec and never auto-execute;
+// this listener replaces them with freshly-created script elements that do execute.
+document.addEventListener('pjax:complete', function () {
+    document.querySelectorAll('script[data-pjax]').forEach(function (el) {
+        var code = el.text || el.textContent || el.innerHTML || '';
+        if (!code || !el.parentNode) return;
+        var s = document.createElement('script');
+        s.dataset.pjax = '';
+        s.appendChild(document.createTextNode(code));
+        el.parentNode.replaceChild(s, el);
+    });
+});
