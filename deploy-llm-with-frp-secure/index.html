@@ -1,0 +1,271 @@
+<!DOCTYPE html><html lang="en-us" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>用内网穿透安全地部署 LLM 服务 | Isaac's Blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+ menuSettings: {
+   zoom: "None"
+ },
+ showMathMenu: false,
+ jax: ["input/TeX","output/CommonHTML"],
+ extensions: ["tex2jax.js"],
+ TeX: {
+   extensions: ["AMSmath.js","AMSsymbols.js"],
+   equationNumbers: {
+     autoNumber: "AMS"
+   }
+ },
+ tex2jax: {
+   inlineMath: [["\\(", "\\)"]],
+   displayMath: [["\\[", "\\]"]]
+ }
+});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('/img/building_night.png');
+ --light-background: url('/img/building_bright.png');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+  menuSettings: {
+    zoom: "None"
+  },
+  showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
+  TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js"],
+    equationNumbers: {
+      autoNumber: "AMS"
+    }
+  },
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]]
+  }
+});
+</script><script defer src="/js/mathjax-pjax.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lio2QITWez44KoAo',
+ clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
+ repo: 'Comment4io',
+ owner: 'IsaacGHX',
+ admin: ['IsaacGHX'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);document.addEventListener('pjax:success', _ => bszCaller.fetch(
+ "//busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback", a => {
+  bszTag.texts(a),
+  bszTag.shows()
+}));reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: 'Ov23lio2QITWez44KoAo',
+ clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
+ repo: 'Comment4io',
+ owner: 'IsaacGHX',
+ admin: ['IsaacGHX'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/publication/"><span class="navItemTitle">Publication</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>用内网穿透安全地部署 LLM 服务</h1><div id="post-info"><span>First Post: </span><div class="control"><time datetime="2026-05-02T19:00:00.000Z" id="date"> 2026-05-02</time></div><span>Last Update: </span><div class="control"><time datetime="2026-05-02T20:41:57.329Z" id="updated"> 2026-05-02</time></div><span>Word Count: </span><div class="control">2.9k</div><span>Read Time: </span><div class="control">12 min</div><span>Page View: </span><span class="control" id="busuanzi_value_page_pv">loading...</span></div></div><hr><div id="post-content"><h2 id="写在前面：vllm-潜在的高危漏洞"><a href="#写在前面：vllm-潜在的高危漏洞" class="headerlink" title="写在前面：vllm 潜在的高危漏洞"></a>写在前面：vllm 潜在的高危漏洞</h2><p>先说结论：<strong>不要直接把 LLM 服务（vLLM、Ollama、Jupyter 等）通过 FRP 的 <code>tcp</code> 模式暴露到公网</strong>：</p>
+<ol>
+<li><strong>vLLM 默认无认证</strong>：只要能连上端口就能调 API。</li>
+<li><strong>vLLM 历史 RCE 漏洞</strong>：CVE-2025-62164、CVE-2025-9141、CVE-2025-66448 等，CVSS 都在 8.0+，通过 prompt embedding、tool call、auto_map 都能 RCE。</li>
+<li><strong>FRP <code>tcp</code> 模式直接在公网开端口</strong>：扫描器几小时内就能扫到 OpenAI 兼容 API。</li>
+</ol>
+<p>任何一个单独存在都还能扛，三个叠在一起就是灾难。这篇文章把整套方案重写成安全版本。</p>
+<hr>
+<h2 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h2><p>我们用 FRP 的 <strong>stcp（secret tcp）</strong> 模式，而不是 tcp 模式。区别：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>公网端口</th>
+<th>谁能访问</th>
+<th>安全性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tcp</code></td>
+<td>中转服务器开放固定端口（如 10001）</td>
+<td>任何能扫到这个端口的人</td>
+<td>❌ 等于裸奔</td>
+</tr>
+<tr>
+<td><code>stcp</code></td>
+<td><strong>不开任何公网端口</strong></td>
+<td>必须持有 <code>secretKey</code> 的 visitor</td>
+<td>✅ 公网零暴露</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>最终的访问链路：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[你的笔记本/工作机]<br>   └─ frpc visitor (持有 secretKey)<br>       │  通过中转服务器建立加密隧道<br>       ↓<br>[中转服务器 frps]  ← 只开 SSH (22) 和 FRP 控制端口 (7000)，无业务端口<br>       ↑<br>       │  vLLM 主机主动连出<br>[GPU 主机 vLLM]<br>   └─ frpc (持有同样的 secretKey)<br>   └─ vLLM 监听 127.0.0.1:8888 (不对外)<br>   └─ vLLM 启用 API key<br></code></pre></td></tr></table></figure>
+<p>整条路径上有四把锁：</p>
+<ol>
+<li>SSH 密钥登录（防爆破）</li>
+<li>FRP token（防恶意客户端注册）</li>
+<li>stcp secretKey（防未授权访问 LLM）</li>
+<li>vLLM API key（即便前面都漏了，API 层还有一道）</li>
+</ol>
+<hr>
+<h2 id="一、客户端部署脚本（GPU-主机）"><a href="#一、客户端部署脚本（GPU-主机）" class="headerlink" title="一、客户端部署脚本（GPU 主机）"></a>一、客户端部署脚本（GPU 主机）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-built_in">set</span> -euo pipefail<br><br><span class="hljs-comment"># ============================================================</span><br><span class="hljs-comment"># 安全的 FRP 客户端部署脚本（stcp 模式 + 多重加固）</span><br><span class="hljs-comment"># 用法：</span><br><span class="hljs-comment">#   1. 把下面三个变量从环境变量或外部文件读入，不要硬编码到脚本里</span><br><span class="hljs-comment">#      export FRP_SERVER_ADDR=&quot;your.server.ip&quot;</span><br><span class="hljs-comment">#      export FRP_AUTH_TOKEN=&quot;...&quot;         # openssl rand -hex 32</span><br><span class="hljs-comment">#      export FRP_STCP_SECRET=&quot;...&quot;        # openssl rand -hex 32</span><br><span class="hljs-comment">#   2. bash deploy_frpc.sh</span><br><span class="hljs-comment"># ============================================================</span><br><br><span class="hljs-comment"># ---------- 1. 校验必需的环境变量 ----------</span><br>: <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;FRP_SERVER_ADDR:?need FRP_SERVER_ADDR&#125;</span>&quot;</span><br>: <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;FRP_AUTH_TOKEN:?need FRP_AUTH_TOKEN (openssl rand -hex 32)&#125;</span>&quot;</span><br>: <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;FRP_STCP_SECRET:?need FRP_STCP_SECRET (openssl rand -hex 32)&#125;</span>&quot;</span><br><br><span class="hljs-comment"># ---------- 2. FRP 版本与下载校验 ----------</span><br>FRP_VERSION=<span class="hljs-string">&quot;0.61.0&quot;</span>   <span class="hljs-comment"># 用较新版本，老版本有 CVE</span><br>FRP_TAR_FILE=<span class="hljs-string">&quot;frp_<span class="hljs-variable">$&#123;FRP_VERSION&#125;</span>_linux_amd64.tar.gz&quot;</span><br>FRP_DIR=<span class="hljs-string">&quot;frp_<span class="hljs-variable">$&#123;FRP_VERSION&#125;</span>_linux_amd64&quot;</span><br>DOWNLOAD_URL=<span class="hljs-string">&quot;https://github.com/fatedier/frp/releases/download/v<span class="hljs-variable">$&#123;FRP_VERSION&#125;</span>/<span class="hljs-variable">$&#123;FRP_TAR_FILE&#125;</span>&quot;</span><br><span class="hljs-comment"># 从 GitHub Release 页面 hashes 文件里复制对应版本的 sha256，避免供应链劫持</span><br>EXPECTED_SHA256=<span class="hljs-string">&quot;&lt;paste-sha256-from-github-release-here&gt;&quot;</span><br><br><span class="hljs-comment"># ---------- 3. FRP 服务端配置 ----------</span><br>SERVER_PORT=7000<br><br><span class="hljs-comment"># ---------- 4. 转发的本地 LLM 服务 ----------</span><br>PROXY_NAME=<span class="hljs-string">&quot;llm-service&quot;</span><br>LOCAL_IP=<span class="hljs-string">&quot;127.0.0.1&quot;</span>     <span class="hljs-comment"># 关键：vLLM 必须只监听 127.0.0.1</span><br>LOCAL_PORT=8000<br><br><span class="hljs-comment"># ---------- 5. 下载 + 校验 ----------</span><br><span class="hljs-keyword">if</span> [ ! -d <span class="hljs-string">&quot;<span class="hljs-variable">$FRP_DIR</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[+] Downloading FRP <span class="hljs-variable">$&#123;FRP_VERSION&#125;</span>...&quot;</span><br>    wget -q --show-progress <span class="hljs-string">&quot;<span class="hljs-variable">$DOWNLOAD_URL</span>&quot;</span><br><br>    <span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$EXPECTED_SHA256</span>&quot;</span> != <span class="hljs-string">&quot;&lt;paste-sha256-from-github-release-here&gt;&quot;</span> ]; <span class="hljs-keyword">then</span><br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[+] Verifying SHA256...&quot;</span><br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;EXPECTED_SHA256&#125;</span>  <span class="hljs-variable">$&#123;FRP_TAR_FILE&#125;</span>&quot;</span> | <span class="hljs-built_in">sha256sum</span> -c -<br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[!] SHA256 not set. Strongly recommend pinning EXPECTED_SHA256.&quot;</span><br>    <span class="hljs-keyword">fi</span><br><br>    tar -zxf <span class="hljs-string">&quot;<span class="hljs-variable">$FRP_TAR_FILE</span>&quot;</span><br><span class="hljs-keyword">else</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[=] FRP directory already exists, skipping download.&quot;</span><br><span class="hljs-keyword">fi</span><br><br><span class="hljs-built_in">cd</span> <span class="hljs-string">&quot;<span class="hljs-variable">$FRP_DIR</span>&quot;</span><br><br><span class="hljs-comment"># ---------- 6. 生成 frpc.toml（stcp 模式）----------</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[+] Generating frpc.toml...&quot;</span><br><span class="hljs-built_in">cat</span> &gt; frpc.toml &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">serverAddr = &quot;$&#123;FRP_SERVER_ADDR&#125;&quot;</span><br><span class="hljs-string">serverPort = $&#123;SERVER_PORT&#125;</span><br><span class="hljs-string"></span><br><span class="hljs-string">auth.method = &quot;token&quot;</span><br><span class="hljs-string">auth.token = &quot;$&#123;FRP_AUTH_TOKEN&#125;&quot;</span><br><span class="hljs-string"></span><br><span class="hljs-string"># 强制 TLS，加密 frpc &lt;-&gt; frps 的控制信道</span><br><span class="hljs-string">transport.tls.enable = true</span><br><span class="hljs-string">transport.tls.disableCustomTLSFirstByte = false</span><br><span class="hljs-string"></span><br><span class="hljs-string"># 日志（限制级别和大小，避免被攻击者翻历史请求 / 被日志炸盘）</span><br><span class="hljs-string">log.to = &quot;./frpc.log&quot;</span><br><span class="hljs-string">log.level = &quot;info&quot;</span><br><span class="hljs-string">log.maxDays = 7</span><br><span class="hljs-string"></span><br><span class="hljs-string">[[proxies]]</span><br><span class="hljs-string">name = &quot;$&#123;PROXY_NAME&#125;&quot;</span><br><span class="hljs-string"># 关键：用 stcp（secret tcp）而不是 tcp</span><br><span class="hljs-string"># 公网不会有任何端口开放，只有持有 secretKey 的 visitor 能连上</span><br><span class="hljs-string">type = &quot;stcp&quot;</span><br><span class="hljs-string">secretKey = &quot;$&#123;FRP_STCP_SECRET&#125;&quot;</span><br><span class="hljs-string">localIP = &quot;$&#123;LOCAL_IP&#125;&quot;</span><br><span class="hljs-string">localPort = $&#123;LOCAL_PORT&#125;</span><br><span class="hljs-string">EOF</span><br><br><span class="hljs-comment"># 配置文件含密钥，限制权限</span><br><span class="hljs-built_in">chmod</span> 600 frpc.toml<br><br><span class="hljs-comment"># ---------- 7. 用 systemd 托管，不要 nohup ----------</span><br><span class="hljs-comment"># nohup 启动的进程没有重启策略、没有日志规范、没有用户隔离</span><br><span class="hljs-comment"># 强烈建议改成 systemd 服务（见下文 systemd 单元文件示例）</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[+] Stopping existing frpc instances...&quot;</span><br>pkill -f <span class="hljs-string">&quot;frpc -c ./frpc.toml&quot;</span> 2&gt;/dev/null || <span class="hljs-literal">true</span><br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;[+] Starting frpc...&quot;</span><br><span class="hljs-built_in">nohup</span> ./frpc -c ./frpc.toml &gt; /dev/null 2&gt;&amp;1 &amp;<br><br><span class="hljs-built_in">cat</span> &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">------------------------------------------------------</span><br><span class="hljs-string">Deployment complete (stcp mode).</span><br><span class="hljs-string"></span><br><span class="hljs-string">The service is NOT exposed on any public port.</span><br><span class="hljs-string">To access it from another machine, run an frpc visitor</span><br><span class="hljs-string">with the same secretKey on that client.</span><br><span class="hljs-string"></span><br><span class="hljs-string">Local logs:    $(pwd)/frpc.log</span><br><span class="hljs-string">Config (600):  $(pwd)/frpc.toml</span><br><span class="hljs-string">------------------------------------------------------</span><br><span class="hljs-string">EOF</span><br></code></pre></td></tr></table></figure>
+<p><strong>几个关键变化：</strong></p>
+<ul>
+<li><strong>secret 不再硬编码到脚本里</strong>，从环境变量读取。脚本可以放进 Git，密钥不会泄露。</li>
+<li><strong>FRP 版本升级到 0.61.0</strong>，并加 SHA256 校验防止下载被劫持。</li>
+<li><strong><code>type = &quot;tcp&quot;</code> → <code>type = &quot;stcp&quot;</code></strong>，删除了 <code>remotePort</code>，公网零端口暴露。</li>
+<li><strong>强制 TLS</strong>，加密控制信道。</li>
+<li><strong><code>localIP</code> 必须配合 vLLM 的 <code>--host 127.0.0.1</code></strong>，否则等于白配。</li>
+</ul>
+<hr>
+<h2 id="二、访问端的-visitor-配置（你的工作机-笔记本）"><a href="#二、访问端的-visitor-配置（你的工作机-笔记本）" class="headerlink" title="二、访问端的 visitor 配置（你的工作机/笔记本）"></a>二、访问端的 visitor 配置（你的工作机/笔记本）</h2><p>stcp 模式需要在<strong>访问 LLM 的那台机器</strong>上跑一个 visitor。这是新增的、原来没有的步骤：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-comment"># ~/frp/frpc-visitor.toml</span><br><span class="hljs-attr">serverAddr</span> = <span class="hljs-string">&quot;your.server.ip&quot;</span><br><span class="hljs-attr">serverPort</span> = <span class="hljs-number">7000</span><br><br><span class="hljs-attr">auth.method</span> = <span class="hljs-string">&quot;token&quot;</span><br><span class="hljs-attr">auth.token</span> = <span class="hljs-string">&quot;和 GPU 主机相同的 FRP_AUTH_TOKEN&quot;</span><br><br><span class="hljs-attr">transport.tls.enable</span> = <span class="hljs-literal">true</span><br><br><span class="hljs-section">[[visitors]]</span><br><span class="hljs-attr">name</span> = <span class="hljs-string">&quot;llm-visitor&quot;</span><br><span class="hljs-attr">type</span> = <span class="hljs-string">&quot;stcp&quot;</span><br><span class="hljs-attr">serverName</span> = <span class="hljs-string">&quot;llm-service&quot;</span>        <span class="hljs-comment"># 要和 GPU 主机的 proxy name 一致</span><br><span class="hljs-attr">secretKey</span> = <span class="hljs-string">&quot;和 GPU 主机相同的 FRP_STCP_SECRET&quot;</span><br><span class="hljs-attr">bindAddr</span> = <span class="hljs-string">&quot;127.0.0.1&quot;</span><br><span class="hljs-attr">bindPort</span> = <span class="hljs-number">8888</span>                    <span class="hljs-comment"># 你在本机用哪个端口访问</span><br></code></pre></td></tr></table></figure>
+<p>启动后，本地访问 <code>http://127.0.0.1:8888</code> 就等于访问 GPU 主机的 vLLM。整条链路对公网完全不可见。</p>
+<hr>
+<h2 id="三、服务端（中转-VPS）"><a href="#三、服务端（中转-VPS）" class="headerlink" title="三、服务端（中转 VPS）"></a>三、服务端（中转 VPS）</h2><h3 id="frps-toml"><a href="#frps-toml" class="headerlink" title="frps.toml"></a>frps.toml</h3><figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-attr">bindPort</span> = <span class="hljs-number">7000</span><br><br><span class="hljs-attr">auth.method</span> = <span class="hljs-string">&quot;token&quot;</span><br><span class="hljs-attr">auth.token</span> = <span class="hljs-string">&quot;和客户端相同的 FRP_AUTH_TOKEN&quot;</span>   <span class="hljs-comment"># openssl rand -hex 32</span><br><br><span class="hljs-comment"># 强制 TLS，拒绝非 TLS 的 frpc 连入</span><br><span class="hljs-attr">transport.tls.force</span> = <span class="hljs-literal">true</span><br><br><span class="hljs-comment"># 限制可分配端口范围；stcp 用不到，但万一以后加 tcp 代理时也有约束</span><br><span class="hljs-attr">allowPorts</span> = [<br>  &#123; start = <span class="hljs-number">10000</span>, end = <span class="hljs-number">10010</span> &#125;<br>]<br><br><span class="hljs-comment"># Dashboard 仅本地可访问，需要时通过 SSH 隧道看</span><br><span class="hljs-attr">webServer.addr</span> = <span class="hljs-string">&quot;127.0.0.1&quot;</span><br><span class="hljs-attr">webServer.port</span> = <span class="hljs-number">7500</span><br><span class="hljs-attr">webServer.user</span> = <span class="hljs-string">&quot;admin&quot;</span><br><span class="hljs-attr">webServer.password</span> = <span class="hljs-string">&quot;&lt;another-strong-random-password&gt;&quot;</span><br><br><span class="hljs-comment"># 日志</span><br><span class="hljs-attr">log.to</span> = <span class="hljs-string">&quot;/var/log/frps.log&quot;</span><br><span class="hljs-attr">log.level</span> = <span class="hljs-string">&quot;info&quot;</span><br><span class="hljs-attr">log.maxDays</span> = <span class="hljs-number">30</span><br></code></pre></td></tr></table></figure>
+<p><strong>注意点：</strong></p>
+<ul>
+<li><code>auth.token</code> 必须用 <code>openssl rand -hex 32</code> 生成的真随机串，不要用 <code>your_secure_token</code> 这种占位符（我之前就是这么挂的）。</li>
+<li><code>webServer.addr = &quot;127.0.0.1&quot;</code>：dashboard 只听本地，如果你想看，本地起 SSH 隧道：<code>ssh -L 7500:127.0.0.1:7500 user@your.server.ip</code>。</li>
+<li><code>transport.tls.force = true</code>：拒绝任何明文连接。</li>
+</ul>
+<h3 id="systemd-单元文件"><a href="#systemd-单元文件" class="headerlink" title="systemd 单元文件"></a>systemd 单元文件</h3><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-comment"># /etc/systemd/system/frps.service</span><br><span class="hljs-section">[Unit]</span><br><span class="hljs-attr">Description</span>=FRP Server<br><span class="hljs-attr">After</span>=network.target<br><br><span class="hljs-section">[Service]</span><br><span class="hljs-attr">Type</span>=simple<br><span class="hljs-attr">User</span>=frps                              <span class="hljs-comment"># 专用低权限用户，不要用 root</span><br><span class="hljs-attr">Group</span>=frps<br><span class="hljs-attr">WorkingDirectory</span>=/opt/frp<br><span class="hljs-attr">ExecStart</span>=/opt/frp/frps -c /opt/frp/frps.toml<br><span class="hljs-attr">Restart</span>=always<br><span class="hljs-attr">RestartSec</span>=<span class="hljs-number">3</span><br><br><span class="hljs-comment"># 安全加固</span><br><span class="hljs-attr">NoNewPrivileges</span>=<span class="hljs-literal">true</span><br><span class="hljs-attr">PrivateTmp</span>=<span class="hljs-literal">true</span><br><span class="hljs-attr">ProtectSystem</span>=strict<br><span class="hljs-attr">ProtectHome</span>=<span class="hljs-literal">true</span><br><span class="hljs-attr">ReadWritePaths</span>=/var/log<br><span class="hljs-attr">CapabilityBoundingSet</span>=CAP_NET_BIND_SERVICE<br><span class="hljs-attr">AmbientCapabilities</span>=CAP_NET_BIND_SERVICE<br><br><span class="hljs-section">[Install]</span><br><span class="hljs-attr">WantedBy</span>=multi-user.target<br></code></pre></td></tr></table></figure>
+<p>部署：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> useradd -r -s /usr/sbin/nologin frps<br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chown</span> -R frps:frps /opt/frp<br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chmod</span> 600 /opt/frp/frps.toml<br><span class="hljs-built_in">sudo</span> systemctl daemon-reload<br><span class="hljs-built_in">sudo</span> systemctl <span class="hljs-built_in">enable</span> --now frps<br></code></pre></td></tr></table></figure>
+<h3 id="中转服务器防火墙（关键！）"><a href="#中转服务器防火墙（关键！）" class="headerlink" title="中转服务器防火墙（关键！）"></a>中转服务器防火墙（关键！）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 默认拒绝所有入站</span><br><span class="hljs-built_in">sudo</span> ufw default deny incoming<br><span class="hljs-built_in">sudo</span> ufw default allow outgoing<br><br><span class="hljs-comment"># 只放 SSH（建议加源 IP 限制，&lt;your-home-ip&gt; 改成你的固定出口 IP）</span><br><span class="hljs-built_in">sudo</span> ufw allow from &lt;your-home-ip&gt; to any port 22<br><br><span class="hljs-comment"># FRP 控制端口（如果你的 GPU 主机出口 IP 固定，也加 from 限制）</span><br><span class="hljs-built_in">sudo</span> ufw allow from &lt;gpu-host-ip&gt; to any port 7000<br><br><span class="hljs-built_in">sudo</span> ufw <span class="hljs-built_in">enable</span><br></code></pre></td></tr></table></figure>
+<p>stcp 模式下<strong>不需要开放业务端口</strong>，这是它最大的安全优势。</p>
+<hr>
+<h2 id="四、配套的-vLLM-启动方式"><a href="#四、配套的-vLLM-启动方式" class="headerlink" title="四、配套的 vLLM 启动方式"></a>四、配套的 vLLM 启动方式</h2><p>FRP 只是网络层。LLM 服务本身的安全配置同样关键，否则前面的加固都白费：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 用稳定版（截至 2026-05，至少 0.11.1+，避免已知 RCE）</span><br>pip install --upgrade vllm<br><br><span class="hljs-comment"># 2. 用专用低权限用户启动，不要 root</span><br><span class="hljs-built_in">sudo</span> useradd -m -s /bin/bash vllmuser<br><span class="hljs-built_in">sudo</span> -u vllmuser bash -c <span class="hljs-string">&#x27;</span><br><span class="hljs-string">  python -m vllm.entrypoints.openai.api_server \</span><br><span class="hljs-string">    --model your_model \</span><br><span class="hljs-string">    --host 127.0.0.1 \</span><br><span class="hljs-string">    --port 8000 \</span><br><span class="hljs-string">    --api-key &quot;$(openssl rand -hex 32 | tee ~/.vllm_api_key)&quot;</span><br><span class="hljs-string">&#x27;</span><br></code></pre></td></tr></table></figure>
+<p><strong>三个要点：</strong></p>
+<ol>
+<li><strong><code>--host 127.0.0.1</code></strong>：只监听本地，所有外部访问必须经过 FRP，多一道控制。</li>
+<li><strong><code>--api-key</code></strong>：vLLM 默认无认证，必须显式启用。</li>
+<li><strong>专用用户启动</strong>：万一 vLLM 出新 CVE 被 RCE，攻击者拿到的也只是 <code>vllmuser</code> 权限，不是 root。这是这次事故的重要教训——我之前的 vLLM 是用 root 跑的，RCE 直接等于 root。</li>
+</ol>
+<hr>
+<h2 id="五、安全隐患说明（也就是原版方案为什么会被攻陷）"><a href="#五、安全隐患说明（也就是原版方案为什么会被攻陷）" class="headerlink" title="五、安全隐患说明（也就是原版方案为什么会被攻陷）"></a>五、安全隐患说明（也就是原版方案为什么会被攻陷）</h2><p>把原版方案的每个隐患明确列出来，作为反面教材：</p>
+<h3 id="隐患-1：type-quot-tcp-quot-直接在公网开端口"><a href="#隐患-1：type-quot-tcp-quot-直接在公网开端口" class="headerlink" title="隐患 1：type = &quot;tcp&quot; 直接在公网开端口"></a>隐患 1：<code>type = &quot;tcp&quot;</code> 直接在公网开端口</h3><p>原版用 <code>tcp</code> 模式，中转服务器会监听 <code>remotePort = 10001</code>。互联网上的端口扫描器（Shodan、Censys、各种自动化爬虫）几小时内就能发现这个端口。一旦识别出是 OpenAI 兼容 API，就会被自动化工具尝试漏洞利用。</p>
+<p><strong>修复</strong>：改用 <code>stcp</code>，公网零端口。</p>
+<h3 id="隐患-2：vLLM-自身无认证-已知-RCE"><a href="#隐患-2：vLLM-自身无认证-已知-RCE" class="headerlink" title="隐患 2：vLLM 自身无认证 + 已知 RCE"></a>隐患 2：vLLM 自身无认证 + 已知 RCE</h3><p>vLLM 默认不需要任何认证。即使你信任所有能扫到端口的人不会乱用算力，也防不住已知漏洞：</p>
+<ul>
+<li><strong>CVE-2025-62164</strong>（CVSS 8.8）：通过 prompt embedding 触发 <code>torch.load()</code> RCE，影响 0.10.2 ~ 0.11.0</li>
+<li><strong>CVE-2025-9141</strong>：tool call 反序列化 RCE，影响 0.10.0 ~ 0.10.1.1</li>
+<li><strong>CVE-2025-66448</strong>：<code>auto_map</code> 配置 RCE，影响所有 &lt; 0.11.1</li>
+<li><strong>ShadowMQ 系列</strong>：ZMQ + pickle 反序列化 RCE</li>
+</ul>
+<p><strong>修复</strong>：升级到 ≥ 0.11.1，启用 <code>--api-key</code>，绑定 <code>127.0.0.1</code>，用低权限用户跑。</p>
+<h3 id="隐患-3：硬编码的弱-token"><a href="#隐患-3：硬编码的弱-token" class="headerlink" title="隐患 3：硬编码的弱 token"></a>隐患 3：硬编码的弱 token</h3><p>原版的 <code>AUTH_TOKEN=&quot;your_secure_token&quot;</code>，如果忘了改，任何人都能注册 frpc 客户端连到你的 frps。</p>
+<p><strong>修复</strong>：从环境变量读取，<code>openssl rand -hex 32</code> 生成强随机串，配置文件 <code>chmod 600</code>。</p>
+<h3 id="隐患-4：明文-TCP-控制信道"><a href="#隐患-4：明文-TCP-控制信道" class="headerlink" title="隐患 4：明文 TCP 控制信道"></a>隐患 4：明文 TCP 控制信道</h3><p>原版没启用 TLS。frpc 和 frps 之间的控制信道明文传输，中间人可以嗅探 token、看到代理元数据。</p>
+<p><strong>修复</strong>：客户端 <code>transport.tls.enable = true</code>，服务端 <code>transport.tls.force = true</code>。</p>
+<h3 id="隐患-5：nohup-启动-root-跑"><a href="#隐患-5：nohup-启动-root-跑" class="headerlink" title="隐患 5：nohup 启动 + root 跑"></a>隐患 5：<code>nohup</code> 启动 + root 跑</h3><p>原版用 <code>nohup ./frpc &amp;</code>，问题：进程崩了不会重启、日志无管理、跟 shell 生命周期耦合、通常是以当前用户（可能是 root）跑。</p>
+<p><strong>修复</strong>：systemd 服务 + 专用低权限用户 + 资源/能力限制。</p>
+<h3 id="隐患-6：FRP-版本过旧"><a href="#隐患-6：FRP-版本过旧" class="headerlink" title="隐患 6：FRP 版本过旧"></a>隐患 6：FRP 版本过旧</h3><p>原版用 <code>0.56.0</code>。FRP 本身偶尔也出安全更新。</p>
+<p><strong>修复</strong>：跟进新版本，定期 <code>wget</code> 新 release + SHA256 校验。</p>
+<h3 id="隐患-7：中转服务器无防火墙"><a href="#隐患-7：中转服务器无防火墙" class="headerlink" title="隐患 7：中转服务器无防火墙"></a>隐患 7：中转服务器无防火墙</h3><p>如果中转 VPS 上还有别的服务（数据库管理面板、redis、什么测试 API），它们也跟 frps 一起暴露在公网。</p>
+<p><strong>修复</strong>：默认 <code>deny incoming</code>，只白名单放行必要端口。</p>
+<hr>
+<h2 id="总结：四道锁的成本"><a href="#总结：四道锁的成本" class="headerlink" title="总结：四道锁的成本"></a>总结：四道锁的成本</h2><p>完整方案比原版多了几个步骤，但一次配好可以用很久：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>加固项</th>
+<th>一次性成本</th>
+<th>防住的事</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stcp 模式</td>
+<td>改几行配置 + 客户端配 visitor</td>
+<td>所有公网扫描和未授权访问</td>
+</tr>
+<tr>
+<td>FRP TLS</td>
+<td>改两行配置</td>
+<td>token 嗅探、中间人</td>
+</tr>
+<tr>
+<td>vLLM API key + 127.0.0.1</td>
+<td>启动加两个参数</td>
+<td>API 层未授权调用</td>
+</tr>
+<tr>
+<td>vLLM 低权限用户</td>
+<td>创建一个用户</td>
+<td>RCE 时不直接 root</td>
+</tr>
+<tr>
+<td>systemd + 防火墙</td>
+<td>几分钟</td>
+<td>进程稳定性、其他服务暴露</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>代价是几十分钟的部署时间，换来的是不会半夜被矿工把 GPU 卡满。</p>
+<hr>
+<h2 id="附：如果你已经在跑-tcp-模式怎么办"><a href="#附：如果你已经在跑-tcp-模式怎么办" class="headerlink" title="附：如果你已经在跑 tcp 模式怎么办"></a>附：如果你已经在跑 tcp 模式怎么办</h2><p>这不是危言耸听——建议立刻：</p>
+<ol>
+<li><strong>先停服务</strong>：<code>pkill -f frpc &amp;&amp; pkill -f vllm</code></li>
+<li><strong>检查恶意进程</strong>：<code>ps auxf | grep -E &quot;softirq|kobjotw|rondo|xmrig&quot;</code>，重点看伪装成内核线程但<strong>不带方括号</strong>的进程。</li>
+<li><strong>检查持久化</strong>：<code>/etc/init.d/</code>、<code>/etc/cron.d/</code>、<code>/etc/systemd/system/</code>、所有用户的 <code>crontab -l</code>。</li>
+<li><strong>如果发现感染，重装系统比清理更稳妥</strong>——挖矿木马是表象，攻击者拿到 root 后可能装了 rootkit、SSH 后门、PAM 后门，手动清理几乎不可能彻底。</li>
+<li><strong>重装后按本文方案重新部署。</strong></li>
+</ol>
+<div class="github-star-promo"><!-- [新] 现在只有一个 promo-text 的 div--><div class="promo-text">If you find this helpful, please give my project a ⭐<!-- [新] iframe 直接放在文字中间--><iframe src="https://ghbtns.com/github-btn.html?user=IsaacGHX&amp;repo=IsaacGHX.github.io&amp;type=star&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="170" height="30" title="Star this project on GitHub"></iframe>on GitHub! =w=/</div></div><div id="paginator"></div></div><div id="post-footer"><div id="pages" style="justify-content: flex-end"><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2025/11/07/fast_startup/Git-Memo/">Git-Memo0-Config on New Server and Stash Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/2.png" alt="Logo" style="margin:0;border-radius:0;"></a><div id="author-info"><h1 id="Dr"><a href="/about">Isaac IPF</a></h1><div id="description"><p></p></div></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2%EF%BC%9Avllm-%E6%BD%9C%E5%9C%A8%E7%9A%84%E9%AB%98%E5%8D%B1%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.</span> <span class="toc-text">写在前面：vllm 潜在的高危漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">整体架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC%EF%BC%88GPU-%E4%B8%BB%E6%9C%BA%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">一、客户端部署脚本（GPU 主机）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%AE%BF%E9%97%AE%E7%AB%AF%E7%9A%84-visitor-%E9%85%8D%E7%BD%AE%EF%BC%88%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%9C%BA-%E7%AC%94%E8%AE%B0%E6%9C%AC%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">二、访问端的 visitor 配置（你的工作机&#x2F;笔记本）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%9C%8D%E5%8A%A1%E7%AB%AF%EF%BC%88%E4%B8%AD%E8%BD%AC-VPS%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">三、服务端（中转 VPS）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#frps-toml"><span class="toc-number">5.1.</span> <span class="toc-text">frps.toml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#systemd-%E5%8D%95%E5%85%83%E6%96%87%E4%BB%B6"><span class="toc-number">5.2.</span> <span class="toc-text">systemd 单元文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E8%BD%AC%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%98%B2%E7%81%AB%E5%A2%99%EF%BC%88%E5%85%B3%E9%94%AE%EF%BC%81%EF%BC%89"><span class="toc-number">5.3.</span> <span class="toc-text">中转服务器防火墙（关键！）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%85%8D%E5%A5%97%E7%9A%84-vLLM-%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">6.</span> <span class="toc-text">四、配套的 vLLM 启动方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AE%89%E5%85%A8%E9%9A%90%E6%82%A3%E8%AF%B4%E6%98%8E%EF%BC%88%E4%B9%9F%E5%B0%B1%E6%98%AF%E5%8E%9F%E7%89%88%E6%96%B9%E6%A1%88%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E8%A2%AB%E6%94%BB%E9%99%B7%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">五、安全隐患说明（也就是原版方案为什么会被攻陷）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E6%82%A3-1%EF%BC%9Atype-quot-tcp-quot-%E7%9B%B4%E6%8E%A5%E5%9C%A8%E5%85%AC%E7%BD%91%E5%BC%80%E7%AB%AF%E5%8F%A3"><span class="toc-number">7.1.</span> <span class="toc-text">隐患 1：type &#x3D; &quot;tcp&quot; 直接在公网开端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E6%82%A3-2%EF%BC%9AvLLM-%E8%87%AA%E8%BA%AB%E6%97%A0%E8%AE%A4%E8%AF%81-%E5%B7%B2%E7%9F%A5-RCE"><span class="toc-number">7.2.</span> <span class="toc-text">隐患 2：vLLM 自身无认证 + 已知 RCE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E6%82%A3-3%EF%BC%9A%E7%A1%AC%E7%BC%96%E7%A0%81%E7%9A%84%E5%BC%B1-token"><span class="toc-number">7.3.</span> <span class="toc-text">隐患 3：硬编码的弱 token</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E6%82%A3-4%EF%BC%9A%E6%98%8E%E6%96%87-TCP-%E6%8E%A7%E5%88%B6%E4%BF%A1%E9%81%93"><span class="toc-number">7.4.</span> <span class="toc-text">隐患 4：明文 TCP 控制信道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E6%82%A3-5%EF%BC%9Anohup-%E5%90%AF%E5%8A%A8-root-%E8%B7%91"><span class="toc-number">7.5.</span> <span class="toc-text">隐患 5：nohup 启动 + root 跑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E6%82%A3-6%EF%BC%9AFRP-%E7%89%88%E6%9C%AC%E8%BF%87%E6%97%A7"><span class="toc-number">7.6.</span> <span class="toc-text">隐患 6：FRP 版本过旧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E6%82%A3-7%EF%BC%9A%E4%B8%AD%E8%BD%AC%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%A0%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">7.7.</span> <span class="toc-text">隐患 7：中转服务器无防火墙</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A%E5%9B%9B%E9%81%93%E9%94%81%E7%9A%84%E6%88%90%E6%9C%AC"><span class="toc-number">8.</span> <span class="toc-text">总结：四道锁的成本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%EF%BC%9A%E5%A6%82%E6%9E%9C%E4%BD%A0%E5%B7%B2%E7%BB%8F%E5%9C%A8%E8%B7%91-tcp-%E6%A8%A1%E5%BC%8F%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="toc-number">9.</span> <span class="toc-text">附：如果你已经在跑 tcp 模式怎么办</span></a></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/IsaacGHX">Isaac_GHX </a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr><wbr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
