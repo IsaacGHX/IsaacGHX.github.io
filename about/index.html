@@ -116,7 +116,7 @@ lightGallery(document.getElementById('post-bg'), {
    }
  }
 });
-document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/publication/"><span class="navItemTitle">Publication</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>About Me</h1><div id="post-info"><span>First Post: </span><div class="control"><time datetime="2025-01-19T07:18:28.000Z" id="date"> 2025-01-18</time></div><span>Last Update: </span><div class="control"><time datetime="2026-05-12T01:58:00.931Z" id="updated"> 2026-05-11</time></div><span>Word Count: </span><div class="control">2.3k</div><span>Read Time: </span><div class="control">14 min</div><span>Page View: </span><span class="control" id="busuanzi_value_page_pv">loading...</span></div></div><hr><div id="post-content"><style>
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/publication/"><span class="navItemTitle">Publication</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>About Me</h1><div id="post-info"><span>First Post: </span><div class="control"><time datetime="2025-01-19T07:18:28.000Z" id="date"> 2025-01-18</time></div><span>Last Update: </span><div class="control"><time datetime="2026-06-10T23:23:05.426Z" id="updated"> 2026-06-10</time></div><span>Word Count: </span><div class="control">2.5k</div><span>Read Time: </span><div class="control">15 min</div><span>Page View: </span><span class="control" id="busuanzi_value_page_pv">loading...</span></div></div><hr><div id="post-content"><style>
 /* 全局段落文字左对齐 */
 p {
     text-align: left;
@@ -176,8 +176,45 @@ li {
     opacity: 1;
 }
 
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.education-card {
+    display: block;
+}
+
+.education-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: fit-content;
+    text-decoration: none;
+}
+
+.education-title img {
+    display: block;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    object-fit: contain;
+}
+
+html[theme-mode="dark"] .education-icon-light-bg {
+    background: #fff;
+    border-radius: 4px;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
 /* Mobile responsive layout for publications */
 @media screen and (max-width: 768px) {
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+
     /* Make publication items stack vertically on mobile */
     .publication-container {
         flex-direction: column !important;
@@ -224,6 +261,9 @@ li {
             <h1 class="text-4xl font-bold mb-4">
             Haoxiang Zhang 张灏翔
             </h1>
+            <p class="text-sm italic text-blue-100 mb-4" style="text-align: left;">
+                Intelligence is born of bounded stochasticity.
+            </p>
             <div class="flex justify-center space-x-4 mb-4">
                 <a href="mailto:your.email@example.com" class="hover:text-blue-100">
                     <i class="fas fa-envelope" ></i> 
@@ -269,17 +309,14 @@ li {
     <!-- About Me Section -->
     <section id="hello" class="mb-12">
         <h2 class="text-2xl font-bold mb-6 text-blue-600">
-            Hello! 好呀 ~ こんにちは！
+            Hello! 好呀 ~ こんにちは！안녕 ~
         </h2>
         <div class="bg-white rounded-lg shadow-lg p-6">
             <p class="text-gray-700">
-                Hello! I am a passionate data researcher with a strong interest in data centric AI. I am currently pursuing my Master of Science in Data Science @ the University of California San Diego. I now work closely with <a href="https://cseweb.ucsd.edu/~jmcauley/" class="text-blue-600 hover:text-blue-800 font-semibold" target="_blank" rel="noopener noreferrer">Prof. Julian McAuley</a>'s lab @ UCSD and <a href="https://yuzhimanhua.github.io/" class="text-blue-600 hover:text-blue-800 font-semibold" target="_blank" rel="noopener noreferrer">Prof. Yu Zhang</a>'s lab @ Texas A&amp;M University. Previously, I was a visiting student @ Stanford University, working with <a href="https://lupantech.github.io/" class="text-blue-600 hover:text-blue-800 font-semibold" target="_blank" rel="noopener noreferrer">Dr. Pan Lu</a>, where I was fortunate to be advised by <a href="https://yejinc.github.io/" class="text-blue-600 hover:text-blue-800 font-semibold" target="_blank" rel="noopener noreferrer">Prof. Yejin Choi</a> and <a href="https://www.james-zou.com/" class="text-blue-600 hover:text-blue-800 font-semibold" target="_blank" rel="noopener noreferrer">Prof. James Zou</a>.
+                Hello! I am a passionate data researcher focusing on data centric AI. I am currently pursuing my Master of Science in Data Science at UC San Diego. I now work closely with <a href="https://cseweb.ucsd.edu/~jmcauley/" class="text-blue-600 hover:text-blue-800 font-semibold" target="_blank" rel="noopener noreferrer">Prof. Julian McAuley</a>'s lab @ UCSD and <a href="https://yuzhimanhua.github.io/" class="text-blue-600 hover:text-blue-800 font-semibold" target="_blank" rel="noopener noreferrer">Prof. Yu Zhang</a>'s lab @ Texas A&amp;M University. Previously, I was a visiting student @ Stanford University, working with <a href="https://lupantech.github.io/" class="text-blue-600 hover:text-blue-800 font-semibold" target="_blank" rel="noopener noreferrer">Dr. Pan Lu</a>, where I was fortunate to be advised by <a href="https://yejinc.github.io/" class="text-blue-600 hover:text-blue-800 font-semibold" target="_blank" rel="noopener noreferrer">Prof. Yejin Choi</a> and <a href="https://www.james-zou.com/" class="text-blue-600 hover:text-blue-800 font-semibold" target="_blank" rel="noopener noreferrer">Prof. James Zou</a>.
             </p>
             <p class="text-gray-700">
-                My research experienced computer vision, continual learning, out-of-distribution generalization, and agentic LLMs. I enjoy solving complex problems and developing innovative solutions that leverage the power of data.
-            </p>
-            <p class="text-gray-700">
-                Right now I'm exploiring intellegent decision. I'm looking forward to communicating up-to-date new inspirations!
+                My research experienced computer vision, continual learning, out-of-distribution generalization, and agentic LLMs. Right now I'm exploring intelligent decision-making. Looking forward to discussing new inspirations!
             </p>
         </div>
     </section>
@@ -288,25 +325,33 @@ li {
         <h2 class="text-2xl font-bold mb-6 text-blue-600">
             <i class="fas fa-graduation-cap mr-2"></i>&nbsp;Education
         </h2>
-        <div class="grid gap-6">
-            <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <h4 class="font-bold text-lg text-blue-500">University of California San Diego</h4>
+        <div class="education-grid">
+            <div class="education-card bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <a href="https://ucsd.edu/" class="education-title font-bold text-lg text-blue-500" target="_blank" rel="noopener noreferrer" class='item-img' data-src='/img/education-ucsd.ico'><img src="/img/education-ucsd.ico" alt="UC San Diego icon">
+                    <span>University of California San Diego</span>
+                </a>
                 <p class="text-gray-600">Master of Science in Data Science (Expected)</p>
                 <p class="text-gray-600">09/2025 - 06/2027</p>
             </div>
-            <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <h4 class="font-bold text-lg text-blue-500">Shanghai University</h4>
+            <div class="education-card bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <a href="https://en.shu.edu.cn/" class="education-title font-bold text-lg text-blue-500" target="_blank" rel="noopener noreferrer" class='item-img' data-src='/img/education-shu.png'><img src="/img/education-shu.png" alt="Shanghai University logo" class="education-icon-light-bg">
+                    <span>Shanghai University</span>
+                </a>
                 <p class="text-gray-600">Bachelor of Engineering in Data Science & Big Data Technology</p>
                 <p class="text-gray-600">09/2021 - 06/2025</p>
             </div>
-            <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <h4 class="font-bold text-lg text-blue-500">Hong Kong University of Science and Technology</h4>
+            <div class="education-card bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <a href="https://hkust.edu.hk/" class="education-title font-bold text-lg text-blue-500" target="_blank" rel="noopener noreferrer" class='item-img' data-src='/img/education-hkust.ico'><img src="/img/education-hkust.ico" alt="HKUST icon" class="education-icon-light-bg">
+                    <span>Hong Kong University of Science and Technology</span>
+                </a>
                 <p class="text-gray-600">Summer Session - Data & Computer Science</p>
                 <p class="text-gray-600">08/2024</p>
             </div>
-            <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <h4 class="font-bold text-lg text-blue-500">University of Pennsylvania, Wharton School</h4>
-                <p class="text-gray-600">Wharton Innovation, Entrepreneurship and Leadership Program & The Global Leadership Program for 
+            <div class="education-card bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <a href="https://www.wharton.upenn.edu/" class="education-title font-bold text-lg text-blue-500" target="_blank" rel="noopener noreferrer" class='item-img' data-src='/img/education-wharton.ico'><img src="/img/education-wharton.ico" alt="The Wharton School icon">
+                    <span>University of Pennsylvania, Wharton School</span>
+                </a>
+                <p class="text-gray-600">Wharton Innovation, Entrepreneurship and Leadership Program & The Global Leadership Program for
                                     Young Scholars.
                 </p>
                 <p class="text-gray-600">07/2023 - 08/2023</p>
@@ -319,6 +364,66 @@ li {
             <i class="fas fa-book-open"></i>&nbsp;Selected Publications
         </h2>
         <div style="display: flex; flex-direction: column; gap: 3rem;">
+        <!-- Publication - Masking Stale Observations -->
+            <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
+                    <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
+                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
+                            <span style="font-size: 0.75rem; font-weight: 600;">arXiv 2026</span>
+                        </div>
+                        <img src="/img/Masking-obs.png" alt="Masking Stale Observations Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/Masking-obs.png')">
+                    </div>
+                    <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
+                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                            Masking Stale Observations Helps Search Agents &ndash; Until It Doesn't: A Regime Map and Its Mechanism
+                        </h4>
+                        <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
+                            <span id="masking-short">
+                                <span class="font-bold" style="text-decoration: underline;">Haoxiang Zhang</span><sup class="text-xs align-top text-blue-500 author-tooltip">*<span class="tooltip-text">Equal contribution</span></sup>,
+                                <span class="font-bold">Qixin Xu</span><sup class="text-xs align-top text-blue-500 author-tooltip">*<span class="tooltip-text">Equal contribution</span></sup>,
+                                <span class="font-bold">Yu Zhang</span><sup class="text-xs align-top text-blue-500 author-tooltip">✝<span class="tooltip-text">Co-senior author</span></sup>,
+                                <span class="font-bold">Julian McAuley</span><sup class="text-xs align-top text-blue-500 author-tooltip">✝<span class="tooltip-text">Co-senior author</span></sup>,
+                                <a href="javascript:void(0);" onclick="document.getElementById('masking-short').style.display='none'; document.getElementById('masking-full').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 3 more authors</a>
+                            </span>
+                            <span id="masking-full" style="display: none;">
+                                <span class="font-bold" style="text-decoration: underline;">Haoxiang Zhang</span><sup class="text-xs align-top text-blue-500 author-tooltip">*<span class="tooltip-text">Equal contribution</span></sup>,
+                                <span class="font-bold">Qixin Xu</span><sup class="text-xs align-top text-blue-500 author-tooltip">*<span class="tooltip-text">Equal contribution</span></sup>,
+                                <span class="font-bold">Zhuofeng Li</span>,
+                                <span class="font-bold">Lei Zhang</span>,
+                                <span class="font-bold">Pengcheng Jiang</span>,
+                                <span class="font-bold">Yu Zhang</span><sup class="text-xs align-top text-blue-500 author-tooltip">✝<span class="tooltip-text">Co-senior author</span></sup>,
+                                <span class="font-bold">Julian McAuley</span><sup class="text-xs align-top text-blue-500 author-tooltip">✝<span class="tooltip-text">Co-senior author</span></sup>
+                            </span>
+                        </p>
+                        <div style="margin-bottom: 0.25rem;">
+                            <a href="https://arxiv.org/abs/2606.00408" class="text-xs px-2 py-1 bg-blue-100 text-blue-700 hover:bg-blue-200 rounded inline-block mr-1" target="_blank" rel="noopener noreferrer">Paper</a>
+                            <span class="text-gray-400 mx-1">|</span>
+                            <a href="https://github.com/i-DeepSearch/observation-masking" class="text-xs px-2 py-1 bg-green-100 text-green-700 hover:bg-green-200 rounded inline-block mr-1" target="_blank" rel="noopener noreferrer">Code</a>
+                            <span class="text-gray-400 mx-1">|</span>
+                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleAbstract('masking-abstract');">Abstract</a>
+                            <span class="text-gray-400 mx-1">|</span>
+                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleBibtex('masking-bibtex');">BibTeX</a>
+                        </div>
+                        <div style="margin-top: 0.5rem;">
+                            <span class="text-xs text-gray-600">
+                                GitHub ⭐
+                                <iframe src="https://ghbtns.com/github-btn.html?user=i-DeepSearch&repo=observation-masking&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="Star Observation Masking on GitHub" style="vertical-align: middle;"></iframe>
+                            </span>
+                        </div>
+                        <div id="masking-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
+                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                                Long-horizon search agents accumulate large amounts of retrieved content across many tool calls, making context-budget efficiency increasingly important. We study stale-observation masking across agent backbones from 4B to 284B parameters and multiple retrievers. Its accuracy gain follows an asymmetric inverted-U: masking adds little under weak retrievers, helps most when strong retrieval is paired with a mid-capacity model, and can hurt saturated models by removing evidence they would otherwise use. The results frame context management as a regime-dependent intervention shaped jointly by retriever recall and a model's implicit filtering capacity.
+                            </p>
+                        </div>
+                        <div id="masking-bibtex" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px; font-family: monospace; font-size: 0.75rem; white-space: pre-wrap; overflow-x: auto;">@article{zhang2026masking,
+    title={Masking Stale Observations Helps Search Agents -- Until It Doesn't: A Regime Map and Its Mechanism},
+    author={Zhang, Haoxiang and Xu, Qixin and Li, Zhuofeng and Zhang, Lei and Jiang, Pengcheng and Zhang, Yu and McAuley, Julian},
+    journal={arXiv preprint arXiv:2606.00408},
+    year={2026}
+}</div>
+                    </div>
+                </div>
+            </div>
         <!-- Publication - DCI -->
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                 <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
@@ -681,60 +786,6 @@ li {
                     </div>
                 </div>
             </div>
-            <!-- Publication 3 -->
-            <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
-                    <!-- 左侧：标签+图片 -->
-                    <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <!-- 毛玻璃会议标签 -->
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">CIKM 2024</span>
-                        </div>
-                        <!-- 图片 -->
-                        <img src="/img/CFKGC.png" alt="CFKGC Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/CFKGC.png')">
-                    </div>
-                    <!-- 右侧内容 -->
-                    <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
-                            Learning from Novel Knowledge: Continual Few-shot Knowledge Graph Completion
-                        </h4>
-                        <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
-                            <span class="font-bold">Zhuofeng Li</span><sup class="text-xs align-top text-blue-500 author-tooltip">*<span class="tooltip-text">Equal contribution</span></sup>,
-                            <span class="font-bold" style="text-decoration: underline;">Haoxiang Zhang</span><sup class="text-xs align-top text-blue-500 author-tooltip">*<span class="tooltip-text">Equal contribution</span></sup>,
-                            <span id="cfkgc-short">
-                                <span class="font-bold">Shichao Pei</span><sup class="text-xs align-top text-blue-500 author-tooltip">✝<span class="tooltip-text">Corresponding author</span></sup>,
-                                <a href="javascript:void(0);" onclick="document.getElementById('cfkgc-short').style.display='none'; document.getElementById('cfkgc-full').style.display='inline'; return false;" class="text-blue-600 hover:text-blue-800">and 2 more authors</a>
-                            </span>
-                            <span id="cfkgc-full" style="display: none;">
-                                <span class="font-bold">Qiannan Zhang</span>,
-                                <span class="font-bold">Ziyi Kou</span>,
-                                <span class="font-bold">Shichao Pei</span><sup class="text-xs align-top text-blue-500 author-tooltip">✝<span class="tooltip-text">Corresponding author</span></sup>
-                            </span>
-                        </p>
-                        <div style="margin-bottom: 0.25rem;">
-                            <a target="_blank" rel="noopener" href="https://dl.acm.org/doi/10.1145/3627673.3679734" class="text-xs px-2 py-1 bg-blue-100 text-blue-700 hover:bg-blue-200 rounded inline-block mr-1">Paper</a>
-                            <span class="text-gray-400 mx-1">|</span>
-                            <a target="_blank" rel="noopener" href="https://github.com/cfkgc-paper/CFKGC-paper/tree/main" class="text-xs px-2 py-1 bg-green-100 text-green-700 hover:bg-green-200 rounded inline-block mr-1">Code</a>
-                            <span class="text-gray-400 mx-1">|</span>
-                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleAbstract('cfkgc-abstract');">Abstract</a>
-                            <span class="text-gray-400 mx-1">|</span>
-                            <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleBibtex('cfkgc-bibtex');">BibTeX</a>
-                        </div>
-                        <div id="cfkgc-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
-                                This work addresses the challenge of continual few-shot learning in knowledge graph completion, enabling models to learn from novel knowledge while preserving previously learned information.
-                            </p>
-                        </div>
-                        <div id="cfkgc-bibtex" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px; font-family: monospace; font-size: 0.75rem; white-space: pre-wrap; overflow-x: auto;">@inproceedings{li2024learning,
-  title={Learning from novel knowledge: Continual few-shot knowledge graph completion},
-  author={Li, Zhuofeng and Zhang, Haoxiang and Zhang, Qiannan and Kou, Ziyi and Pei, Shichao},
-  booktitle={Proceedings of the 33rd ACM International Conference on Information and Knowledge Management},
-  pages={1326--1335},
-  year={2024}
-}</div>
-                    </div>
-                </div>
-            </div>
             <!-- <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                 <h4 class="font-bold text-lg text-blue-500"> Parameter-Efficient Continual Few-Shot Knowledge Graph Completion with Prompt Quantization
                     <span>|</span>
@@ -994,23 +1045,23 @@ document.addEventListener('keydown', window._aboutEscHandler);
 <div id="paginator"></div></div><div id="post-footer"></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/2.png" alt="Logo" style="margin:0;border-radius:0;"></a><div id="author-info"><h1 id="Dr"><a href="/about">Isaac IPF</a></h1><div id="description"><p></p></div></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">
             Haoxiang Zhang 张灏翔
             </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hello"><span class="toc-number">1.1.</span> <span class="toc-text">
-            Hello! 好呀 ~ こんにちは！
+            Hello! 好呀 ~ こんにちは！안녕 ~
         </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#education"><span class="toc-number">1.2.</span> <span class="toc-text">
              Education
-        </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#education"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">University of California San Diego</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#education"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">Shanghai University</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#education"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">Hong Kong University of Science and Technology</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#education"><span class="toc-number">1.2.0.4.</span> <span class="toc-text">University of Pennsylvania, Wharton School</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#publication"><span class="toc-number">1.3.</span> <span class="toc-text">
+        </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#publication"><span class="toc-number">1.3.</span> <span class="toc-text">
              Selected Publications
         </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">
-                            Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction
+                            Masking Stale Observations Helps Search Agents – Until It Doesn&#39;t: A Regime Map and Its Mechanism
                         </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">
-                            Eubiota: Modular Agentic AI for Autonomous Discovery in the Gut Microbiome
+                            Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction
                         </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.3.0.3.</span> <span class="toc-text">
-                            In-the-Flow Agentic System Optimization for Effective Planning and Tool Use
+                            Eubiota: Modular Agentic AI for Autonomous Discovery in the Gut Microbiome
                         </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.3.0.4.</span> <span class="toc-text">
-                            OpenResearcher: A Fully Open Pipeline for Long-Horizon Deep Research Trajectory Synthesis
+                            In-the-Flow Agentic System Optimization for Effective Planning and Tool Use
                         </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.3.0.5.</span> <span class="toc-text">
-                            Avoiding Structural Pitfalls: Self-Supervised Low-Rank Feature Tuning for Graph Test-Time Adaptation
+                            OpenResearcher: A Fully Open Pipeline for Long-Horizon Deep Research Trajectory Synthesis
                         </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.3.0.6.</span> <span class="toc-text">
-                            Learning from Novel Knowledge: Continual Few-shot Knowledge Graph Completion
+                            Avoiding Structural Pitfalls: Self-Supervised Low-Rank Feature Tuning for Graph Test-Time Adaptation
                         </span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#long-term-collaboration"><span class="toc-number">1.4.</span> <span class="toc-text">
          Long-term Collaboration
     </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#long-term-collaboration"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">Lambda, Inc.
