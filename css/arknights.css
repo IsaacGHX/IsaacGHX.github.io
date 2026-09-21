@@ -277,6 +277,11 @@ aside footer {
   font-family: Bender;
   font-weight: bold;
 }
+[theme-mode=light] aside footer {
+  background-color: rgba(255,255,255,0.55);
+  border-radius: 8px;
+  padding-top: 8px;
+}
 #logo {
   user-select: none;
   width: 100%;
