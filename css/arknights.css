@@ -2970,7 +2970,8 @@ a:hover .gt-ico {
 }
 #Archives,
 #Categories,
-#Tags {
+#Tags,
+#Albums {
   margin: 0 10px;
   background-color: var(--theme-bg-trans1);
   overflow-y: auto;
@@ -2978,14 +2979,17 @@ a:hover .gt-ico {
 #Archives,
 #Categories,
 #Tags,
+#Albums,
 #Archives h1,
 #Categories h1,
-#Tags h1 {
+#Tags h1,
+#Albums h1 {
   transition: 0.3s;
 }
 #Archives h1,
 #Categories h1,
-#Tags h1 {
+#Tags h1,
+#Albums h1 {
   margin: 0;
   padding: 0 15px;
   color: var(--theme-text-rev);
@@ -2997,17 +3001,21 @@ a:hover .gt-ico {
   #Archives:hover,
   #Categories:hover,
   #Tags:hover,
+  #Albums:hover,
   #Archives:target,
   #Categories:target,
-  #Tags:target {
+  #Tags:target,
+  #Albums:target {
     background-color: var(--theme-bg-trans2);
   }
   #Archives:hover h1,
   #Categories:hover h1,
   #Tags:hover h1,
+  #Albums:hover h1,
   #Archives:target h1,
   #Categories:target h1,
-  #Tags:target h1 {
+  #Tags:target h1,
+  #Albums:target h1 {
     background-color: var(--theme-highlight);
   }
 }
@@ -3079,6 +3087,58 @@ a:hover .gt-ico {
 }
 #Tags p {
   text-align: center;
+}
+#Albums {
+  height: fit-content;
+  overflow: visible;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+}
+#albums-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-height: 124px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+#albums-grid.expanded {
+  max-height: 2000px;
+}
+.album-cover {
+  display: block;
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease;
+}
+.album-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.album-cover:hover {
+  transform: scale(1.08);
+}
+#albums-toggle {
+  margin-top: 10px;
+  width: 100%;
+  padding: 6px 0;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--theme-bg-trans1);
+  color: var(--theme-text);
+  font-family: BenderLight;
+  font-size: small;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+#albums-toggle:hover {
+  background-color: var(--theme-bg-soft-hover);
 }
 #navigation a {
   width: 100%;
