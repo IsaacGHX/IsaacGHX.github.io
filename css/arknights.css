@@ -3101,8 +3101,8 @@ a:hover .gt-ico {
 #albums-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
-  max-height: 46px;
+  gap: 5px;
+  max-height: 68px;
   overflow: hidden;
   transition: max-height 0.3s ease;
 }
@@ -3112,8 +3112,8 @@ a:hover .gt-ico {
 .album-cover {
   display: block;
   position: relative;
-  width: 21px;
-  height: 21px;
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
   border-radius: 3px;
   overflow: hidden;
