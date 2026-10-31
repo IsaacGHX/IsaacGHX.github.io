@@ -121,9 +121,12 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
   var btn = document.getElementById('albums-toggle');
   if (!grid || !btn || btn.dataset.bound) return;
   btn.dataset.bound = '1';
+  var collapsedHeight = getComputedStyle(grid).maxHeight;
+  var isExpanded = false;
   btn.addEventListener('click', function () {
-    var expanded = grid.classList.toggle('expanded');
-    btn.textContent = expanded ? 'Show less' : 'Show more';
+    isExpanded = !isExpanded;
+    grid.style.maxHeight = isExpanded ? grid.scrollHeight + 'px' : collapsedHeight;
+    btn.textContent = isExpanded ? 'Show less' : 'Show more';
   });
 
   // Spotify-style hover tilt: the cover leans toward the cursor as it
@@ -136,10 +139,12 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
       var py = (e.clientY - rect.top) / rect.height;
       var rotateY = (px - 0.5) * 2 * maxTilt;
       var rotateX = (0.5 - py) * 2 * maxTilt;
+      cover.style.zIndex = '10';
       cover.style.transform = 'perspective(300px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg) scale(1.2)';
     });
     cover.addEventListener('mouseleave', function () {
       cover.style.transform = '';
+      cover.style.zIndex = '';
     });
   }
 

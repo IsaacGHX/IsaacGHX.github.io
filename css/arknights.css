@@ -3102,12 +3102,11 @@ a:hover .gt-ico {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  max-height: 142px;
+  padding: 8px;
+  margin: -8px;
+  max-height: 158px;
   overflow: hidden;
   transition: max-height 0.3s ease;
-}
-#albums-grid.expanded {
-  max-height: 2000px;
 }
 .album-cover {
   display: block;
