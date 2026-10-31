@@ -126,30 +126,20 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
     btn.textContent = expanded ? 'Show less' : 'Show more';
   });
 
-  // Swing a cover slightly left/right like a hanging sign while dragging.
-  function bindSwing(cover) {
-    var dragging = false, startX = 0;
-    var onMove = function (e) {
-      if (!dragging) return;
-      var x = e.touches ? e.touches[0].clientX : e.clientX;
-      var angle = Math.max(-12, Math.min(12, (x - startX) * 0.28));
-      cover.style.transform = 'rotate(' + angle.toFixed(2) + 'deg)';
-    };
-    var onUp = function () {
-      if (!dragging) return;
-      dragging = false;
-      cover.classList.remove('swinging');
+  // Spotify-style hover tilt: the cover leans toward the cursor as it
+  // crosses the artwork, like a corner lifting off the shelf.
+  function bindTilt(cover) {
+    var maxTilt = 14;
+    cover.addEventListener('mousemove', function (e) {
+      var rect = cover.getBoundingClientRect();
+      var px = (e.clientX - rect.left) / rect.width;
+      var py = (e.clientY - rect.top) / rect.height;
+      var rotateY = (px - 0.5) * 2 * maxTilt;
+      var rotateX = (0.5 - py) * 2 * maxTilt;
+      cover.style.transform = 'perspective(300px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg) scale(1.2)';
+    });
+    cover.addEventListener('mouseleave', function () {
       cover.style.transform = '';
-      document.removeEventListener('pointermove', onMove);
-      document.removeEventListener('pointerup', onUp);
-    };
-    cover.addEventListener('pointerdown', function (e) {
-      dragging = true;
-      startX = e.clientX;
-      cover.classList.add('swinging');
-      document.addEventListener('pointermove', onMove);
-      document.addEventListener('pointerup', onUp);
-      e.preventDefault();
     });
   }
 
@@ -187,7 +177,7 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 
   var covers = grid.querySelectorAll('.album-cover');
   for (var i = 0; i < covers.length; i++) {
-    bindSwing(covers[i]);
+    bindTilt(covers[i]);
     applyGrain(covers[i], covers[i].querySelector('img'));
   }
 })();</script></div></div><div id="Archives"><h1>Tag: AIME</h1><div id="Archives-bg"><h2>2025-08</h2><div class="article-item"><div class="control-archive"><time>08-08</time></div><a href="/2025/08/08/solutions/Hand-made-Solution-and-CoT-for-AIME25/" target="_blank">Hand-made Solution and CoT for AIME25'(浅浅手撕 AIME25')</a></div><div id="paginator"><span class="page-number current">1</span></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/2.png" alt="Logo" style="margin:0;border-radius:0;"></a><div id="author-info"><h1 id="Dr"><a href="/about">Isaac IPF</a></h1><div id="description"><p></p></div></div></div><div id="aside-block"><section id="total"><a id="total-archives" href="/archives"><span class="total-title">Archives Total:</span><span class="total-number">16</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">14</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">0</span></div><br><div id="total-view"><span class="total-title" id="busuanzi_container_site_pv">Site View: <span class="total-number" id="busuanzi_value_site_pv">loading...</span></span><br><span class="total-title" id="busuanzi_container_site_uv">Visitor: <span class="total-number" id="busuanzi_value_site_uv">loading...</span></span></div></section></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/IsaacGHX">Isaac_GHX </a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr><wbr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
