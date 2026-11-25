@@ -1,322 +1,255 @@
 (() => {
-  let fetched = false, fetching = false, waiting = false
-  let datas
-  const path = config.root + 'search.json'
-  const input = getElement('#search-input')
-  const nav = getElement('nav')
-  const activeHolder = config.search.activeHolder
-  const blurHolder = config.search.blurHolder
-  const noResult = config.search.noResult
-  const popup = getElement('.search-popup')
-  function fetechData() {
-    fetching = true
-    fetch(path)
-      .then(response => response.text())
-      .then(res => {
-        fetched = true
-        datas = JSON.parse(res)
-        if (waiting === true) {
-          inputEventFunction()
-        }
-      }).catch(() => fetching = false)
+  'use strict'
+  const cfg = config.search
+  const input = document.getElementById('search-input')
+  const nav = document.querySelector('nav')
+  const popup = document.querySelector('.search-popup')
+  if (!cfg || !input || !nav || !popup) return
+
+  const MAX_RESULTS = 30
+  const SNIPPET_BEFORE = 20
+  const SNIPPET_AFTER = 80
+  const state = { docs: null, loading: null, failed: false }
+
+  const escapeHTML = (s) => s.replace(/[&<>"']/g, (c) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[c])
+
+  // Decode entities left in the index by stripHTML, without executing anything.
+  const decoder = document.createElement('textarea')
+  const toText = (s) => {
+    decoder.innerHTML = String(s || '').replace(/<[^>]+>/g, ' ')
+    return decoder.value.replace(/\s+/g, ' ').trim()
   }
-  if (config.search.preload) {
-    fetechData()
-  }
-  function getIndexByWord(word, text, caseSensitive) {
-    let wordLen = word.length
-    if (wordLen === 0) return []
-    let startPosition = 0
-    let position = []
-    let index = []
-    if (!caseSensitive) {
-      text = text.toLowerCase()
-      word = word.toLowerCase()
-    }
-    while ((position = text.indexOf(word, startPosition)) > -1) {
-      index.push({
-        position: position,
-        word: word
+
+  /** Fetch and normalise the index once; failures can be retried. */
+  function load() {
+    if (state.docs) return Promise.resolve(state.docs)
+    if (state.loading) return state.loading
+    state.failed = false
+    state.loading = fetch(cfg.path, { credentials: 'same-origin' })
+      .then((res) => {
+        if (!res.ok) throw new Error('HTTP ' + res.status)
+        return res.json()
       })
-      startPosition = position + wordLen
-    }
-    return index
-  }
-  function mergeIntoSlice(start, end, index, searchText) {
-    let item = index[index.length - 1]
-    let position = item.position
-    let word = item.word
-    let hits = []
-    let searchTextCountInSlice = 0
-    while (position + word.length <= end && index.length !== 0) {
-      if (word === searchText) {
-        searchTextCountInSlice++
-      }
-      hits.push({
-        position: position,
-        length: word.length
+      .then((data) => {
+        state.docs = (Array.isArray(data) ? data : [])
+          .filter((d) => d && d.title && d.url)
+          .map((d) => {
+            const title = toText(d.title)
+            const content = toText(d.content)
+            return {
+              title, content,
+              titleLower: title.toLowerCase(),
+              contentLower: content.toLowerCase(),
+              url: d.url.replace(/\/{2,}/g, '/')
+            }
+          })
+        return state.docs
       })
-      let wordEnd = position + word.length
-      index.pop()
-      while (index.length !== 0) {
-        item = index[index.length - 1]
-        position = item.position
-        word = item.word
-        if (wordEnd > position) {
-          index.pop()
-        } else {
-          break
-        }
+      .catch((err) => {
+        state.failed = true
+        throw err
+      })
+      .finally(() => { state.loading = null })
+    return state.loading
+  }
+
+  /** All [start, end) ranges where any keyword occurs, merged and sorted. */
+  function findHits(textLower, keywords) {
+    const hits = []
+    for (const word of keywords) {
+      let from = 0, at
+      while ((at = textLower.indexOf(word, from)) > -1) {
+        hits.push([at, at + word.length])
+        from = at + word.length
       }
     }
-    return {
-      hits: hits,
-      start: start,
-      end: end,
-      TextCount: searchTextCountInSlice
+    hits.sort((a, b) => a[0] - b[0] || b[1] - a[1])
+    const merged = []
+    for (const hit of hits) {
+      const last = merged[merged.length - 1]
+      if (last && hit[0] <= last[1]) last[1] = Math.max(last[1], hit[1])
+      else merged.push(hit.slice())
     }
+    return merged
   }
-  function highlightKeyword(text, slice) {
-    let result = ''
-    let prevEnd = slice.start
-    slice.hits.forEach(hit => {
-      result += text.substring(prevEnd, hit.position)
-      let end = hit.position + hit.length
-      result += `<nobr class="search-keyword">${text.substring(hit.position, end)}</nobr>`
-      prevEnd = end
+
+  function highlight(text, hits, start, end) {
+    let out = '', pos = start
+    for (const [a, b] of hits) {
+      if (b <= start || a >= end) continue
+      const s = Math.max(a, start), e = Math.min(b, end)
+      out += escapeHTML(text.slice(pos, s)) + '<mark class="search-keyword">' + escapeHTML(text.slice(s, e)) + '</mark>'
+      pos = e
+    }
+    return out + escapeHTML(text.slice(pos, end))
+  }
+
+  function search(query) {
+    const phrase = query.toLowerCase()
+    const keywords = [...new Set(phrase.split(/[-\s]+/).filter(Boolean))]
+    if (keywords.length > 1) keywords.push(phrase)
+    const results = []
+    state.docs.forEach((doc, order) => {
+      const titleHits = findHits(doc.titleLower, keywords)
+      const contentHits = findHits(doc.contentLower, keywords)
+      if (!titleHits.length && !contentHits.length) return
+      let matched = 0, inTitle = 0
+      for (const word of keywords) {
+        const t = doc.titleLower.includes(word)
+        if (t || doc.contentLower.includes(word)) matched++
+        if (t) inTitle++
+      }
+      let snippet
+      if (contentHits.length) {
+        const first = contentHits[0][0]
+        const start = Math.max(0, first - SNIPPET_BEFORE)
+        const end = Math.min(doc.content.length, Math.max(first + SNIPPET_AFTER, contentHits[0][1]))
+        snippet = (start > 0 ? '…' : '') + highlight(doc.content, contentHits, start, end) + '…'
+      } else {
+        snippet = escapeHTML(doc.content.slice(0, SNIPPET_AFTER)) + '…'
+      }
+      results.push({
+        matched, inTitle, hits: titleHits.length + contentHits.length, order,
+        html: `<a href="${escapeHTML(doc.url)}" class="recent-post"><b class="search-result-title">` +
+          highlight(doc.title, titleHits, 0, doc.title.length) +
+          `</b><p class="search-result">${snippet}</p></a>`
+      })
     })
-    result += text.substring(prevEnd, slice.end)
-    return result
+    results.sort((a, b) => b.matched - a.matched || b.inTitle - a.inTitle || b.hits - a.hits || a.order - b.order)
+    return results.slice(0, MAX_RESULTS)
   }
-  function inLoading() {
-    getElement('#search-result').innerHTML = '<div id="loading"><div><p>Loading...</p></div></div>'
-  }
-  function onPopupClose() {
-    if (document.querySelector('.up') && document.querySelector('.closed')) {
-      getElement('.navBtn').classList.remove('expanded')
+
+  /* ---------- rendering ---------- */
+
+  const resultBox = () => {
+    let box = document.getElementById('search-result')
+    if (!box) {
+      popup.innerHTML = '<div id="search-result"></div>'
+      box = document.getElementById('search-result')
     }
-    getElement('#search-result').querySelectorAll('a').
-      forEach((item) => item.setAttribute('tabindex', -1))
+    return box
+  }
+
+  function openPopup() {
+    document.body.classList.add('blur')
+    if (document.querySelector('.up') && document.querySelector('.closed')) {
+      document.querySelector('.navBtn')?.classList.add('expanded')
+    }
+    popup.classList.add('open')
+  }
+
+  function closePopup() {
+    if (document.querySelector('.up') && document.querySelector('.closed')) {
+      document.querySelector('.navBtn')?.classList.remove('expanded')
+    }
+    resultBox().querySelectorAll('a').forEach((a) => a.setAttribute('tabindex', '-1'))
     document.body.classList.remove('blur')
     popup.classList.remove('open')
   }
-  function proceedSearch() {
-    document.body.classList.add('blur')
-    if (document.querySelector('.up') && document.querySelector('.closed')) {
-      getElement('.navBtn').classList.add('expanded')
-    }
-    getElement('#search-result').removeAttribute('tabindex')
-    popup.classList.add('open')
-    if (fetched === true) {
-      popup.innerHTML = "<div id='search-result'></div>"
-      document.getElementById('search-result').innerHTML = ''
-    } else {
-      inLoading()
-    }
-  }
-  function inputEventFunction() {
-    let searchText = input.value.trim().toLowerCase()
-    if (!searchText.length) {
-      input.placeholder = activeHolder
-      onPopupClose()
-      return
-    }
-    proceedSearch()
-    if (fetched === false) {
-      return
-    }
-    let keywords = searchText.split(/[-\s]+/)
-    if (keywords.length > 1) {
-      keywords.push(searchText)
-    }
-    let resultItems = []
-    if (searchText.length > 0) {
-      datas.forEach(data => {
-        if (!data.title) {
-          return
-        }
-        let TextCount = 0, TitleCount = 0, ContentCount = 0
-        let title = data.title.trim()
-        let titleInLowerCase = title.toLowerCase()
-        let content = data.content ? data.content.trim().replace(/<[^>]+>/g, '') : ''
-        let contentInLowerCase = content.toLowerCase()
-        let articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/')
-        let indexOfTitle = []
-        let indexOfContent = []
-        keywords.forEach(keyword => {
-          let hitInTitle = getIndexByWord(keyword, titleInLowerCase, false)
-          let hitInContent = getIndexByWord(keyword, contentInLowerCase, false)
-          indexOfTitle = indexOfTitle.concat(hitInTitle)
-          indexOfContent = indexOfContent.concat(hitInContent)
-          if (hitInTitle.length > 0 || hitInContent.length > 0) {
-            TextCount++
-          }
-          if (hitInTitle.length > 0) {
-            TitleCount++
-          }
-          if (hitInTitle.length > 0 || hitInContent.length > 0) {
-            ContentCount++
-          }
-        })
-        if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-          [indexOfTitle, indexOfContent].forEach(index => {
-            index.sort((itemLeft, itemRight) => {
-              if (itemRight.position !== itemLeft.position) {
-                return itemRight.position - itemLeft.position
-              }
-              return itemLeft.word.length - itemRight.word.length
-            })
-          })
 
-          let slicesOfTitle = []
-          let slicesOfContent = []
-          if (indexOfTitle.length !== 0) {
-            let tmp = mergeIntoSlice(0, title.length, indexOfTitle, searchText)
-            slicesOfTitle.push(tmp)
-          }
-          let upperBound = parseInt(config.top_n_per_article, 10)
-          if (upperBound >= 0) {
-            slicesOfContent = slicesOfContent.slice(0, upperBound)
-          }
-          let resultItem = ''
-          if (slicesOfTitle.length !== 0) {
-            resultItem += `<a href="${articleUrl}" class="recent-post"><b class="search-result-title">${highlightKeyword(title, slicesOfTitle[0])}</b>`
-          } else {
-            resultItem += `<a href="${articleUrl}" class="recent-post"><b class="search-result-title">${title}</b>`
-          }
-          if (indexOfContent !== null && indexOfContent.length !== 0) {
-            let item = indexOfContent[indexOfContent.length - 1]
-            let position = item.position
-            let word = item.word
-            let start = position - 20
-            let end = position + 80
-            if (start < 0) {
-              start = 0
-            }
-            if (end < position + word.length) {
-              end = position + word.length
-            }
-            if (end > content.length) {
-              end = content.length
-            }
-            let tmp = mergeIntoSlice(start, end, indexOfContent, searchText)
-            resultItem += `<p class="search-result">${highlightKeyword(content, tmp)}...</p>`
-          } else {
-            resultItem += `<p class="search-result">${content}...</p>`
-          }
-          resultItem += '</a>'
-          resultItems.push({
-            item: resultItem,
-            TextCount: TextCount,
-            TitleCount: TitleCount,
-            ContentCount: ContentCount,
-            id: resultItems.length
-          })
-        }
-      })
-    }
-    popup.scroll({ top: 0, left: 0 })
-    let resultList = getElement('#search-result')
-    if (resultItems.length === 0) {
-      resultList.innerHTML =
-        `<div id="no-result"><p>${format(noResult, `<b>${input.value}</b>`)}</p></div>`
-    } else {
-      resultItems.sort((Left, Right) => {
-        if (Left.TextCount !== Right.TextCount) {
-          return Right.TextCount - Left.TextCount
-        } else if (Left.TitleCount !== Right.TitleCount) {
-          return Right.TitleCount - Left.TitleCount
-        } else if (Left.ContentCount !== Right.ContentCount) {
-          return Right.ContentCount - Left.ContentCount
-        }
-        return Right.id - Left.id
-      })
-      let searchResultList = ""
-      resultItems.forEach(result => {
-        searchResultList += result.item
-      })
-      resultList.innerHTML = searchResultList
-    }
-    if (typeof pjax !== 'undefined') {
-      pjax.refresh(resultList)
-    }
-  }
-  input.addEventListener('keypress', event => {
-    if (event.key === 13) {
-      inputEventFunction()
-    }
-  })
-  let lastEvent = 0
-  function StartSearch() {
-    nav.classList.add('search')
-    nav.classList.add('search-moving')
-    clearTimeout(lastEvent)
-    lastEvent = setTimeout(() => nav.classList.remove('search-moving'), 600)
-    header.closeAll()
-    if (document.querySelector('.up')) {
-      getElement('main').style.pointerEvents = 'none'
-    }
-    input.placeholder = activeHolder
-    if (!fetched) {
-      if (!fetching) {
-        fetechData()
-      }
-      waiting = true
-    }
-  }
-  function EscapeSearch() {
-    if (!nav.classList.contains('search')) {
+  function render() {
+    const query = input.value.trim()
+    if (!query) {
+      input.placeholder = cfg.activeHolder
+      closePopup()
       return
     }
-    nav.classList.remove('search')
+    openPopup()
+    const box = resultBox()
+    if (!state.docs) {
+      if (state.failed) {
+        // Shown until the next keystroke / focus, which retries the download.
+        box.innerHTML = `<div id="no-result"><p>${escapeHTML(cfg.loadFail)}</p></div>`
+      } else {
+        box.innerHTML = '<div id="loading"><div><p>Loading...</p></div></div>'
+        load().then(render, render)
+      }
+      return
+    }
+    const results = search(query)
+    popup.scroll({ top: 0, left: 0 })
+    box.innerHTML = results.length
+      ? results.map((r) => r.html).join('')
+      : `<div id="no-result"><p>${format(escapeHTML(cfg.noResult), `<b>${escapeHTML(query)}</b>`)}</p></div>`
+    if (window.pjax && typeof window.pjax.refresh === 'function') window.pjax.refresh(box)
+  }
+
+  // Coalesce keystrokes into one search per frame.
+  let queued = false
+  const scheduleRender = () => {
+    if (queued) return
+    queued = true
+    requestAnimationFrame(() => { queued = false; render() })
+  }
+
+  /* ---------- open / close ---------- */
+
+  let moveTimer = 0
+  const moving = () => {
     nav.classList.add('search-moving')
-    clearTimeout(lastEvent)
-    lastEvent = setTimeout(() => nav.classList.remove('search-moving'), 600)
-    onPopupClose()
+    clearTimeout(moveTimer)
+    moveTimer = setTimeout(() => nav.classList.remove('search-moving'), 600)
+  }
+
+  function startSearch() {
+    nav.classList.add('search')
+    moving()
+    if (typeof header !== 'undefined') header.closeAll()
+    if (document.querySelector('.up')) document.querySelector('main').style.pointerEvents = 'none'
+    input.placeholder = cfg.activeHolder
+    if (state.failed) state.failed = false
+    load().catch(() => {})
+  }
+
+  function escapeSearch() {
+    if (!nav.classList.contains('search')) return
+    nav.classList.remove('search')
+    moving()
+    closePopup()
     input.value = ''
-    input.placeholder = blurHolder
-    document.removeEventListener('mouseup', EscapeSearch)
-    waiting = false
-    getElement('main').style.pointerEvents = ''
+    input.placeholder = cfg.blurHolder
+    document.querySelector('main').style.pointerEvents = ''
     input.blur()
   }
-  input.addEventListener('keyup', () => {
+
+  const insideResults = (el) => !!el && !!el.closest && !!el.closest('.search-popup')
+
+  input.addEventListener('focus', startSearch)
+  input.addEventListener('input', (e) => {
+    if (e.isComposing) return // wait for IME composition (Chinese / Japanese input) to finish
     nav.classList.add('search')
-    inputEventFunction()
+    state.failed = false
+    scheduleRender()
   })
-  input.addEventListener('focus', () => {
-    StartSearch()
-  })
-  input.addEventListener('blur', event => {
-    if (!event.relatedTarget ||
-      event.relatedTarget.parentElement !== getElement('#search-result')) {
-      EscapeSearch()
+  input.addEventListener('compositionend', scheduleRender)
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.isComposing) {
+      e.preventDefault()
+      render()
+      const first = resultBox().querySelector('a')
+      if (first) first.focus()
     }
   })
-  popup.addEventListener('focusout', event => {
-    if (!event.relatedTarget ||
-      (event.relatedTarget !== input &&
-        event.relatedTarget.parentElement !== getElement('#search-result'))) {
-      EscapeSearch()
-    }
+  input.addEventListener('blur', (e) => {
+    if (!insideResults(e.relatedTarget)) escapeSearch()
   })
-  document.addEventListener('keyup', event => {
-    if (event.key === 'Escape') {
-      EscapeSearch()
-    } else if (event.key === 'f' && 
-      !['INPUT', 'TEXTAREA'].includes(event.target.tagName)) {
-      if (!document.querySelector('.up')) {
-        getElement('.navBtn').classList.remove('hide')
-        header.open()
-      }
-      StartSearch()
+  popup.addEventListener('focusout', (e) => {
+    if (e.relatedTarget !== input && !insideResults(e.relatedTarget)) escapeSearch()
+  })
+  document.addEventListener('keyup', (e) => {
+    if (e.key === 'Escape') {
+      escapeSearch()
+    } else if (e.key === 'f' && !isTypingOrModified(e)) {
+      if (!document.querySelector('.up') && typeof header !== 'undefined') header.open()
+      startSearch()
       input.focus()
     }
   })
-  document.addEventListener('click', event => {
-    if (event.target.tagName === 'A' ||
-      event.target.parentElement.tagName === 'A') {
-      EscapeSearch()
-    }
+  document.addEventListener('click', (e) => {
+    if (e.target instanceof Element && e.target.closest('a')) escapeSearch()
   })
+
+  if (cfg.preload) load().catch(() => {})
 })()

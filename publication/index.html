@@ -1,122 +1,34 @@
-<!DOCTYPE html><html lang="en-us" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Publications | Isaac's Blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+<!DOCTYPE html><html lang="en-us" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdnjs.cloudflare.com https://busuanzi.ibruce.info; style-src 'self' 'unsafe-inline' https:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"><meta name="referrer" content="strict-origin-when-cross-origin"><title>Publications | Isaac's Blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>window.themeAuto = function () {
+  var c = {"mode":"time","lightFrom":16,"lightTo":19}, h = new Date().getHours();
+  if (c.mode === 'auto') return matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  if (c.mode === 'time') return (h >= c.lightFrom && h < c.lightTo) ? 'light' : 'dark';
+  return c.mode.replace('-only', '') === 'light' ? 'light' : 'dark';
+};
+(function () {
+  var m = null;
+  if (!/-only$/.test("time")) {
+    try { m = localStorage.getItem('theme-mode-user'); } catch (e) {}
+  }
+  document.documentElement.setAttribute('theme-mode', m === 'light' || m === 'dark' ? m : themeAuto());
+})();</script><script>var config = {"root":"/","search":{"path":"/search.json","preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found","loadFail":"Search index failed to load. Type again to retry."},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"},"color":{"mode":"time","lightFrom":16,"lightTo":19},"plugins":{"busuanzi":{"fail":"—"},"mathjax":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js","mermaid":"https://unpkg.com/mermaid@10.5.0/dist/mermaid.esm.min.mjs","lightgallery":{"css":["https://unpkg.com/lightgallery@2.7.1/css/lightgallery.css","https://unpkg.com/lightgallery@2.7.1/css/lg-zoom.css","https://unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"],"js":["https://unpkg.com/lightgallery@2.7.1/lightgallery.min.js","https://unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js","https://unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"]},"encrypt":{"css":"/lib/encrypt/hbe.style.css","js":"/lib/encrypt/hbe.js"},"gitalk":{"src":"/js/gitalk.js","clientID":"Ov23lio2QITWez44KoAo","clientSecret":"447a665fc75c690be677605bfd0210a4e15396aa","repo":"Comment4io","owner":"IsaacGHX","admin":["IsaacGHX"],"distractionFreeMode":false},"valine":false,"waline":false,"artalk":false}}</script><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/font/BenderLight.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
   font-family: Bender;
-  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+  src: local('Bender'), url("/font/Bender.ttf") format('truetype');
+  font-display: swap;
 }
 @font-face {
   font-family: BenderLight;
-  src: local('BenderLight'), url("/font/BenderLight.ttf");
+  src: local('BenderLight'), url("/font/BenderLight.woff2") format('woff2');
+  font-display: swap;
 }
 @font-face {
   font-family: 'JetBrains Mono';
-  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
-}
-</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
- menuSettings: {
-   zoom: "None"
- },
- showMathMenu: false,
- jax: ["input/TeX","output/CommonHTML"],
- extensions: ["tex2jax.js"],
- TeX: {
-   extensions: ["AMSmath.js","AMSsymbols.js"],
-   equationNumbers: {
-     autoNumber: "AMS"
-   }
- },
- tex2jax: {
-   inlineMath: [["\\(", "\\)"]],
-   displayMath: [["\\[", "\\]"]]
- }
-});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
- document.documentElement.setAttribute('theme-mode', 'light')
-if (window.localStorage.getItem('theme-mode') === 'dark')
- document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
- font-family: BenderLight;
- src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
-}
-@font-face {
- font-family: 'JetBrains Mono';
- src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
-}</style><style>:root {
- --dark-background: url('/img/building_night.png');
- --light-background: url('/img/building_bright.png');
+  src: local('JetBrains Mono'), url("/font/JetBrainsMono-Regular.woff2") format('woff2');
+  font-display: swap;
+}</style><link rel="stylesheet" href="/lib/fontawesome/css/all.min.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/lib/fontawesome/css/all.min.css"></noscript><style>:root {
+ --dark-background: url('/img/building_night.webp');
+ --light-background: url('/img/building_bright.webp');
  --theme-encrypt-confirm: 'confirm'
-}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
-window.mermaid = mermaid;
-code.paintMermaid();
-</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
-  menuSettings: {
-    zoom: "None"
-  },
-  showMathMenu: false,
-  jax: ["input/TeX","output/CommonHTML"],
-  extensions: ["tex2jax.js"],
-  TeX: {
-    extensions: ["AMSmath.js","AMSsymbols.js"],
-    equationNumbers: {
-      autoNumber: "AMS"
-    }
-  },
-  tex2jax: {
-    inlineMath: [["\\(", "\\)"]],
-    displayMath: [["\\[", "\\]"]]
-  }
-});
-</script><script defer src="/js/mathjax-pjax.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
- clientID: 'Ov23lio2QITWez44KoAo',
- clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
- repo: 'Comment4io',
- owner: 'IsaacGHX',
- admin: ['IsaacGHX'],
- distractionFreeMode: false,
- id: location.pathname
-});
-if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
-lightGallery(document.getElementById('post-bg'), {
-  plugins: [lgZoom,lgThumbnail],
-  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
- cacheBust: false,
- selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
- switches: {'article': Pjax.switches.sideBySide},
- switchesOptions: {
-   'article': {
-     classNames: {
-       remove: "pjax-out",
-       add: "pjax-in"
-     }
-   }
- }
-});
-document.addEventListener("pjax:complete", reset);document.addEventListener('pjax:success', _ => bszCaller.fetch(
- "//busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback", a => {
-  bszTag.texts(a),
-  bszTag.shows()
-}));reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
- clientID: 'Ov23lio2QITWez44KoAo',
- clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
- repo: 'Comment4io',
- owner: 'IsaacGHX',
- admin: ['IsaacGHX'],
- distractionFreeMode: false,
- id: location.pathname
-});
-if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
-lightGallery(document.getElementById('post-bg'), {
-  plugins: [lgZoom,lgThumbnail],
-  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
- cacheBust: false,
- selectors: ['title','article','#aside-block','.pjax-js'],
- switches: {'article': Pjax.switches.sideBySide},
- switchesOptions: {
-   'article': {
-     classNames: {
-       remove: "pjax-out",
-       add: "pjax-in"
-     }
-   }
- }
-});
-document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/publication/"><span class="navItemTitle">Publication</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Publications</h1><div id="post-info"><span>First Post: </span><div class="control"><time datetime="2025-01-19T07:18:28.000Z" id="date"> 2025-01-18</time></div><span>Last Update: </span><div class="control"><time datetime="2026-11-08T23:02:41.788Z" id="updated"> 2026-11-08</time></div><span>Word Count: </span><div class="control">3.7k</div><span>Read Time: </span><div class="control">22 min</div><span>Page View: </span><span class="control" id="busuanzi_value_page_pv">loading...</span></div></div><hr><div id="post-content"><style>
+}</style><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/publication/"><span class="navItemTitle">Publication</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Publications</h1><div id="post-info"><span>First Post: </span><div class="control"><time datetime="2025-01-19T07:18:28.000Z" id="date"> 2025-01-18</time></div><span>Last Update: </span><div class="control"><time datetime="2026-11-25T18:49:24.903Z" id="updated"> 2026-11-25</time></div><span>Word Count: </span><div class="control">3.7k</div><span>Read Time: </span><div class="control">22 min</div><span>Page View: </span><span class="control" id="busuanzi_value_page_pv">loading...</span></div></div><hr><div id="post-content"><style>
 /* 全局段落文字左对齐 */
 p {
     text-align: left;
@@ -176,35 +88,7 @@ li {
     opacity: 1;
 }
 
-.publication-filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-bottom: 2rem;
-}
-
-.publication-filter {
-    border: 1px solid rgba(59, 130, 246, 0.35);
-    border-radius: 999px;
-    padding: 0.45rem 1rem;
-    background: rgba(219, 234, 254, 0.45);
-    color: #2563eb;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-[theme-mode="light"] .publication-filter {
-    text-shadow: none;
-}
-
-.publication-filter:hover,
-.publication-filter.active {
-    border-color: #2563eb;
-    background: #2563eb;
-    color: #fff;
-}
+/* .publication-filters / .publication-filter: styled by the theme (custom.styl) */
 
 /* Mobile responsive layout for publications */
 @media screen and (max-width: 768px) {
@@ -253,15 +137,13 @@ li {
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                 <div class="publication-container" data-category="agentic" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">arXiv 2026</span>
-                        </div>
+                        <div class="venue-badge is-preprint"><span>arXiv 2026</span></div>
                         <div style="background-color: #f3f4f6; border-radius: 8px; padding: 6px;">
-                            <img src="/img/srd_teaser.png" alt="SRD Preview" style="width: 100%; height: auto; border-radius: 6px; cursor: pointer;" onclick="openImageModal(event, '/img/srd_teaser.png')">
+                            <img src="/img/thumb/srd_teaser.webp" loading="lazy" decoding="async" alt="SRD Preview" style="width: 100%; height: auto; border-radius: 6px; cursor: pointer;" onclick="openImageModal(event, '/img/full/srd_teaser.webp')">
                         </div>
                     </div>
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="Self-Retrospection-Distillation-Turning-Post-hoc-Experiences-into-Prior-Foresight" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             Self-Retrospection Distillation: Turning Post-hoc Experiences into Prior Foresight
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -305,7 +187,7 @@ li {
                             </span>
                         </div>
                         <div id="pub-srd-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 Reinforcement learning with verifiable rewards (RLVR) mainly learns from scalar outcome rewards, so in group-relative training the signal vanishes whenever every rollout in a group receives the same reward, even though the trajectories still reveal what the task requires and where the agent fails. We introduce prospective learning, which uses past experience to train the predictions an agent makes before it acts, and implement it as Self-Retrospection Distillation (SRD), which distills lessons from completed trajectories into trajectory-blind foresight for the same policy; foresight is used only as a training target and is never produced at inference time. Across 10 tool-integrated reasoning and long-horizon agent tasks, SRD improves over RLVR and self-distillation baselines by up to 24.2 points, with the largest gains when many rollout groups are reward-uniform; in a 2B-parameter setting where 98% of groups fail entirely, RLVR alone reaches 0.0% success while RLVR with SRD reaches 60.6% under the same rollout budget.
                             </p>
                         </div>
@@ -322,13 +204,11 @@ li {
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                 <div class="publication-container" data-category="agentic" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">EMNLP 2026</span>
-                        </div>
-                        <img src="/img/Masking-obs.png" alt="Masking Stale Observations Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/Masking-obs.png')">
+                        <div class="venue-badge"><span>EMNLP 2026</span></div>
+                        <img src="/img/thumb/Masking-obs.webp" loading="lazy" decoding="async" alt="Masking Stale Observations Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/Masking-obs.webp')">
                     </div>
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="Masking-Stale-Observations-Helps-Search-Agents-Until-It-Doesn-t-A-Regime-Map-and-Its-Mechanism" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             Masking Stale Observations Helps Search Agents &ndash; Until It Doesn't: A Regime Map and Its Mechanism
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -365,7 +245,7 @@ li {
                             </span>
                         </div>
                         <div id="masking-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 Long-horizon search agents accumulate large amounts of retrieved content across many tool calls, making context-budget efficiency increasingly important. We study stale-observation masking across agent backbones from 4B to 284B parameters and multiple retrievers. Its accuracy gain follows an asymmetric inverted-U: masking adds little under weak retrievers, helps most when strong retrieval is paired with a mid-capacity model, and can hurt saturated models by removing evidence they would otherwise use. The results frame context management as a regime-dependent intervention shaped jointly by retriever recall and a model's implicit filtering capacity.
                             </p>
                         </div>
@@ -382,13 +262,11 @@ li {
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                 <div class="publication-container" data-category="agentic" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">✨ NIPS 2026 Spotlight</span>
-                        </div>
-                        <img src="/img/DCI.png" alt="DCI Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/DCI.png')">
+                        <div class="venue-badge is-award"><span>✨ NIPS 2026 Spotlight</span></div>
+                        <img src="/img/thumb/DCI.webp" loading="lazy" decoding="async" alt="DCI Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/DCI.webp')">
                     </div>
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="Beyond-Semantic-Similarity-Rethinking-Retrieval-for-Agentic-Search-via-Direct-Corpus-Interaction" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -438,7 +316,7 @@ li {
                             </span>
                         </div>
                         <div id="dci-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 Modern retrieval systems expose a corpus through a fixed similarity interface that compresses access into a single top-k retrieval step before reasoning, limiting agentic search capabilities requiring exact lexical matching, sparse clue combinations, and iterative hypothesis refinement. We propose Direct Corpus Interaction (DCI), enabling agents to search raw corpora using general-purpose tools like grep and shell commands without embedding models or vector indices. DCI substantially outperforms traditional sparse, dense, and reranking approaches on BRIGHT and BEIR benchmarks, while achieving strong results on BrowseComp-Plus and multi-hop question answering tasks.
                             </p>
                         </div>
@@ -455,13 +333,11 @@ li {
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                 <div class="publication-container" data-category="agentic" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">arXiv 2026</span>
-                        </div>
-                        <img src="/img/DR-DCI.png" alt="DR-DCI Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/DR-DCI.png')">
+                        <div class="venue-badge is-preprint"><span>arXiv 2026</span></div>
+                        <img src="/img/thumb/DR-DCI.webp" loading="lazy" decoding="async" alt="DR-DCI Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/DR-DCI.webp')">
                     </div>
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">Dr-DCI: Scaling Direct Corpus Interaction via Dynamic Workspace Expansion</h4>
+                        <h4 id="Dr-DCI-Scaling-Direct-Corpus-Interaction-via-Dynamic-Workspace-Expansion" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">Dr-DCI: Scaling Direct Corpus Interaction via Dynamic Workspace Expansion</h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
                             <span id="dr-dci-short">
                                 <span class="font-bold">Yi Lu</span>,
@@ -498,7 +374,7 @@ li {
                             </span>
                         </div>
                         <div id="dr-dci-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">DR-DCI scales Direct Corpus Interaction by making retrieval an agent-callable action that dynamically expands a local workspace. Agents retrieve relevant documents as needed, then use shell-based DCI operations inside that workspace for precise filtering, comparison, and verification. This design preserves scalable corpus exploration while avoiding the latency and instability of running terminal commands over the full corpus. Across BrowseComp-Plus and large-scale Wiki-18 QA evaluations, DR-DCI improves accuracy and efficiency over raw DCI, retrieval-only methods, and trained search-agent baselines, while remaining effective as corpus size grows from 100K to tens of millions of documents.</p>
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">DR-DCI scales Direct Corpus Interaction by making retrieval an agent-callable action that dynamically expands a local workspace. Agents retrieve relevant documents as needed, then use shell-based DCI operations inside that workspace for precise filtering, comparison, and verification. This design preserves scalable corpus exploration while avoiding the latency and instability of running terminal commands over the full corpus. Across BrowseComp-Plus and large-scale Wiki-18 QA evaluations, DR-DCI improves accuracy and efficiency over raw DCI, retrieval-only methods, and trained search-agent baselines, while remaining effective as corpus size grows from 100K to tens of millions of documents.</p>
                         </div>
                         <div id="dr-dci-bibtex" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px; font-family: monospace; font-size: 0.75rem; white-space: pre-wrap; overflow-x: auto;">@article{lu2026drdci,
     title={Dr-DCI: Scaling Direct Corpus Interaction via Dynamic Workspace Expansion},
@@ -513,13 +389,11 @@ li {
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                 <div class="publication-container" data-category="agentic multimodal" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">COLM 2026</span>
-                        </div>
-                        <img src="/img/cocoabench-main.png" alt="CocoaBench Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/cocoabench-main.png')">
+                        <div class="venue-badge"><span>COLM 2026</span></div>
+                        <img src="/img/thumb/cocoabench-main.webp" loading="lazy" decoding="async" alt="CocoaBench Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/cocoabench-main.webp')">
                     </div>
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="CocoaBench-Evaluating-Unified-Digital-Agents-in-the-Wild" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             CocoaBench: Evaluating Unified Digital Agents in the Wild
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -584,7 +458,7 @@ li {
                             </span>
                         </div>
                         <div id="cocoabench-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 Current LLM agents excel in isolated domains like software engineering and GUI automation, but evaluations rarely test integrated capabilities. CocoaBench introduces 153 human-designed, long-horizon tasks requiring flexible composition of vision, search, and coding skills. Tasks are specified only by an instruction and an automatic evaluation function over the final output, enabling reliable and scalable evaluation. Top systems achieve only 45.1% success, revealing significant gaps in reasoning, tool execution, and visual understanding.
                             </p>
                         </div>
@@ -601,13 +475,11 @@ li {
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                 <div class="publication-container" data-category="agentic" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">ACL 2026</span>
-                        </div>
-                        <img src="/img/ReviewGrounder.png" alt="ReviewGrounder Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/ReviewGrounder.png')">
+                        <div class="venue-badge"><span>ACL 2026</span></div>
+                        <img src="/img/thumb/ReviewGrounder.webp" loading="lazy" decoding="async" alt="ReviewGrounder Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/ReviewGrounder.webp')">
                     </div>
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="ReviewGrounder-Improving-Review-Substantiveness-with-Rubric-Guided-Tool-Integrated-Agents" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             ReviewGrounder: Improving Review Substantiveness with Rubric-Guided, Tool-Integrated Agents
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -644,7 +516,7 @@ li {
                             <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleBibtex('reviewgrounder-bibtex');">BibTeX</a>
                         </div>
                         <div id="reviewgrounder-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 Peer reviews generated by language models tend to be superficial, lacking paper-specific evidence. We introduce REVIEWBENCH, a benchmark that evaluates review text according to paper-specific rubrics derived from official guidelines, the paper's content, and human-written reviews. We also propose REVIEWGROUNDER, a framework that decomposes reviewing into drafting and grounding stages, enriching shallow drafts via targeted evidence consolidation. REVIEWGROUNDER outperforms larger models including GPT-4.1 and DeepSeek-R1-670B across multiple quality dimensions.
                             </p>
                         </div>
@@ -663,15 +535,13 @@ li {
                     <!-- 左侧：标签+图片 -->
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
                         <!-- 毛玻璃会议标签 -->
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">EMNLP 2026</span>
-                        </div>
+                        <div class="venue-badge"><span>EMNLP 2026</span></div>
                         <!-- 图片 -->
-                        <img src="/img/Openresearcher.png" alt="OpenResearcher Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/Openresearcher.png')">
+                        <img src="/img/thumb/Openresearcher.webp" loading="lazy" decoding="async" alt="OpenResearcher Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/Openresearcher.webp')">
                     </div>
                     <!-- 右侧内容 -->
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="OpenResearcher-A-Fully-Open-Pipeline-for-Long-Horizon-Deep-Research-Trajectory-Synthesis" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             OpenResearcher: A Fully Open Pipeline for Long-Horizon Deep Research Trajectory Synthesis
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -724,7 +594,7 @@ li {
                             </span>
                         </div>
                         <div id="openresearcher-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 Training deep research agents requires long-horizon trajectories that interleave search, evidence aggregation, and multi-step reasoning. However, existing data collection pipelines typically rely on proprietary web APIs, making large-scale trajectory synthesis costly, unstable, and difficult to reproduce. We present OpenResearcher, a reproducible pipeline that decouples one-time corpus bootstrapping from multi-turn trajectory synthesis and executes the search-and-browse loop entirely offline using three explicit browser primitives: search, open, and find, over a 15M-document corpus. Using GPT-OSS-120B as the teacher model, we synthesize over 97K trajectories, including a substantial long-horizon tail with 100+ tool calls. Supervised fine-tuning a 30B-A3B backbone on these trajectories achieves 54.8% accuracy on BrowseComp-Plus, a +34.0 point improvement over the base model, while remaining competitive on BrowseComp, GAIA, and xbench-DeepSearch. Because the environment is offline and fully instrumented, it also enables controlled analysis, where our study reveals practical insights into deep research pipeline design, including data filtering strategies, agent configuration choices, and how retrieval success relates to final answer accuracy.
                             </p>
                         </div>
@@ -743,15 +613,13 @@ li {
                     <!-- 左侧：标签+图片 -->
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
                         <!-- 毛玻璃会议标签 -->
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">bioRxiv 2026</span>
-                        </div>
+                        <div class="venue-badge is-preprint"><span>bioRxiv 2026</span></div>
                         <!-- 图片 -->
-                        <img src="/img/Eubiota-1.png" alt="Eubiota Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/Eubiota-1.png')">
+                        <img src="/img/thumb/Eubiota-1.webp" loading="lazy" decoding="async" alt="Eubiota Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/Eubiota-1.webp')">
                     </div>
                     <!-- 右侧内容 -->
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="Eubiota-Modular-Agentic-AI-for-Autonomous-Discovery-in-the-Gut-Microbiome" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             Eubiota: Modular Agentic AI for Autonomous Discovery in the Gut Microbiome
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -802,7 +670,7 @@ li {
                             </span>
                         </div>
                         <div id="eubiota-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 Eubiota is an open-source modular agentic AI framework for autonomous discovery in the gut microbiome. It features specialized agents for planning, execution, verification, and synthesis that collaborate through shared memory and domain-specific tools. Using reinforcement learning to enhance multi-turn reasoning, Eubiota achieves 87.7% benchmark accuracy, outperforming GPT-4.1 by 10.4%. The system identified the uvr-ruv DNA repair pathway critical for bacterial fitness under inflammatory stress, designed a four-strain bacterial consortium that reduced colitis severity in mice, created an antibiotic combination that preserves beneficial gut bacteria, and discovered diet-associated metabolites that suppress NF-κB signaling.
                             </p>
                         </div>
@@ -823,15 +691,13 @@ li {
                     <!-- 左侧：标签+图片 -->
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
                         <!-- 毛玻璃会议标签 -->
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">✨ ICLR 2026 Oral & NeurIPS 2025 Efficient Reasoning Workshop</span>
-                        </div>
+                        <div class="venue-badge is-award"><span>✨ ICLR 2026 Oral & NeurIPS 2025 Efficient Reasoning Workshop</span></div>
                         <!-- 图片 -->
-                        <img src="/img/AgentFlow.png" alt="AgentFlow Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/AgentFlow.png')">
+                        <img src="/img/thumb/AgentFlow.webp" loading="lazy" decoding="async" alt="AgentFlow Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/AgentFlow.webp')">
                     </div>
                     <!-- 右侧内容 -->
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="In-the-Flow-Agentic-System-Optimization-for-Effective-Planning-and-Tool-Use" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             In-the-Flow Agentic System Optimization for Effective Planning and Tool Use
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -878,7 +744,7 @@ li {
                             </span>
                         </div>
                         <div id="ood-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 This paper introduces AgentFlow, a trainable agentic framework that coordinates four specialized modules through evolving memory to optimize planning within multi-turn interactions. The authors propose Flow-GRPO, a training method that converts long-horizon optimization into tractable single-turn updates. Testing across ten benchmarks shows the 7B-scale model achieves substantial improvements, including 14.9% on search, 14.0% on agentic, 14.5% on mathematical, and 4.1% on scientific tasks, even surpassing GPT-4o on some evaluations.
                             </p>
                         </div>
@@ -897,15 +763,13 @@ li {
                     <!-- 左侧：标签+图片 -->
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
                         <!-- 毛玻璃会议标签 -->
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">TMLR</span>
-                        </div>
+                        <div class="venue-badge"><span>TMLR</span></div>
                         <!-- 图片 -->
-                        <img src="/img/PromptOOD.png" alt="PromptOOD Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/PromptOOD.png')">
+                        <img src="/img/thumb/PromptOOD.webp" loading="lazy" decoding="async" alt="PromptOOD Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/PromptOOD.webp')">
                     </div>
                     <!-- 右侧内容 -->
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="Avoiding-Structural-Pitfalls-Self-Supervised-Low-Rank-Feature-Tuning-for-Graph-Test-Time-Adaptation" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             Avoiding Structural Pitfalls: Self-Supervised Low-Rank Feature Tuning for Graph Test-Time Adaptation
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -932,7 +796,7 @@ li {
                             <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleBibtex('tmlr-bibtex');">BibTeX</a>
                         </div>
                         <div id="tmlr-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                  Pre-trained graph neural networks (GNNs) have demonstrated significant success in leveraging large-scale graph data to learn transferable representations. However, their performance often degrades under distribution shifts, particularly in real-world scenarios where test labels are unavailable. To address this challenge, we propose Graph Optimization via Augmented Transformations (GOAT), a novel self-supervised test-time tuning paradigm that adapts pre-trained GNNs to distribution-shifted test data by focusing exclusively on node feature transformations. By avoiding complex and often suboptimal graph structure transformations, GOAT overcomes the limitations of existing data-centric methods.
                                  To further address the issue of transformation collapse, where feature transformations converge to trivial solutions—such as when the test-time learned data-centric transformation degenerates into a constant or identity mapping across different inputs, we introduce a parameter-efficient low-rank adapter that generates diverse transformations tailored to individual input graphs. This design not only enhances adaptation performance but also improves interpretability by avoiding modifications to the graph structure. Through extensive experiments on six real-world datasets with diverse distribution shifts, we demonstrate that GOAT achieves consistent performance improvements across different pre-trained GNN backbones, outperforming state-of-the-art test-time adaptation methods.
                             </p>
@@ -955,15 +819,13 @@ li {
                     <!-- 左侧：标签+图片 -->
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
                         <!-- 毛玻璃会议标签 -->
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">CIKM 2024</span>
-                        </div>
+                        <div class="venue-badge"><span>CIKM 2024</span></div>
                         <!-- 图片 -->
-                        <img src="/img/CFKGC.png" alt="CFKGC Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/CFKGC.png')">
+                        <img src="/img/thumb/CFKGC.webp" loading="lazy" decoding="async" alt="CFKGC Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/CFKGC.webp')">
                     </div>
                     <!-- 右侧内容 -->
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="Learning-from-Novel-Knowledge-Continual-Few-shot-Knowledge-Graph-Completion" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             Learning from Novel Knowledge: Continual Few-shot Knowledge Graph Completion
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -989,7 +851,7 @@ li {
                             <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleBibtex('cfkgc-bibtex');">BibTeX</a>
                         </div>
                         <div id="cfkgc-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 This work addresses the challenge of continual few-shot learning in knowledge graph completion, enabling models to learn from novel knowledge while preserving previously learned information.
                             </p>
                         </div>
@@ -1004,7 +866,7 @@ li {
                 </div>
             </div>
             <!-- <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <h4 class="font-bold text-lg text-blue-500"> Parameter-Efficient Continual Few-Shot Knowledge Graph Completion with Prompt Quantization
+                <h4 id="Parameter-Efficient-Continual-Few-Shot-Knowledge-Graph-Completion-with-Prompt-Quantization-paper-code" class="font-bold text-lg text-blue-500"> Parameter-Efficient Continual Few-Shot Knowledge Graph Completion with Prompt Quantization
                     <span>|</span>
                     <a href="#" class="text-sm text-gray-500 hover:text-gray-700 mr-2">[paper]</a>
                     <span>|</span>
@@ -1030,13 +892,11 @@ li {
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                 <div class="publication-container" data-category="multimodal" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">Dataset</span>
-                        </div>
-                        <img src="/img/AIME25_2.png" alt="AIME25 Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/AIME25_2.png')">
+                        <div class="venue-badge"><span>Dataset</span></div>
+                        <img src="/img/thumb/AIME25_2.webp" loading="lazy" decoding="async" alt="AIME25 Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/AIME25_2.webp')">
                     </div>
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="Sci-Bench-AIME25-A-Multi-Modal-Chain-of-Thought-Dataset-for-Advanced-Tool-Intergrated-Mathematical-Reasoning" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             Sci-Bench-AIME25: A Multi-Modal Chain-of-Thought Dataset for Advanced Tool-Intergrated Mathematical Reasoning
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -1063,7 +923,7 @@ li {
                             <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleBibtex('aime-bibtex');">BibTeX</a>
                         </div>
                         <div id="aime-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 A comprehensive multi-modal dataset designed for advancing mathematical reasoning capabilities through chain-of-thought methodologies and tool integration.
                             </p>
                         </div>
@@ -1083,13 +943,11 @@ li {
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                 <div class="publication-container" data-category="multimodal" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">CIKM 2025</span>
-                        </div>
-                        <img src="/img/GReF.png" alt="GReF Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/GReF.png')">
+                        <div class="venue-badge"><span>CIKM 2025</span></div>
+                        <img src="/img/thumb/GReF.webp" loading="lazy" decoding="async" alt="GReF Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/GReF.webp')">
                     </div>
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="GReF-A-Unified-Generative-Framework-for-Efficient-Reranking-via-Ordered-Multi-token-Prediction" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             GReF: A Unified Generative Framework for Efficient Reranking via Ordered Multi-token Prediction
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -1115,7 +973,7 @@ li {
                             <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleBibtex('gref-bibtex');">BibTeX</a>
                         </div>
                         <div id="gref-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 A novel generative framework that enhances reranking efficiency through ordered multi-token prediction, providing improved performance in information retrieval tasks.
                             </p>
                         </div>
@@ -1132,13 +990,11 @@ li {
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                 <div class="publication-container" data-category="multimodal" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">Mathematics</span>
-                        </div>
-                        <img src="/img/SGNET.png" alt="SGNet Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/SGNET.png')">
+                        <div class="venue-badge"><span>Mathematics</span></div>
+                        <img src="/img/thumb/SGNET.webp" loading="lazy" decoding="async" alt="SGNet Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/SGNET.webp')">
                     </div>
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="SGNet-Efficient-Snow-Removal-Deep-Network-with-a-Global-Windowing-Transformer" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             SGNet: Efficient Snow Removal Deep Network with a Global Windowing Transformer
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -1154,7 +1010,7 @@ li {
                             <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleBibtex('sgnet-bibtex');">BibTeX</a>
                         </div>
                         <div id="sgnet-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 An efficient deep learning approach for snow removal in images using a global windowing transformer architecture, achieving state-of-the-art performance in image restoration tasks.
                             </p>
                         </div>
@@ -1285,6 +1141,8 @@ function toggleAbstract(id) {
     if (element) {
         if (element.style.display === 'none' || element.style.display === '') {
             element.style.display = 'block';
+            // 打字机效果展开（由主题 arknights.js 提供）
+            if (typeof window.typeOut === 'function') window.typeOut(element);
         } else {
             element.style.display = 'none';
         }
@@ -1370,30 +1228,4 @@ window._pubEscHandler = function(event) {
 };
 document.addEventListener('keydown', window._pubEscHandler);
 </script>
-<div id="paginator"></div></div><div id="post-footer"></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/2.png" alt="Logo" style="margin:0;border-radius:0;"></a><div id="author-info"><h1 id="Dr"><a href="/about">Isaac IPF</a></h1><div id="description"><p></p></div></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.</span> <span class="toc-text">
-                            Self-Retrospection Distillation: Turning Post-hoc Experiences into Prior Foresight
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">2.</span> <span class="toc-text">
-                            Masking Stale Observations Helps Search Agents – Until It Doesn&#39;t: A Regime Map and Its Mechanism
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">3.</span> <span class="toc-text">
-                            Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">4.</span> <span class="toc-text">Dr-DCI: Scaling Direct Corpus Interaction via Dynamic Workspace Expansion</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">5.</span> <span class="toc-text">
-                            CocoaBench: Evaluating Unified Digital Agents in the Wild
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">6.</span> <span class="toc-text">
-                            ReviewGrounder: Improving Review Substantiveness with Rubric-Guided, Tool-Integrated Agents
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">7.</span> <span class="toc-text">
-                            OpenResearcher: A Fully Open Pipeline for Long-Horizon Deep Research Trajectory Synthesis
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">8.</span> <span class="toc-text">
-                            Eubiota: Modular Agentic AI for Autonomous Discovery in the Gut Microbiome
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">9.</span> <span class="toc-text">
-                            In-the-Flow Agentic System Optimization for Effective Planning and Tool Use
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">10.</span> <span class="toc-text">
-                            Avoiding Structural Pitfalls: Self-Supervised Low-Rank Feature Tuning for Graph Test-Time Adaptation
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">11.</span> <span class="toc-text">
-                            Learning from Novel Knowledge: Continual Few-shot Knowledge Graph Completion
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">12.</span> <span class="toc-text">
-                            Sci-Bench-AIME25: A Multi-Modal Chain-of-Thought Dataset for Advanced Tool-Intergrated Mathematical Reasoning
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">13.</span> <span class="toc-text">
-                            GReF: A Unified Generative Framework for Efficient Reranking via Ordered Multi-token Prediction
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">14.</span> <span class="toc-text">
-                            SGNet: Efficient Snow Removal Deep Network with a Global Windowing Transformer
-                        </span></a></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/IsaacGHX">Isaac_GHX </a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr><wbr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
+<div id="paginator"></div></div><div id="post-footer"></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" data-egg="" id="logo"><img class="logo-main" src="/img/logo-dragon.png" alt="Logo" style="margin:0;border-radius:0;"></a><div id="author-info"><h1 id="Dr"><a href="/about">Isaac IPF</a></h1><div id="description"><p></p></div></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Self-Retrospection-Distillation-Turning-Post-hoc-Experiences-into-Prior-Foresight"><span class="toc-number">1.</span> <span class="toc-text">Self-Retrospection Distillation: Turning Post-hoc Experiences into Prior Foresight</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Masking-Stale-Observations-Helps-Search-Agents-Until-It-Doesn-t-A-Regime-Map-and-Its-Mechanism"><span class="toc-number">2.</span> <span class="toc-text">Masking Stale Observations Helps Search Agents – Until It Doesn&#39;t: A Regime Map and Its Mechanism</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Beyond-Semantic-Similarity-Rethinking-Retrieval-for-Agentic-Search-via-Direct-Corpus-Interaction"><span class="toc-number">3.</span> <span class="toc-text">Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Dr-DCI-Scaling-Direct-Corpus-Interaction-via-Dynamic-Workspace-Expansion"><span class="toc-number">4.</span> <span class="toc-text">Dr-DCI: Scaling Direct Corpus Interaction via Dynamic Workspace Expansion</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CocoaBench-Evaluating-Unified-Digital-Agents-in-the-Wild"><span class="toc-number">5.</span> <span class="toc-text">CocoaBench: Evaluating Unified Digital Agents in the Wild</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ReviewGrounder-Improving-Review-Substantiveness-with-Rubric-Guided-Tool-Integrated-Agents"><span class="toc-number">6.</span> <span class="toc-text">ReviewGrounder: Improving Review Substantiveness with Rubric-Guided, Tool-Integrated Agents</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OpenResearcher-A-Fully-Open-Pipeline-for-Long-Horizon-Deep-Research-Trajectory-Synthesis"><span class="toc-number">7.</span> <span class="toc-text">OpenResearcher: A Fully Open Pipeline for Long-Horizon Deep Research Trajectory Synthesis</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Eubiota-Modular-Agentic-AI-for-Autonomous-Discovery-in-the-Gut-Microbiome"><span class="toc-number">8.</span> <span class="toc-text">Eubiota: Modular Agentic AI for Autonomous Discovery in the Gut Microbiome</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#In-the-Flow-Agentic-System-Optimization-for-Effective-Planning-and-Tool-Use"><span class="toc-number">9.</span> <span class="toc-text">In-the-Flow Agentic System Optimization for Effective Planning and Tool Use</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Avoiding-Structural-Pitfalls-Self-Supervised-Low-Rank-Feature-Tuning-for-Graph-Test-Time-Adaptation"><span class="toc-number">10.</span> <span class="toc-text">Avoiding Structural Pitfalls: Self-Supervised Low-Rank Feature Tuning for Graph Test-Time Adaptation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Learning-from-Novel-Knowledge-Continual-Few-shot-Knowledge-Graph-Completion"><span class="toc-number">11.</span> <span class="toc-text">Learning from Novel Knowledge: Continual Few-shot Knowledge Graph Completion</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sci-Bench-AIME25-A-Multi-Modal-Chain-of-Thought-Dataset-for-Advanced-Tool-Intergrated-Mathematical-Reasoning"><span class="toc-number">12.</span> <span class="toc-text">Sci-Bench-AIME25: A Multi-Modal Chain-of-Thought Dataset for Advanced Tool-Intergrated Mathematical Reasoning</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GReF-A-Unified-Generative-Framework-for-Efficient-Reranking-via-Ordered-Multi-token-Prediction"><span class="toc-number">13.</span> <span class="toc-text">GReF: A Unified Generative Framework for Efficient Reranking via Ordered Multi-token Prediction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SGNet-Efficient-Snow-Removal-Deep-Network-with-a-Global-Windowing-Transformer"><span class="toc-number">14.</span> <span class="toc-text">SGNet: Efficient Snow Removal Deep Network with a Global Windowing Transformer</span></a></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/IsaacGHX">Isaac_GHX </a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr><wbr></footer></aside></main><canvas id="canvas-dust" aria-hidden="true"></canvas><script defer src="/js/pjax.js"></script><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script></body></html>

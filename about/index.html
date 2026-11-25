@@ -1,122 +1,34 @@
-<!DOCTYPE html><html lang="en-us" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>About Me | Isaac's Blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+<!DOCTYPE html><html lang="en-us" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdnjs.cloudflare.com https://busuanzi.ibruce.info; style-src 'self' 'unsafe-inline' https:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"><meta name="referrer" content="strict-origin-when-cross-origin"><title>About Me | Isaac's Blog</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>window.themeAuto = function () {
+  var c = {"mode":"time","lightFrom":16,"lightTo":19}, h = new Date().getHours();
+  if (c.mode === 'auto') return matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  if (c.mode === 'time') return (h >= c.lightFrom && h < c.lightTo) ? 'light' : 'dark';
+  return c.mode.replace('-only', '') === 'light' ? 'light' : 'dark';
+};
+(function () {
+  var m = null;
+  if (!/-only$/.test("time")) {
+    try { m = localStorage.getItem('theme-mode-user'); } catch (e) {}
+  }
+  document.documentElement.setAttribute('theme-mode', m === 'light' || m === 'dark' ? m : themeAuto());
+})();</script><script>var config = {"root":"/","search":{"path":"/search.json","preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found","loadFail":"Search index failed to load. Type again to retry."},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"},"color":{"mode":"time","lightFrom":16,"lightTo":19},"plugins":{"busuanzi":{"fail":"—"},"mathjax":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js","mermaid":"https://unpkg.com/mermaid@10.5.0/dist/mermaid.esm.min.mjs","lightgallery":{"css":["https://unpkg.com/lightgallery@2.7.1/css/lightgallery.css","https://unpkg.com/lightgallery@2.7.1/css/lg-zoom.css","https://unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"],"js":["https://unpkg.com/lightgallery@2.7.1/lightgallery.min.js","https://unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js","https://unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"]},"encrypt":{"css":"/lib/encrypt/hbe.style.css","js":"/lib/encrypt/hbe.js"},"gitalk":{"src":"/js/gitalk.js","clientID":"Ov23lio2QITWez44KoAo","clientSecret":"447a665fc75c690be677605bfd0210a4e15396aa","repo":"Comment4io","owner":"IsaacGHX","admin":["IsaacGHX"],"distractionFreeMode":false},"valine":false,"waline":false,"artalk":false}}</script><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/font/BenderLight.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
   font-family: Bender;
-  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+  src: local('Bender'), url("/font/Bender.ttf") format('truetype');
+  font-display: swap;
 }
 @font-face {
   font-family: BenderLight;
-  src: local('BenderLight'), url("/font/BenderLight.ttf");
+  src: local('BenderLight'), url("/font/BenderLight.woff2") format('woff2');
+  font-display: swap;
 }
 @font-face {
   font-family: 'JetBrains Mono';
-  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
-}
-</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
- menuSettings: {
-   zoom: "None"
- },
- showMathMenu: false,
- jax: ["input/TeX","output/CommonHTML"],
- extensions: ["tex2jax.js"],
- TeX: {
-   extensions: ["AMSmath.js","AMSsymbols.js"],
-   equationNumbers: {
-     autoNumber: "AMS"
-   }
- },
- tex2jax: {
-   inlineMath: [["\\(", "\\)"]],
-   displayMath: [["\\[", "\\]"]]
- }
-});</script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
- document.documentElement.setAttribute('theme-mode', 'light')
-if (window.localStorage.getItem('theme-mode') === 'dark')
- document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
- font-family: BenderLight;
- src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
-}
-@font-face {
- font-family: 'JetBrains Mono';
- src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
-}</style><style>:root {
- --dark-background: url('/img/building_night.png');
- --light-background: url('/img/building_bright.png');
+  src: local('JetBrains Mono'), url("/font/JetBrainsMono-Regular.woff2") format('woff2');
+  font-display: swap;
+}</style><link rel="stylesheet" href="/lib/fontawesome/css/all.min.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/lib/fontawesome/css/all.min.css"></noscript><style>:root {
+ --dark-background: url('/img/building_night.webp');
+ --light-background: url('/img/building_bright.webp');
  --theme-encrypt-confirm: 'confirm'
-}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
-window.mermaid = mermaid;
-code.paintMermaid();
-</script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
-  menuSettings: {
-    zoom: "None"
-  },
-  showMathMenu: false,
-  jax: ["input/TeX","output/CommonHTML"],
-  extensions: ["tex2jax.js"],
-  TeX: {
-    extensions: ["AMSmath.js","AMSsymbols.js"],
-    equationNumbers: {
-      autoNumber: "AMS"
-    }
-  },
-  tex2jax: {
-    inlineMath: [["\\(", "\\)"]],
-    displayMath: [["\\[", "\\]"]]
-  }
-});
-</script><script defer src="/js/mathjax-pjax.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
- clientID: 'Ov23lio2QITWez44KoAo',
- clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
- repo: 'Comment4io',
- owner: 'IsaacGHX',
- admin: ['IsaacGHX'],
- distractionFreeMode: false,
- id: location.pathname
-});
-if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
-lightGallery(document.getElementById('post-bg'), {
-  plugins: [lgZoom,lgThumbnail],
-  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
- cacheBust: false,
- selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
- switches: {'article': Pjax.switches.sideBySide},
- switchesOptions: {
-   'article': {
-     classNames: {
-       remove: "pjax-out",
-       add: "pjax-in"
-     }
-   }
- }
-});
-document.addEventListener("pjax:complete", reset);document.addEventListener('pjax:success', _ => bszCaller.fetch(
- "//busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback", a => {
-  bszTag.texts(a),
-  bszTag.shows()
-}));reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
- clientID: 'Ov23lio2QITWez44KoAo',
- clientSecret: '447a665fc75c690be677605bfd0210a4e15396aa',
- repo: 'Comment4io',
- owner: 'IsaacGHX',
- admin: ['IsaacGHX'],
- distractionFreeMode: false,
- id: location.pathname
-});
-if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
-lightGallery(document.getElementById('post-bg'), {
-  plugins: [lgZoom,lgThumbnail],
-  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
- cacheBust: false,
- selectors: ['title','article','#aside-block','.pjax-js'],
- switches: {'article': Pjax.switches.sideBySide},
- switchesOptions: {
-   'article': {
-     classNames: {
-       remove: "pjax-out",
-       add: "pjax-in"
-     }
-   }
- }
-});
-document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/publication/"><span class="navItemTitle">Publication</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>About Me</h1><div id="post-info"><span>First Post: </span><div class="control"><time datetime="2025-01-19T07:18:28.000Z" id="date"> 2025-01-18</time></div><span>Last Update: </span><div class="control"><time datetime="2026-11-25T01:21:24.737Z" id="updated"> 2026-11-24</time></div><span>Word Count: </span><div class="control">2.7k</div><span>Read Time: </span><div class="control">16 min</div><span>Page View: </span><span class="control" id="busuanzi_value_page_pv">loading...</span></div></div><hr><div id="post-content"><style>
+}</style><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/publication/"><span class="navItemTitle">Publication</span></a></li><li class="navItem"><a class="navBlock" href="/contact/"><span class="navItemTitle">Contact</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>About Me</h1><div id="post-info"><span>First Post: </span><div class="control"><time datetime="2025-01-19T07:18:28.000Z" id="date"> 2025-01-18</time></div><span>Last Update: </span><div class="control"><time datetime="2026-11-25T18:49:24.903Z" id="updated"> 2026-11-25</time></div><span>Word Count: </span><div class="control">2.7k</div><span>Read Time: </span><div class="control">16 min</div><span>Page View: </span><span class="control" id="busuanzi_value_page_pv">loading...</span></div></div><hr><div id="post-content"><style>
 /* 全局段落文字左对齐 */
 p {
     text-align: left;
@@ -258,7 +170,7 @@ html[theme-mode="dark"] .education-icon-light-bg {
             <div class="mb-6 flex justify-center">
                 <img src="head.jpg" alt="name" class="w-64 h-64 rounded-full profile-image object-cover">
             </div>
-            <h1 class="text-4xl font-bold mb-4">
+            <h1 id="Haoxiang-Zhang-张灏翔" class="text-4xl font-bold mb-4">
             Haoxiang Zhang 张灏翔
             </h1>
             <p class="text-sm italic text-blue-100 mb-4" style="text-align: left;">
@@ -311,7 +223,7 @@ html[theme-mode="dark"] .education-icon-light-bg {
 <div class="container mx-auto px-4 py-8">
     <!-- About Me Section -->
     <section id="hello" class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 text-blue-600">
+        <h2 id="Hello-好呀-こんちは！" class="text-2xl font-bold mb-6 text-blue-600">
             Hello! 好呀 ~ こんちは！
         </h2>
         <div class="bg-white rounded-lg shadow-lg p-6">
@@ -325,7 +237,7 @@ html[theme-mode="dark"] .education-icon-light-bg {
     </section>
     <!-- Publication Section -->
     <section id="publication" class="mb-12" style="margin-top: 4rem;">
-        <h2 class="text-2xl font-bold mb-6 text-blue-600">
+        <h2 id="Selected-Publications" class="text-2xl font-bold mb-6 text-blue-600">
             <i class="fas fa-book-open"></i>&nbsp;Selected Publications
         </h2>
         <div style="display: flex; flex-direction: column; gap: 3rem;">
@@ -333,13 +245,11 @@ html[theme-mode="dark"] .education-icon-light-bg {
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                 <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">EMNLP 2026</span>
-                        </div>
-                        <img src="/img/Masking-obs.png" alt="Masking Stale Observations Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/Masking-obs.png')">
+                        <div class="venue-badge"><span>EMNLP 2026</span></div>
+                        <img src="/img/thumb/Masking-obs.webp" loading="lazy" decoding="async" alt="Masking Stale Observations Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/Masking-obs.webp')">
                     </div>
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="Masking-Stale-Observations-Helps-Search-Agents-Until-It-Doesn-t-A-Regime-Map-and-Its-Mechanism" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             Masking Stale Observations Helps Search Agents &ndash; Until It Doesn't: A Regime Map and Its Mechanism
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -376,7 +286,7 @@ html[theme-mode="dark"] .education-icon-light-bg {
                             </span>
                         </div>
                         <div id="masking-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 Long-horizon search agents accumulate large amounts of retrieved content across many tool calls, making context-budget efficiency increasingly important. We study stale-observation masking across agent backbones from 4B to 284B parameters and multiple retrievers. Its accuracy gain follows an asymmetric inverted-U: masking adds little under weak retrievers, helps most when strong retrieval is paired with a mid-capacity model, and can hurt saturated models by removing evidence they would otherwise use. The results frame context management as a regime-dependent intervention shaped jointly by retriever recall and a model's implicit filtering capacity.
                             </p>
                         </div>
@@ -393,13 +303,11 @@ html[theme-mode="dark"] .education-icon-light-bg {
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                 <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">✨ NIPS 2026 Spotlight</span>
-                        </div>
-                        <img src="/img/DCI.png" alt="DCI Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/DCI.png')">
+                        <div class="venue-badge is-award"><span>✨ NIPS 2026 Spotlight</span></div>
+                        <img src="/img/thumb/DCI.webp" loading="lazy" decoding="async" alt="DCI Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/DCI.webp')">
                     </div>
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="Beyond-Semantic-Similarity-Rethinking-Retrieval-for-Agentic-Search-via-Direct-Corpus-Interaction" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -451,7 +359,7 @@ html[theme-mode="dark"] .education-icon-light-bg {
                             </span>
                         </div>
                         <div id="dci-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 Modern retrieval systems expose a corpus through a fixed similarity interface that compresses access into a single top-k retrieval step before reasoning, limiting agentic search capabilities requiring exact lexical matching, sparse clue combinations, and iterative hypothesis refinement. We propose Direct Corpus Interaction (DCI), enabling agents to search raw corpora using general-purpose tools like grep and shell commands without embedding models or vector indices. DCI substantially outperforms traditional sparse, dense, and reranking approaches on BRIGHT and BEIR benchmarks, while achieving strong results on BrowseComp-Plus and multi-hop question answering tasks.
                             </p>
                         </div>
@@ -470,15 +378,13 @@ html[theme-mode="dark"] .education-icon-light-bg {
                     <!-- 左侧：标签+图片 -->
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
                         <!-- 毛玻璃会议标签 -->
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">bioRxiv 2026</span>
-                        </div>
+                        <div class="venue-badge is-preprint"><span>bioRxiv 2026</span></div>
                         <!-- 图片 -->
-                        <img src="/img/Eubiota-1.png" alt="Eubiota Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/Eubiota-1.png')">
+                        <img src="/img/thumb/Eubiota-1.webp" loading="lazy" decoding="async" alt="Eubiota Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/Eubiota-1.webp')">
                     </div>
                     <!-- 右侧内容 -->
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="Eubiota-Modular-Agentic-AI-for-Autonomous-Discovery-in-the-Gut-Microbiome" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             Eubiota: Modular Agentic AI for Autonomous Discovery in the Gut Microbiome
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -528,7 +434,7 @@ html[theme-mode="dark"] .education-icon-light-bg {
                             </span>
                         </div>
                         <div id="eubiota-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 Eubiota is an open-source modular agentic AI framework for autonomous discovery in the gut microbiome. It features specialized agents for planning, execution, verification, and synthesis that collaborate through shared memory and domain-specific tools. Using reinforcement learning to enhance multi-turn reasoning, Eubiota achieves 87.7% benchmark accuracy, outperforming GPT-4.1 by 10.4%. The system identified the uvr-ruv DNA repair pathway critical for bacterial fitness under inflammatory stress, designed a four-strain bacterial consortium that reduced colitis severity in mice, created an antibiotic combination that preserves beneficial gut bacteria, and discovered diet-associated metabolites that suppress NF-κB signaling.
                             </p>
                         </div>
@@ -549,15 +455,13 @@ html[theme-mode="dark"] .education-icon-light-bg {
                     <!-- 左侧：标签+图片 -->
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
                         <!-- 毛玻璃会议标签 -->
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">✨ ICLR 2026 Oral & NeurIPS 2025 Efficient Reasoning Workshop</span>
-                        </div>
+                        <div class="venue-badge is-award"><span>✨ ICLR 2026 Oral & NeurIPS 2025 Efficient Reasoning Workshop</span></div>
                         <!-- 图片 -->
-                        <img src="/img/AgentFlow.png" alt="AgentFlow Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/AgentFlow.png')">
+                        <img src="/img/thumb/AgentFlow.webp" loading="lazy" decoding="async" alt="AgentFlow Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/AgentFlow.webp')">
                     </div>
                     <!-- 右侧内容 -->
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="In-the-Flow-Agentic-System-Optimization-for-Effective-Planning-and-Tool-Use" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             In-the-Flow Agentic System Optimization for Effective Planning and Tool Use
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -604,7 +508,7 @@ html[theme-mode="dark"] .education-icon-light-bg {
                             </span>
                         </div>
                         <div id="ood-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 This paper introduces AgentFlow, a trainable agentic framework that coordinates four specialized modules through evolving memory to optimize planning within multi-turn interactions. The authors propose Flow-GRPO, a training method that converts long-horizon optimization into tractable single-turn updates. Testing across ten benchmarks shows the 7B-scale model achieves substantial improvements, including 14.9% on search, 14.0% on agentic, 14.5% on mathematical, and 4.1% on scientific tasks, even surpassing GPT-4o on some evaluations.
                             </p>
                         </div>
@@ -621,13 +525,11 @@ html[theme-mode="dark"] .education-icon-light-bg {
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                 <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">EMNLP 2026</span>
-                        </div>
-                        <img src="/img/Openresearcher.png" alt="OpenResearcher Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/Openresearcher.png')">
+                        <div class="venue-badge"><span>EMNLP 2026</span></div>
+                        <img src="/img/thumb/Openresearcher.webp" loading="lazy" decoding="async" alt="OpenResearcher Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/Openresearcher.webp')">
                     </div>
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="OpenResearcher-A-Fully-Open-Pipeline-for-Long-Horizon-Deep-Research-Trajectory-Synthesis" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             OpenResearcher: A Fully Open Pipeline for Long-Horizon Deep Research Trajectory Synthesis
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -680,7 +582,7 @@ html[theme-mode="dark"] .education-icon-light-bg {
                             </span>
                         </div>
                         <div id="openresearcher-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                 Training deep research agents requires long-horizon trajectories that interleave search, evidence aggregation, and multi-step reasoning. However, existing data collection pipelines typically rely on proprietary web APIs, making large-scale trajectory synthesis costly, unstable, and difficult to reproduce. We present OpenResearcher, a reproducible pipeline that decouples one-time corpus bootstrapping from multi-turn trajectory synthesis and executes the search-and-browse loop entirely offline using three explicit browser primitives: search, open, and find, over a 15M-document corpus. Using GPT-OSS-120B as the teacher model, we synthesize over 97K trajectories, including a substantial long-horizon tail with 100+ tool calls. Supervised fine-tuning a 30B-A3B backbone on these trajectories achieves 54.8% accuracy on BrowseComp-Plus, a +34.0 point improvement over the base model, while remaining competitive on BrowseComp, GAIA, and xbench-DeepSearch.
                             </p>
                         </div>
@@ -699,15 +601,13 @@ html[theme-mode="dark"] .education-icon-light-bg {
                     <!-- 左侧：标签+图片 -->
                     <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
                         <!-- 毛玻璃会议标签 -->
-                        <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                            <span style="font-size: 0.75rem; font-weight: 600;">TMLR</span>
-                        </div>
+                        <div class="venue-badge"><span>TMLR</span></div>
                         <!-- 图片 -->
-                        <img src="/img/PromptOOD.png" alt="PromptOOD Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/PromptOOD.png')">
+                        <img src="/img/thumb/PromptOOD.webp" loading="lazy" decoding="async" alt="PromptOOD Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/PromptOOD.webp')">
                     </div>
                     <!-- 右侧内容 -->
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                        <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                        <h4 id="Avoiding-Structural-Pitfalls-Self-Supervised-Low-Rank-Feature-Tuning-for-Graph-Test-Time-Adaptation" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                             Avoiding Structural Pitfalls: Self-Supervised Low-Rank Feature Tuning for Graph Test-Time Adaptation
                         </h4>
                         <p class="text-gray-700 text-sm" style="margin-bottom: 0.25rem;">
@@ -734,7 +634,7 @@ html[theme-mode="dark"] .education-icon-light-bg {
                             <a href="javascript:void(0);" class="text-xs px-2 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded inline-block mr-1" onclick="return toggleBibtex('tmlr-bibtex');">BibTeX</a>
                         </div>
                         <div id="tmlr-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                            <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                            <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                  Pre-trained graph neural networks (GNNs) have demonstrated significant success in leveraging large-scale graph data to learn transferable representations. However, their performance often degrades under distribution shifts, particularly in real-world scenarios where test labels are unavailable. To address this challenge, we propose Graph Optimization via Augmented Transformations (GOAT), a novel self-supervised test-time tuning paradigm that adapts pre-trained GNNs to distribution-shifted test data by focusing exclusively on node feature transformations. By avoiding complex and often suboptimal graph structure transformations, GOAT overcomes the limitations of existing data-centric methods.
                                  To further address the issue of transformation collapse, where feature transformations converge to trivial solutions—such as when the test-time learned data-centric transformation degenerates into a constant or identity mapping across different inputs, we introduce a parameter-efficient low-rank adapter that generates diverse transformations tailored to individual input graphs. This design not only enhances adaptation performance but also improves interpretability by avoiding modifications to the graph structure. Through extensive experiments on six real-world datasets with diverse distribution shifts, we demonstrate that GOAT achieves consistent performance improvements across different pre-trained GNN backbones, outperforming state-of-the-art test-time adaptation methods.
                             </p>
@@ -752,7 +652,7 @@ html[theme-mode="dark"] .education-icon-light-bg {
                 </div>
             </div>
             <!-- <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <h4 class="font-bold text-lg text-blue-500"> Parameter-Efficient Continual Few-Shot Knowledge Graph Completion with Prompt Quantization
+                <h4 id="Parameter-Efficient-Continual-Few-Shot-Knowledge-Graph-Completion-with-Prompt-Quantization-paper-code" class="font-bold text-lg text-blue-500"> Parameter-Efficient Continual Few-Shot Knowledge Graph Completion with Prompt Quantization
                     <span>|</span>
                     <a href="#" class="text-sm text-gray-500 hover:text-gray-700 mr-2">[paper]</a>
                     <span>|</span>
@@ -776,7 +676,7 @@ html[theme-mode="dark"] .education-icon-light-bg {
         </div><!-- Close flex container -->
     </section>
     <section id="service" class="mb-12" style="margin-top: 4rem;">
-    <h2 class="text-2xl font-bold mb-6 text-blue-600">
+    <h2 id="Programme-Committee-Service" class="text-2xl font-bold mb-6 text-blue-600">
         <i class="fas fa-sticky-note"></i> Programme Committee Service
     </h2>
     <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
@@ -797,12 +697,12 @@ html[theme-mode="dark"] .education-icon-light-bg {
     </div>
     </section>
     <section id="long-term-collaboration" class="mb-12" style="margin-top: 4rem;">
-    <h2 class="text-2xl font-bold mb-6 text-blue-600">
+    <h2 id="Long-term-Collaboration" class="text-2xl font-bold mb-6 text-blue-600">
         <i class="fas fa-handshake"></i> Long-term Collaboration
     </h2>
     <div class="grid" style="gap: 4rem;">
         <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-            <h4 class="font-bold text-lg text-blue-500">Lambda, Inc.
+            <h4 id="Lambda-Inc" class="font-bold text-lg text-blue-500">Lambda, Inc.
                 <a href="https://lambda.ai/" class="text-sm text-gray-500 hover:text-gray-700 ml-2" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-external-link-alt"></i>
                 </a>
@@ -812,7 +712,7 @@ html[theme-mode="dark"] .education-icon-light-bg {
             </p>
         </div>
         <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-            <h4 class="font-bold text-lg text-blue-500">CocoaBench Team
+            <h4 id="CocoaBench-Team" class="font-bold text-lg text-blue-500">CocoaBench Team
                 <a href="https://cocoabench.github.io/" class="text-sm text-gray-500 hover:text-gray-700 ml-2" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-external-link-alt"></i>
                 </a>
@@ -820,7 +720,7 @@ html[theme-mode="dark"] .education-icon-light-bg {
             <div class="mt-4">
                 <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                     <div class="publication-left" style="flex-shrink: 0; width: 200px;">
-                        <img src="/img/cocoabench-main.png" alt="CocoaBench Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/cocoabench-main.png')">
+                        <img src="/img/thumb/cocoabench-main.webp" loading="lazy" decoding="async" alt="CocoaBench Preview" style="width: 200px; height: 130px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(event, '/img/full/cocoabench-main.webp')">
                     </div>
                     <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
                         <p class="text-gray-600 mb-2">
@@ -840,7 +740,7 @@ html[theme-mode="dark"] .education-icon-light-bg {
             </div>
         </div>
         <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-            <h4 class="font-bold text-lg text-blue-500">Shanghai Tongliang Intelligent Technology Co., Ltd.
+            <h4 id="Shanghai-Tongliang-Intelligent-Technology-Co-Ltd" class="font-bold text-lg text-blue-500">Shanghai Tongliang Intelligent Technology Co., Ltd.
                 <a href="https://rengong-zhineng.com/" class="text-sm text-gray-500 hover:text-gray-700 ml-2" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-external-link-alt"></i>
                 </a>
@@ -853,7 +753,7 @@ html[theme-mode="dark"] .education-icon-light-bg {
 </section>
     <!-- Education Section -->
     <section id="education" class="mb-12" style="margin-top: 4rem;">
-        <h2 class="text-2xl font-bold mb-6 text-blue-600">
+        <h2 id="Education" class="text-2xl font-bold mb-6 text-blue-600">
             <i class="fas fa-graduation-cap mr-2"></i>&nbsp;Education
         </h2>
         <div class="education-grid">
@@ -865,14 +765,14 @@ html[theme-mode="dark"] .education-icon-light-bg {
                 <p class="text-gray-600">09/2025 - 06/2027</p>
             </div>
             <div class="education-card bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <a href="https://en.shu.edu.cn/" class="education-title font-bold text-lg text-blue-500" target="_blank" rel="noopener noreferrer" class='item-img' data-src='/img/education-shu.png'><img src="/img/education-shu.png" alt="Shanghai University logo" class="education-icon-light-bg">
+                <a href="https://en.shu.edu.cn/" class="education-title font-bold text-lg text-blue-500" target="_blank" rel="noopener noreferrer" class='item-img' data-src='/img/thumb/education-shu.webp'><img src="/img/thumb/education-shu.webp" width="24" height="24" loading="lazy" alt="Shanghai University logo" class="education-icon-light-bg">
                     <span>Shanghai University</span>
                 </a>
                 <p class="text-gray-600">Bachelor of Engineering in Data Science & Big Data Technology</p>
                 <p class="text-gray-600">09/2021 - 06/2025</p>
             </div>
             <div class="education-card bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <a href="https://hkust.edu.hk/" class="education-title font-bold text-lg text-blue-500" target="_blank" rel="noopener noreferrer" class='item-img' data-src='/img/education-hkust.ico'><img src="/img/education-hkust.ico" alt="HKUST icon" class="education-icon-light-bg">
+                <a href="https://hkust.edu.hk/" class="education-title font-bold text-lg text-blue-500" target="_blank" rel="noopener noreferrer" class='item-img' data-src='/img/thumb/education-hkust.webp'><img src="/img/thumb/education-hkust.webp" width="24" height="24" loading="lazy" alt="HKUST icon" class="education-icon-light-bg">
                     <span>Hong Kong University of Science and Technology</span>
                 </a>
                 <p class="text-gray-600">Summer Session - Data & Computer Science</p>
@@ -891,12 +791,12 @@ html[theme-mode="dark"] .education-icon-light-bg {
     </section>
     <!-- Intern Section -->
     <section id="internship" class="mb-12" style="margin-top: 4rem;">
-        <h2 class="text-2xl font-bold mb-6 text-blue-600">
+        <h2 id="Industrial-Internship" class="text-2xl font-bold mb-6 text-blue-600">
             <i class="fas fa-briefcase"></i>&nbsp;Industrial Internship
         </h2>
         <div class="grid gap-6">
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <h4 class="font-bold text-lg text-blue-500">
+                <h4 id="Salesforce-AI-Research-Palo-Alto" class="font-bold text-lg text-blue-500">
                     Salesforce AI Research, Palo Alto
                     <a href="https://www.salesforceairesearch.com/" class="text-sm text-gray-500 hover:text-gray-700 ml-2" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
                 </h4>
@@ -905,15 +805,13 @@ html[theme-mode="dark"] .education-icon-light-bg {
                 <div class="mt-4">
                     <div class="publication-container" style="display: flex; flex-direction: row; gap: 1.5rem; align-items: flex-start;">
                         <div class="publication-left" style="flex-shrink: 0; width: 200px; display: flex; flex-direction: column; gap: 0.5rem;">
-                            <div style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 4px 12px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); text-align: center;">
-                                <span style="font-size: 0.75rem; font-weight: 600;">arXiv 2026</span>
-                            </div>
+                            <div class="venue-badge is-preprint"><span>arXiv 2026</span></div>
                             <div style="background-color: #f3f4f6; border-radius: 8px; padding: 6px;">
-                                <img src="/img/srd_teaser.png" alt="SRD Preview" style="width: 100%; height: auto; border-radius: 6px; cursor: pointer;" onclick="openImageModal(event, '/img/srd_teaser.png')">
+                                <img src="/img/thumb/srd_teaser.webp" loading="lazy" decoding="async" alt="SRD Preview" style="width: 100%; height: auto; border-radius: 6px; cursor: pointer;" onclick="openImageModal(event, '/img/full/srd_teaser.webp')">
                             </div>
                         </div>
                         <div class="publication-right" style="flex: 1; min-width: 0; line-height: 1.4;">
-                            <h4 class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
+                            <h4 id="Self-Retrospection-Distillation-Turning-Post-hoc-Experiences-into-Prior-Foresight" class="font-bold text-lg text-blue-500" style="margin-bottom: 0.25rem;">
                                 Self-Retrospection Distillation: Turning Post-hoc Experiences into Prior Foresight
                             </h4>
                             <p class="text-gray-600 mb-2">
@@ -942,7 +840,7 @@ html[theme-mode="dark"] .education-icon-light-bg {
                                 </span>
                             </div>
                             <div id="srd-abstract" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background: rgba(243, 244, 246, 0.15); border-radius: 6px;">
-                                <p style="font-size: 0.5rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
+                                <p style="font-size: 0.625rem; line-height: 1.3; color: inherit; text-align: justify; text-align-last: left;">
                                     Reinforcement learning with verifiable rewards (RLVR) mainly learns from scalar outcome rewards, so in group-relative training the signal vanishes whenever every rollout in a group receives the same reward, even though the trajectories still reveal what the task requires and where the agent fails. We introduce prospective learning, which uses past experience to train the predictions an agent makes before it acts, and implement it as Self-Retrospection Distillation (SRD), which distills lessons from completed trajectories into trajectory-blind foresight for the same policy; foresight is used only as a training target and is never produced at inference time. Across 10 tool-integrated reasoning and long-horizon agent tasks, SRD improves over RLVR and self-distillation baselines by up to 24.2 points, with the largest gains when many rollout groups are reward-uniform; in a 2B-parameter setting where 98% of groups fail entirely, RLVR alone reaches 0.0% success while RLVR with SRD reaches 60.6% under the same rollout budget.
                                 </p>
                             </div>
@@ -951,19 +849,19 @@ html[theme-mode="dark"] .education-icon-light-bg {
                 </div>
             </div>
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <h4 class="font-bold text-lg text-blue-500">Shanghai Artificial Intelligence Labotary<a target="_blank" rel="noopener" href="https://opengvlab.com/" class="text-sm text-gray-500 hover:text-gray-700 ml-2"><i class="fas fa-external-link-alt"></i></a></h4>
+                <h4 id="Shanghai-Artificial-Intelligence-Labotary" class="font-bold text-lg text-blue-500">Shanghai Artificial Intelligence Labotary<a target="_blank" rel="noopener" href="https://opengvlab.com/" class="text-sm text-gray-500 hover:text-gray-700 ml-2"><i class="fas fa-external-link-alt"></i></a></h4>
                 <p class="text-gray-600">Multimodal Unified Auto-regressive Generation. </p><a target="_blank" rel="noopener" href="https://github.com/Alpha-VLLM/Lumina-mGPT" class="text-white hover:text-blue-200">View Detail [Lumina-mGPT]</a>
                 <p class="text-gray-600">08/2024 - 02/2025</p>
             </div>
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <h4 class="font-bold text-lg text-blue-500">Bank of Communications, Shanghai Branch
+                <h4 id="Bank-of-Communications-Shanghai-Branch" class="font-bold text-lg text-blue-500">Bank of Communications, Shanghai Branch
                 <a href="https://www.bankcomm.com/BankCommSite/shtml/jyjr/en/2600212/list.shtml?channelId=2600212" class="text-sm text-gray-500 hover:text-gray-700 ml-2" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
                 </h4>
                 <p class="text-gray-600">Intern, Internet Finance Team & Data Application Team. Decentralized Finance. </p>
                 <p class="text-gray-600 text-sm">07/2024</p>
             </div>
             <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <h4 class="font-bold text-lg text-blue-500">FASOTEC Co., Ltd.<a target="_blank" rel="noopener" href="https://www.fasotec.co.jp/en" class="text-sm text-gray-500 hover:text-gray-700 ml-2"><i class="fas fa-external-link-alt"></i></a></h4>
+                <h4 id="FASOTEC-Co-Ltd" class="font-bold text-lg text-blue-500">FASOTEC Co., Ltd.<a target="_blank" rel="noopener" href="https://www.fasotec.co.jp/en" class="text-sm text-gray-500 hover:text-gray-700 ml-2"><i class="fas fa-external-link-alt"></i></a></h4>
                 <p class="text-gray-600">Technical Assistant. Server Hardware & CATIA Software. 
                 </p>
                 <p class="text-gray-600">08/2023 - 10/2023</p>
@@ -1033,6 +931,8 @@ function toggleAbstract(id) {
     if (element) {
         if (element.style.display === 'none' || element.style.display === '') {
             element.style.display = 'block';
+            // 打字机效果展开（由主题 arknights.js 提供）
+            if (typeof window.typeOut === 'function') window.typeOut(element);
         } else {
             element.style.display = 'none';
         }
@@ -1124,43 +1024,4 @@ document.addEventListener('keydown', window._aboutEscHandler);
     <p class="mb-2">© 2024-2026 Isaac_GHX</p>
     <p class="text-blue-100">Data Scientist | Researcher | Engineer</p>
 </footer>
-<div id="paginator"></div></div><div id="post-footer"></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/2.png" alt="Logo" style="margin:0;border-radius:0;"></a><div id="author-info"><h1 id="Dr"><a href="/about">Isaac IPF</a></h1><div id="description"><p></p></div></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">
-            Haoxiang Zhang 张灏翔
-            </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hello"><span class="toc-number">1.1.</span> <span class="toc-text">
-            Hello! 好呀 ~ こんちは！
-        </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#publication"><span class="toc-number">1.2.</span> <span class="toc-text">
-             Selected Publications
-        </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">
-                            Masking Stale Observations Helps Search Agents – Until It Doesn&#39;t: A Regime Map and Its Mechanism
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">
-                            Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">
-                            Eubiota: Modular Agentic AI for Autonomous Discovery in the Gut Microbiome
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.2.0.4.</span> <span class="toc-text">
-                            In-the-Flow Agentic System Optimization for Effective Planning and Tool Use
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.2.0.5.</span> <span class="toc-text">
-                            OpenResearcher: A Fully Open Pipeline for Long-Horizon Deep Research Trajectory Synthesis
-                        </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#publication"><span class="toc-number">1.2.0.6.</span> <span class="toc-text">
-                            Avoiding Structural Pitfalls: Self-Supervised Low-Rank Feature Tuning for Graph Test-Time Adaptation
-                        </span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#service"><span class="toc-number">1.3.</span> <span class="toc-text">
-         Programme Committee Service
-    </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#long-term-collaboration"><span class="toc-number">1.4.</span> <span class="toc-text">
-         Long-term Collaboration
-    </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#long-term-collaboration"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">Lambda, Inc.
-                
-            </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#long-term-collaboration"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">CocoaBench Team
-                
-            </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#long-term-collaboration"><span class="toc-number">1.4.0.3.</span> <span class="toc-text">Shanghai Tongliang Intelligent Technology Co., Ltd.
-                
-            </span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#education"><span class="toc-number">1.5.</span> <span class="toc-text">
-             Education
-        </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#internship"><span class="toc-number">1.6.</span> <span class="toc-text">
-             Industrial Internship
-        </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#internship"><span class="toc-number">1.6.0.1.</span> <span class="toc-text">
-                    Salesforce AI Research, Palo Alto
-                    
-                </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#internship"><span class="toc-number">1.6.0.2.</span> <span class="toc-text">
-                                Self-Retrospection Distillation: Turning Post-hoc Experiences into Prior Foresight
-                            </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#internship"><span class="toc-number">1.6.0.3.</span> <span class="toc-text">Shanghai Artificial Intelligence Labotary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#internship"><span class="toc-number">1.6.0.4.</span> <span class="toc-text">Bank of Communications, Shanghai Branch
-                
-                </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#internship"><span class="toc-number">1.6.0.5.</span> <span class="toc-text">FASOTEC Co., Ltd.</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/IsaacGHX">Isaac_GHX </a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr><wbr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
+<div id="paginator"></div></div><div id="post-footer"></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" data-egg="" id="logo"><img class="logo-main" src="/img/logo-dragon.png" alt="Logo" style="margin:0;border-radius:0;"></a><div id="author-info"><h1 id="Dr"><a href="/about">Isaac IPF</a></h1><div id="description"><p></p></div></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hello-%E5%A5%BD%E5%91%80-%E3%81%93%E3%82%93%E3%81%A1%E3%81%AF%EF%BC%81"><span class="toc-number">1.</span> <span class="toc-text">Hello! 好呀 ~ こんちは！</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Selected-Publications"><span class="toc-number">2.</span> <span class="toc-text">Selected Publications</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Masking-Stale-Observations-Helps-Search-Agents-Until-It-Doesn-t-A-Regime-Map-and-Its-Mechanism"><span class="toc-number">2.1.</span> <span class="toc-text">Masking Stale Observations Helps Search Agents – Until It Doesn&#39;t: A Regime Map and Its Mechanism</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Beyond-Semantic-Similarity-Rethinking-Retrieval-for-Agentic-Search-via-Direct-Corpus-Interaction"><span class="toc-number">2.2.</span> <span class="toc-text">Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Eubiota-Modular-Agentic-AI-for-Autonomous-Discovery-in-the-Gut-Microbiome"><span class="toc-number">2.3.</span> <span class="toc-text">Eubiota: Modular Agentic AI for Autonomous Discovery in the Gut Microbiome</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#In-the-Flow-Agentic-System-Optimization-for-Effective-Planning-and-Tool-Use"><span class="toc-number">2.4.</span> <span class="toc-text">In-the-Flow Agentic System Optimization for Effective Planning and Tool Use</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenResearcher-A-Fully-Open-Pipeline-for-Long-Horizon-Deep-Research-Trajectory-Synthesis"><span class="toc-number">2.5.</span> <span class="toc-text">OpenResearcher: A Fully Open Pipeline for Long-Horizon Deep Research Trajectory Synthesis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Avoiding-Structural-Pitfalls-Self-Supervised-Low-Rank-Feature-Tuning-for-Graph-Test-Time-Adaptation"><span class="toc-number">2.6.</span> <span class="toc-text">Avoiding Structural Pitfalls: Self-Supervised Low-Rank Feature Tuning for Graph Test-Time Adaptation</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Programme-Committee-Service"><span class="toc-number">3.</span> <span class="toc-text">Programme Committee Service</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Long-term-Collaboration"><span class="toc-number">4.</span> <span class="toc-text">Long-term Collaboration</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Lambda-Inc"><span class="toc-number">4.1.</span> <span class="toc-text">Lambda, Inc.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CocoaBench-Team"><span class="toc-number">4.2.</span> <span class="toc-text">CocoaBench Team</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shanghai-Tongliang-Intelligent-Technology-Co-Ltd"><span class="toc-number">4.3.</span> <span class="toc-text">Shanghai Tongliang Intelligent Technology Co., Ltd.</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Education"><span class="toc-number">5.</span> <span class="toc-text">Education</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Industrial-Internship"><span class="toc-number">6.</span> <span class="toc-text">Industrial Internship</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Salesforce-AI-Research-Palo-Alto"><span class="toc-number">6.1.</span> <span class="toc-text">Salesforce AI Research, Palo Alto</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Self-Retrospection-Distillation-Turning-Post-hoc-Experiences-into-Prior-Foresight"><span class="toc-number">6.2.</span> <span class="toc-text">Self-Retrospection Distillation: Turning Post-hoc Experiences into Prior Foresight</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shanghai-Artificial-Intelligence-Labotary"><span class="toc-number">6.3.</span> <span class="toc-text">Shanghai Artificial Intelligence Labotary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bank-of-Communications-Shanghai-Branch"><span class="toc-number">6.4.</span> <span class="toc-text">Bank of Communications, Shanghai Branch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FASOTEC-Co-Ltd"><span class="toc-number">6.5.</span> <span class="toc-text">FASOTEC Co., Ltd.</span></a></li></ol></li></ol></div></div><footer><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/IsaacGHX">Isaac_GHX </a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr><wbr></footer></aside></main><canvas id="canvas-dust" aria-hidden="true"></canvas><script defer src="/js/pjax.js"></script><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script></body></html>
